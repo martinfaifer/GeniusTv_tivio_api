@@ -11,7 +11,7 @@ class NanguWsdlIdentityService extends NanguWsdlService
 {
     public function get_and_store()
     {
-        $subscriptionsAccounts = SubscriptionAccount::where("subscriptionStbAccountCode", '284-1527098368394')->get();
+        $subscriptionsAccounts = SubscriptionAccount::get();
         foreach ($subscriptionsAccounts as $subscriptionAccount) {
 
             try {
