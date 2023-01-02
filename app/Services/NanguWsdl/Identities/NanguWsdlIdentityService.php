@@ -11,7 +11,7 @@ class NanguWsdlIdentityService extends NanguWsdlService
 {
     public function get_and_store()
     {
-        $subscriptionsAccounts = SubscriptionAccount::get();
+        $subscriptionsAccounts = SubscriptionAccount::where("subscriptionStbAccountCode", '284-1527098368394')->get();
         foreach ($subscriptionsAccounts as $subscriptionAccount) {
 
             try {
@@ -20,10 +20,10 @@ class NanguWsdlIdentityService extends NanguWsdlService
                 $wsdlResult = json_decode(json_encode($data), true);
                 if (array_key_exists('identities', $wsdlResult)) {
                     print_r($wsdlResult);
-                    if (array_key_exists(1, $wsdlResult)) {
-                        foreach ($wsdlResult as $result) {
-                            if (array_key_exists('identityId', $result['identities']) && array_key_exists('username', $result['identities'])) {
-                                (new StoreSubscriptionIdentityAction($result['identities']['identityId'], $result['identities']['username'], $subscriptionAccount->subscription->id))->store();
+                    if (array_key_exists(1, $wsdlResult['identities'])) {
+                        foreach ($wsdlResult['identities'] as $result) {
+                            if (array_key_exists('identityId', $result) && array_key_exists('username', $result)) {
+                                (new StoreSubscriptionIdentityAction($result['identityId'], $result['username'], $subscriptionAccount->subscription->id))->store();
                             }
                         }
                     } else {

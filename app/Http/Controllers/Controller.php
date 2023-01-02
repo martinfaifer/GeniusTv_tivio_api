@@ -34,6 +34,10 @@ class Controller extends BaseController
 
     private function send_broadcast_notification(string $status, string $message)
     {
-        event(new BroadcastFrontEndNotificationEvent(Auth::user()->id, $status, $message));
+        try {
+            event(new BroadcastFrontEndNotificationEvent(Auth::user()->id, $status, $message));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 }

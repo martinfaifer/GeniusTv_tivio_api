@@ -21,7 +21,6 @@
                                     name="username"
                                     prepend-inner-icon="mdi-account"
                                     type="text"
-                                    color="#328AF1"
                                     autofocus
                                     class="my-3"
                                 ></v-text-field>
@@ -35,7 +34,6 @@
                                     name="password"
                                     prepend-inner-icon="mdi-lock"
                                     type="password"
-                                    color="#328AF1"
                                 ></v-text-field>
                                 <v-btn
                                     variant="flat"

@@ -129,7 +129,6 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             name: "username",
                             "prepend-inner-icon": "mdi-account",
                             type: "text",
-                            color: "#328AF1",
                             autofocus: "",
                             "class": "my-3"
                           }, null, 8 /* PROPS */, ["error-messages", "modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
@@ -143,8 +142,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             label: "Heslo",
                             name: "password",
                             "prepend-inner-icon": "mdi-lock",
-                            type: "password",
-                            color: "#328AF1"
+                            type: "password"
                           }, null, 8 /* PROPS */, ["error-messages", "modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
                             variant: "flat",
                             color: "black",

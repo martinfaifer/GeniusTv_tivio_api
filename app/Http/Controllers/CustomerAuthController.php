@@ -28,7 +28,7 @@ class CustomerAuthController extends Controller
 
     public function login(CustomerLoginRequest $request, SubscriptionLoginAction $subscriptionLoginAction)
     {
-        $responseAction = $subscriptionLoginAction->execute($request->mac, $request->identity);
+         $responseAction = $subscriptionLoginAction->execute($request->mac, $request->identity);
         return $responseAction  == false
             ? $this->error_message("Nepodařilo se najít uživatele")
             : $this->success_message('Úspěšně přihlášeno', "/customer");

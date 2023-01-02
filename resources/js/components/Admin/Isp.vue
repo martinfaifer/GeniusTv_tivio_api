@@ -41,6 +41,19 @@
                             </v-list-item-title>
                         </v-list-item>
 
+                        <v-list-item
+                            v-if="user.isAdmin == true"
+                            prepend-icon="mdi-ipod"
+                        >
+                            <v-list-item-title
+                                class="text-body-2"
+                                @click="goToApps()"
+                                style="cursor: pointer"
+                            >
+                                Správa aplikací
+                            </v-list-item-title>
+                        </v-list-item>
+
                         <v-list-item prepend-icon="mdi-logout">
                             <v-list-item-title
                                 class="text-body-2"
@@ -119,6 +132,10 @@ export default {
 
         goToUsers() {
             this.$router.push("/admin/isp/users");
+        },
+
+        goToApps() {
+            this.$router.push("/admin/isp/applications");
         },
 
         resetNotification() {

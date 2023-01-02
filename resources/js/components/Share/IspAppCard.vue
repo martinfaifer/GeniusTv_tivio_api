@@ -1,8 +1,8 @@
 <template>
     <div>
         <v-card
-            rounded="xl"
-            class="overflow-hidden rounded-xl blur shadow-blur"
+            rounded="lg"
+            class="overflow-hidden blur shadow-blur"
             elevation-12
             color="white"
         >

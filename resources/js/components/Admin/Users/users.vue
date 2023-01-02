@@ -128,6 +128,7 @@
                         <v-container fluid class="mt-n6">
                             <v-row>
                                 <v-btn
+                                    prepend-icon="mdi-close"
                                     class="mx-7 mb-3"
                                     rounded="lg"
                                     color="red-darken-1"
@@ -137,6 +138,7 @@
                                 </v-btn>
                                 <v-spacer></v-spacer>
                                 <v-btn
+                                    prepend-icon="mdi-plus"
                                     class="mx-7 mb-3"
                                     rounded="lg"
                                     color="green-darken-1"
@@ -174,6 +176,7 @@
                         <v-container fluid class="mt-n6">
                             <v-row>
                                 <v-btn
+                                    prepend-icon="mdi-close"
                                     class="mx-7 mb-3"
                                     rounded="lg"
                                     color="red-darken-1"
@@ -184,6 +187,7 @@
                                 </v-btn>
                                 <v-spacer></v-spacer>
                                 <v-btn
+                                    prepend-icon="mdi-trash"
                                     class="mx-7 mb-3"
                                     rounded="lg"
                                     color="green-darken-1"

@@ -21,35 +21,42 @@
                 </template>
             </v-app-bar>
             <v-row>
-                <!-- Download logclient links -->
-                <v-col cols="12" sm="12" md="6" lg="6">
-                    <IspAppCard
-                        :apps="apps"
-                        filterString="diagnostic"
-                        headText="Diagnostické aplikace"
-                    ></IspAppCard>
+                <v-col cols="12" sm="12" md="3" lg="3">
+                    <News :user="user"></News>
                 </v-col>
+                <v-col cols="12" sm="12" md="9" lg="9">
+                    <v-row>
+                        <!-- Download logclient links -->
+                        <v-col cols="12" sm="12" md="6" lg="6">
+                            <IspAppCard
+                                :apps="apps"
+                                filterString="diagnostic"
+                                headText="Diagnostické aplikace"
+                            ></IspAppCard>
+                        </v-col>
 
-                <v-col cols="12" sm="12" md="6" lg="6">
-                    <IspAppCard
-                        :apps="apps"
-                        filterString="TV"
-                        headText="Samsung TV aplikace"
-                    ></IspAppCard>
-                </v-col>
-                <v-col cols="12" sm="12" md="6" lg="6">
-                    <IspAppCard
-                        :apps="apps"
-                        filterString="androidTV"
-                        headText="Android TV aplikace"
-                    ></IspAppCard>
-                </v-col>
-                <v-col cols="12" sm="12" md="6" lg="6">
-                    <IspAppCard
-                        :apps="apps"
-                        filterString="androidMobile"
-                        headText="Android mobile aplikace"
-                    ></IspAppCard>
+                        <v-col cols="12" sm="12" md="6" lg="6">
+                            <IspAppCard
+                                :apps="apps"
+                                filterString="TV"
+                                headText="Samsung TV aplikace"
+                            ></IspAppCard>
+                        </v-col>
+                        <v-col cols="12" sm="12" md="6" lg="6">
+                            <IspAppCard
+                                :apps="apps"
+                                filterString="androidTV"
+                                headText="Android TV aplikace"
+                            ></IspAppCard>
+                        </v-col>
+                        <v-col cols="12" sm="12" md="6" lg="6">
+                            <IspAppCard
+                                :apps="apps"
+                                filterString="androidMobile"
+                                headText="Android mobile aplikace"
+                            ></IspAppCard>
+                        </v-col>
+                    </v-row>
                 </v-col>
             </v-row>
 
@@ -101,6 +108,7 @@
                         <v-container fluid class="mt-n6">
                             <v-row>
                                 <v-btn
+                                    prepend-icon="mdi-close"
                                     class="mx-7 mb-3"
                                     rounded="lg"
                                     color="red-darken-1"
@@ -110,6 +118,7 @@
                                 </v-btn>
                                 <v-spacer></v-spacer>
                                 <v-btn
+                                    prepend-icon="mdi-plus"
                                     class="mx-7 mb-3"
                                     rounded="lg"
                                     color="green-darken-1"
@@ -134,6 +143,7 @@
     </div>
 </template>
 <script>
+import News from "../News/news.vue";
 import SnackBar from "../../Share/SnackBar.vue";
 import axios from "axios";
 import SvgIcon from "@jamescoyle/vue-icon";
@@ -158,7 +168,7 @@ export default {
             apps: [],
         };
     },
-    components: { IspAppCard, SnackBar },
+    components: { IspAppCard, SnackBar, News },
 
     created() {
         this.index();

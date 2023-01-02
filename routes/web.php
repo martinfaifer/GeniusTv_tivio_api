@@ -13,6 +13,7 @@ use App\Http\Controllers\NanguCustomerController;
 use App\Http\Controllers\FindSubscriptionController;
 use App\Http\Controllers\ShowUserController;
 use App\Http\Controllers\SubscriptionDeviceController;
+use App\Http\Controllers\TopicController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,6 +43,13 @@ Route::prefix('admin')->group(function () {
             Route::post('', [AppController::class, 'store'])->middleware('isAdmin');
             Route::get('categories', AppCategoriesController::class);
             Route::delete('{app}', [AppController::class, 'destroy'])->middleware('isAdmin');
+        });
+        Route::prefix('topics')->group(function () {
+            Route::get('', [TopicController::class, 'index']);
+            Route::get('{topic}', [TopicController::class, 'show']);
+            Route::post('', [TopicController::class, 'store'])->middleware('isAdmin');
+            Route::patch('{topic}', [TopicController::class, 'update'])->middleware('isAdmin');
+            Route::delete('{topic}', [TopicController::class, 'destroy'])->middleware('isAdmin');
         });
         Route::prefix('genius')->group(function () {
             Route::prefix('users')->group(function () {
