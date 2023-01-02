@@ -7,11 +7,11 @@
     heslo: {{ $password }}
 
 
-    <x-mail::panel>
+    {{-- <x-mail::panel>
         <x-mail::button :url="$link" color="success">
             Přihlášení
         </x-mail::button>
-    </x-mail::panel>
+    </x-mail::panel> --}}
 
 
     Děkuje tým

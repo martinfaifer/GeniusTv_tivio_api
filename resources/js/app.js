@@ -20,13 +20,15 @@ import { createRouter, createWebHashHistory } from "vue-router";
 
 import App from "./App.vue";
 
-import SnackBar from "./components/Share/SnackBar.vue";
+// import SnackBar from "./components/Share/SnackBar.vue";
 
 const Home = () => import("./components/Home.vue");
 const CustomerLayout = () => import("./components/Customer/CustomerLayout.vue");
 const Isp = () => import("./components/Admin/Isp.vue");
 
 const AdminLogin = () => import("./components/Admin/Login/login.vue");
+
+const Page404 = () => import("./components/404/404.vue");
 
 const router = createRouter({
     history: createWebHashHistory(),
@@ -50,6 +52,10 @@ const router = createRouter({
             path: "/admin/isp/:component",
             name: "ISP",
             component: Isp,
+        },
+        {
+            path: "/:pathMatch(.*)*",
+            component: Page404,
         },
     ],
 });

@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
         password: this.password
       }).then(function (response) {
         if (response.data.status == "success") {
-          _this2.$router.push("/admin/isp");
+          _this2.$router.push("/admin/isp/applications");
         } else {
           _this2.alert = true;
           _this2.email = null;

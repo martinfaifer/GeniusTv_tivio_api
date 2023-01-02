@@ -13,7 +13,17 @@ class CustomerAuthController extends Controller
 
     public function show()
     {
-        return Auth::user();
+        $user = Auth::user();
+        if (is_null($user)) {
+            return null;
+        }
+
+        if (is_null($user->mac)) {
+            Auth::logout();
+            return null;
+        }
+
+        return $user;
     }
 
     public function login(CustomerLoginRequest $request, SubscriptionLoginAction $subscriptionLoginAction)

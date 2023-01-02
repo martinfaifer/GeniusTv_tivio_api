@@ -28,7 +28,7 @@
                     </template>
 
                     <v-list density="compact">
-                        <v-list-item>
+                        <v-list-item prepend-icon="mdi-logout">
                             <v-list-item-title
                                 class="text-body-2"
                                 @click="logout()"

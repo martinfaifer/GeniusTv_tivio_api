@@ -1,6 +1,5 @@
 <template>
     <div>
-
         <AppBar></AppBar>
         <GeniusTVIntro></GeniusTVIntro>
 
