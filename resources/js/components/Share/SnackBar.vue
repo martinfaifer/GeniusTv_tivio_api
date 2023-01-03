@@ -15,7 +15,7 @@ export default {
     props: {},
     data() {
         return {
-            timeout: 3000,
+            timeout: 5000,
             currSnackBar: false,
             user: [],
             message: "",

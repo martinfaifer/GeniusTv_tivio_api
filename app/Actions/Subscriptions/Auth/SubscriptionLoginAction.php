@@ -9,16 +9,29 @@ use App\Models\User;
 use Illuminate\Queue\Middleware\RateLimited;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class SubscriptionLoginAction
 {
-    public function execute(string $stbMac, string $subscriberIdentityUsername): bool|string
+    public function execute(string $subscriberIdentityUsername): mixed
     {
-        $user = User::where('name', $stbMac)->first();
+        $identity = SubscriptionIdentity::where('username', $subscriberIdentityUsername)->first();
+        $user = User::where('identity', $identity->id)->first();
 
-        if (!$user || !Hash::check($subscriberIdentityUsername, $user->password)) {
-            return false;
+        if (!$user) {
+            $user = User::create([
+                'name' => $subscriberIdentityUsername,
+                'email' => $subscriberIdentityUsername . "@geniustv.cz",
+                'password' => bcrypt(Str::random(8)),
+                'identity' => $identity->id,
+                'mac' => $subscriberIdentityUsername . "_fake",
+                'isAdmin' => false
+            ]);
         }
+
+        // if (!$user || !Hash::check($subscriberIdentityUsername, $user->password)) {
+        //     return false;
+        // }
 
         Auth::login($user, true);
         return Auth::user();

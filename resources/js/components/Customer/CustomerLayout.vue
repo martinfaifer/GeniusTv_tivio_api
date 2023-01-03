@@ -125,6 +125,37 @@
                                                 lg="6"
                                                 class="font-weight-normal text-subtitle-2"
                                             >
+                                                Zaplacení Prima bez reklam:
+                                            </v-col>
+                                            <v-col
+                                                cols="12"
+                                                sm="12"
+                                                md="6"
+                                                lg="6"
+                                            >
+                                                <v-btn
+                                                    @click="
+                                                        primaPayment(
+                                                            customerNanguDetail.subscriptionCode
+                                                        )
+                                                    "
+                                                    color="green"
+                                                    size="small"
+                                                >
+                                                    <strong> Zaplatit </strong>
+                                                </v-btn>
+                                            </v-col>
+                                        </v-row>
+                                    </v-list-item>
+                                    <v-list-item>
+                                        <v-row>
+                                            <v-col
+                                                cols="12"
+                                                sm="12"
+                                                md="6"
+                                                lg="6"
+                                                class="font-weight-normal text-subtitle-2"
+                                            >
                                                 Služba:
                                             </v-col>
                                             <v-col
@@ -200,8 +231,41 @@
                                     "
                                 >
                                     <v-list-subheader
-                                        >Maximální počty přihlášených zařízení
-                                        dle typů</v-list-subheader
+                                        >Maximální počet přihlášených zařízení
+                                    </v-list-subheader>
+                                    <v-list-item>
+                                        <v-row>
+                                            <v-col
+                                                cols="12"
+                                                sm="12"
+                                                md="6"
+                                                lg="6"
+                                                class="font-weight-normal text-subtitle-2 text-capitalize"
+                                            >
+                                                Celkem
+                                            </v-col>
+                                            <v-col
+                                                cols="12"
+                                                sm="12"
+                                                md="6"
+                                                lg="6"
+                                            >
+                                                {{
+                                                    customerNanguDetail.pairedDevicesLimit
+                                                }}
+                                            </v-col>
+                                        </v-row>
+                                    </v-list-item>
+                                </v-list>
+                                <v-list
+                                    v-if="
+                                        customerNanguDetail.pairedDeviceLimits !=
+                                        undefined
+                                    "
+                                >
+                                    <v-list-subheader
+                                        >Nebo maximální počty přihlášených
+                                        zařízení dle typů</v-list-subheader
                                     >
                                     <v-list-item
                                         v-for="deviceTypeInfoLimit in customerNanguDetail
@@ -462,6 +526,16 @@ export default {
             if (state == "BILLING") {
                 return "text-green";
             }
+        },
+
+        primaPayment(subscriptionCode) {
+            axios
+                .post("customer/tivio/subscriptionCode", {
+                    subscriptionCode: subscriptionCode,
+                })
+                .then((response) => {
+                    window.open(response.data, "_blank");
+                });
         },
     },
 

@@ -138,8 +138,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     LoginCustomer: function LoginCustomer() {
       var _this3 = this;
       axios__WEBPACK_IMPORTED_MODULE_0__["default"].post("login", {
-        mac: this.formInputData.mac,
-        identity: this.formInputData.identity
+        // mac: this.formInputData.mac,
+        // identity: this.formInputData.identity,
+        identity_username: this.formInputData.identity_username,
+        identity_password: this.formInputData.identity_password
       }).then(function (response) {
         if (response.data.status == "error") {
           _this3.showSnackBar = true;
@@ -482,17 +484,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     md: "12"
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <v-text-field\n                                autofocus\n                                density=\"compact\"\n                                variant=\"outlined\"\n                                label=\"Mac adresa Vašeho set top boxu ve formátu xx:xx:xx:xx:xx:xx\"\n                                required\n                                v-model=\"formInputData.mac\"\n                                :error-messages=\"errors.mac\"\n                            ></v-text-field>\n                        </v-col>\n                        <v-col cols=\"12\" sm=\"12\" md=\"12\">\n                            <v-text-field\n                                density=\"compact\"\n                                variant=\"outlined\"\n                                label=\"Uživatelské jméno do aplikace GeniusTV\"\n                                required\n                                v-model=\"formInputData.identity\"\n                                :error-messages=\"errors.identity\"\n                            ></v-text-field>\n                        </v-col> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+                        "prepend-inner-icon": "mdi-account",
                         autofocus: "",
                         density: "compact",
                         variant: "outlined",
-                        label: "Mac adresa Vašeho set top boxu ve formátu xx:xx:xx:xx:xx:xx",
+                        label: "Uživatelské jméno do aplikace GeniusTV",
                         required: "",
-                        modelValue: $data.formInputData.mac,
+                        modelValue: $data.formInputData.identity_username,
                         "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-                          return $data.formInputData.mac = $event;
+                          return $data.formInputData.identity_username = $event;
                         }),
-                        "error-messages": $data.errors.mac
+                        "error-messages": $data.errors.identity_username
                       }, null, 8 /* PROPS */, ["modelValue", "error-messages"])];
                     }),
                     _: 1 /* STABLE */
@@ -503,15 +506,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+                        type: "password",
+                        "prepend-inner-icon": "mdi-lock",
                         density: "compact",
                         variant: "outlined",
-                        label: "Uživatelské jméno do aplikace GeniusTV",
+                        label: "Heslo do aplikace GeniusTV",
                         required: "",
-                        modelValue: $data.formInputData.identity,
+                        modelValue: $data.formInputData.identity_password,
                         "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-                          return $data.formInputData.identity = $event;
+                          return $data.formInputData.identity_password = $event;
                         }),
-                        "error-messages": $data.errors.identity
+                        "error-messages": $data.errors.identity_password
                       }, null, 8 /* PROPS */, ["modelValue", "error-messages"])];
                     }),
                     _: 1 /* STABLE */

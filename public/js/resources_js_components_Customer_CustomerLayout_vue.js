@@ -115,6 +115,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       if (state == "BILLING") {
         return "text-green";
       }
+    },
+    primaPayment: function primaPayment(subscriptionCode) {
+      axios__WEBPACK_IMPORTED_MODULE_2__["default"].post("customer/tivio/subscriptionCode", {
+        subscriptionCode: subscriptionCode
+      }).then(function (response) {
+        window.open(response.data, "_blank");
+      });
     }
   },
   computed: {},
@@ -151,7 +158,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {},
   data: function data() {
     return {
-      timeout: 3000,
+      timeout: 5000,
       currSnackBar: false,
       user: [],
       message: "",
@@ -206,11 +213,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, " Informace o službě ", -1 /* HOISTED */);
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, " Přihlášená zařízení ", -1 /* HOISTED */);
-var _hoisted_3 = {
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, " Zaplatit ", -1 /* HOISTED */);
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, " Přihlášená zařízení ", -1 /* HOISTED */);
+var _hoisted_4 = {
   key: 0
 };
-var _hoisted_4 = {
+var _hoisted_5 = {
   key: 1
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -446,6 +454,51 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                         "class": "font-weight-normal text-subtitle-2"
                                       }, {
                                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Zaplacení Prima bez reklam: ")];
+                                        }),
+                                        _: 1 /* STABLE */
+                                      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                                        cols: "12",
+                                        sm: "12",
+                                        md: "6",
+                                        lg: "6"
+                                      }, {
+                                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+                                            onClick: _cache[2] || (_cache[2] = function ($event) {
+                                              return $options.primaPayment($data.customerNanguDetail.subscriptionCode);
+                                            }),
+                                            color: "green",
+                                            size: "small"
+                                          }, {
+                                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                              return [_hoisted_2];
+                                            }),
+                                            _: 1 /* STABLE */
+                                          })];
+                                        }),
+
+                                        _: 1 /* STABLE */
+                                      })];
+                                    }),
+
+                                    _: 1 /* STABLE */
+                                  })];
+                                }),
+
+                                _: 1 /* STABLE */
+                              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list_item, null, {
+                                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, null, {
+                                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                                        cols: "12",
+                                        sm: "12",
+                                        md: "6",
+                                        lg: "6",
+                                        "class": "font-weight-normal text-subtitle-2"
+                                      }, {
+                                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                                           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Služba: ")];
                                         }),
                                         _: 1 /* STABLE */
@@ -546,7 +599,54 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list_subheader, null, {
                                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Maximální počty přihlášených zařízení dle typů")];
+                                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Maximální počet přihlášených zařízení ")];
+                                }),
+                                _: 1 /* STABLE */
+                              }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list_item, null, {
+                                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, null, {
+                                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                                        cols: "12",
+                                        sm: "12",
+                                        md: "6",
+                                        lg: "6",
+                                        "class": "font-weight-normal text-subtitle-2 text-capitalize"
+                                      }, {
+                                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Celkem ")];
+                                        }),
+                                        _: 1 /* STABLE */
+                                      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                                        cols: "12",
+                                        sm: "12",
+                                        md: "6",
+                                        lg: "6"
+                                      }, {
+                                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.customerNanguDetail.pairedDevicesLimit), 1 /* TEXT */)];
+                                        }),
+
+                                        _: 1 /* STABLE */
+                                      })];
+                                    }),
+
+                                    _: 1 /* STABLE */
+                                  })];
+                                }),
+
+                                _: 1 /* STABLE */
+                              })];
+                            }),
+
+                            _: 1 /* STABLE */
+                          })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.customerNanguDetail.pairedDeviceLimits != undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_list, {
+                            key: 1
+                          }, {
+                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list_subheader, null, {
+                                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("Nebo maximální počty přihlášených zařízení dle typů")];
                                 }),
                                 _: 1 /* STABLE */
                               }), ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.customerNanguDetail.pairedDeviceLimits.pairedDeviceLimit, function (deviceTypeInfoLimit) {
@@ -626,7 +726,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             "class": "d-flex justify-center"
                           }, {
                             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_spacer), _hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_spacer), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <v-btn\n                                        v-if=\"\n                                            customerNanguDetail.pairedDevices !=\n                                            undefined\n                                        \"\n                                        variant=\"outlined\"\n                                        color=\"red\"\n                                        prepend-icon=\"mdi-delete\"\n                                        >Odebrat vše</v-btn\n                                    > ")];
+                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_spacer), _hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_spacer), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <v-btn\n                                        v-if=\"\n                                            customerNanguDetail.pairedDevices !=\n                                            undefined\n                                        \"\n                                        variant=\"outlined\"\n                                        color=\"red\"\n                                        prepend-icon=\"mdi-delete\"\n                                        >Odebrat vše</v-btn\n                                    > ")];
                             }),
                             _: 1 /* STABLE */
                           })];
@@ -635,7 +735,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         _: 1 /* STABLE */
                       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_text, null, {
                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                          return [$data.customerNanguDetail.pairedDevices != undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list, null, {
+                          return [$data.customerNanguDetail.pairedDevices != undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list, null, {
                             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                               return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.customerNanguDetail.pairedDevices, function (device) {
                                 return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_list_item, {
@@ -717,7 +817,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             }),
 
                             _: 1 /* STABLE */
-                          })])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_alert, {
+                          })])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_alert, {
                             type: "info",
                             rounded: "lg",
                             title: "Nenalezeno žádné zařízení",

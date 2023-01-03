@@ -34,7 +34,7 @@
                 <v-card rounded="lg">
                     <v-card-text class="my-3">
                         <v-col cols="12" sm="12" md="12">
-                            <v-text-field
+                            <!-- <v-text-field
                                 autofocus
                                 density="compact"
                                 variant="outlined"
@@ -52,6 +52,29 @@
                                 required
                                 v-model="formInputData.identity"
                                 :error-messages="errors.identity"
+                            ></v-text-field>
+                        </v-col> -->
+                            <v-text-field
+                                prepend-inner-icon="mdi-account"
+                                autofocus
+                                density="compact"
+                                variant="outlined"
+                                label="Uživatelské jméno do aplikace GeniusTV"
+                                required
+                                v-model="formInputData.identity_username"
+                                :error-messages="errors.identity_username"
+                            ></v-text-field>
+                        </v-col>
+                        <v-col cols="12" sm="12" md="12">
+                            <v-text-field
+                                type="password"
+                                prepend-inner-icon="mdi-lock"
+                                density="compact"
+                                variant="outlined"
+                                label="Heslo do aplikace GeniusTV"
+                                required
+                                v-model="formInputData.identity_password"
+                                :error-messages="errors.identity_password"
                             ></v-text-field>
                         </v-col>
                     </v-card-text>
@@ -197,8 +220,10 @@ export default {
         LoginCustomer() {
             axios
                 .post("login", {
-                    mac: this.formInputData.mac,
-                    identity: this.formInputData.identity,
+                    // mac: this.formInputData.mac,
+                    // identity: this.formInputData.identity,
+                    identity_username: this.formInputData.identity_username,
+                    identity_password: this.formInputData.identity_password,
                 })
                 .then((response) => {
                     if (response.data.status == "error") {

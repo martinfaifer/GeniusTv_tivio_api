@@ -1,19 +1,20 @@
 <?php
 
-use App\Actions\Admin\AdminLoginAction;
-use App\Http\Controllers\Admin\AdminAuthController;
-use App\Http\Controllers\Admin\AdminUserController;
-use App\Http\Controllers\TivioController;
 use Illuminate\Support\Facades\Route;
+use App\Actions\Admin\AdminLoginAction;
 use App\Http\Controllers\AppController;
+use App\Http\Controllers\TivioController;
+use App\Http\Controllers\TopicController;
 use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\ShowUserController;
 use App\Http\Controllers\CustomerAuthController;
 use App\Http\Controllers\AppCategoriesController;
 use App\Http\Controllers\NanguCustomerController;
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\FindSubscriptionController;
-use App\Http\Controllers\ShowUserController;
 use App\Http\Controllers\SubscriptionDeviceController;
-use App\Http\Controllers\TopicController;
+use App\Actions\Nangu\GraphQL\oAuth\NanguOAuthGraphQlAction;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,6 +30,7 @@ Route::prefix('customer')->group(function () {
     });
     Route::prefix('tivio')->group(function () {
         Route::post('stb_mac', [TivioController::class, 'by_mac']);
+        Route::post('subscriptionCode', [TivioController::class, 'by_subscriptionCode']);
     });
 });
 Route::prefix('admin')->group(function () {
@@ -69,3 +71,10 @@ Route::get(
         return abort(404);
     }
 )->name('login');
+
+
+
+
+Route::get('test', function () {
+    return (new NanguOAuthGraphQlAction())->execute();
+});

@@ -459,7 +459,7 @@ __webpack_require__.r(__webpack_exports__);
   props: {},
   data: function data() {
     return {
-      timeout: 3000,
+      timeout: 5000,
       currSnackBar: false,
       user: [],
       message: "",
