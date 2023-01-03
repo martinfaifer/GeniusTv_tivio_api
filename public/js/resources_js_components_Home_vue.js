@@ -1206,7 +1206,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                               'on-hover': isHovering
                             }
                           }, props, {
-                            headText: "Standart",
+                            headText: "Standard",
                             numberOfChannels: 120
                           }), null, 16 /* FULL_PROPS */, ["elevation", "class"])];
                         }),

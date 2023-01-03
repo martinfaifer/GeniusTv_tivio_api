@@ -369,7 +369,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
                             flat: "",
-                            "class": "mx-6",
+                            "class": "mr-6",
                             link: "",
                             href: "https://apps.apple.com/cz/app/genius-mobiletv/id1565113308?l=cs",
                             target: "_blank"
@@ -384,12 +384,26 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
                             flat: "",
                             link: "",
+                            "class": "mr-6",
                             href: "https://play.google.com/store/apps/details?id=cz.geniustv.mobile&pli=1",
                             target: "_blank"
                           }, {
                             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_img, {
                                 src: "images/en-play-badge.png",
+                                width: "140"
+                              })];
+                            }),
+                            _: 1 /* STABLE */
+                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
+                            flat: "",
+                            link: "",
+                            href: "https://play.google.com/store/apps/details?id=cz.geniustv.tv",
+                            target: "_blank"
+                          }, {
+                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_img, {
+                                src: "images/Android-TV_2.jpeg",
                                 width: "140"
                               })];
                             }),

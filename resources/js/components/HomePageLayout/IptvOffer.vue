@@ -36,7 +36,7 @@
                                         :elevation="isHovering ? 23 : 6"
                                         :class="{ 'on-hover': isHovering }"
                                         v-bind="props"
-                                        headText="Standart"
+                                        headText="Standard"
                                         :numberOfChannels="120"
                                     ></ChannelPackagesCard>
                                 </v-col>
