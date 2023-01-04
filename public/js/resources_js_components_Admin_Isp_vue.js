@@ -635,6 +635,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                       }, null, 8 /* PROPS */, ["apps"])];
                     }),
                     _: 1 /* STABLE */
+                  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                    cols: "12",
+                    sm: "12",
+                    md: "6",
+                    lg: "6"
+                  }, {
+                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_IspAppCard, {
+                        apps: $data.apps,
+                        filterString: "LGTV",
+                        headText: "LG TV aplikace"
+                      }, null, 8 /* PROPS */, ["apps"])];
+                    }),
+                    _: 1 /* STABLE */
                   })];
                 }),
 

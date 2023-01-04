@@ -38,5 +38,11 @@ class AppCategorySeed extends Seeder
                 'category' => "androidMobile"
             ]);
         }
+
+        if (!AppCategory::where('category', 'LGTV')->first()) {
+            AppCategory::create([
+                'category' => "LGTV"
+            ]);
+        }
     }
 }

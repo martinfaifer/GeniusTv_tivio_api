@@ -56,6 +56,13 @@
                                 headText="Android mobile aplikace"
                             ></IspAppCard>
                         </v-col>
+                        <v-col cols="12" sm="12" md="6" lg="6">
+                            <IspAppCard
+                                :apps="apps"
+                                filterString="LGTV"
+                                headText="LG TV aplikace"
+                            ></IspAppCard>
+                        </v-col>
                     </v-row>
                 </v-col>
             </v-row>
