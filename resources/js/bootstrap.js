@@ -29,6 +29,6 @@ window.Echo = new Echo({
     wsHost: window.location.hostname,
     cluster: "eu",
     wsPort: 6001,
-    forceTLS: false,
+    wssPort: 6001,
     disableStats: true,
 });
