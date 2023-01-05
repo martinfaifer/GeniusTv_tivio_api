@@ -17,7 +17,7 @@
                                 <BasicChannelImagesCard headText="základ" :channels="channels" searcheableText="Základ" headColor="#dc0d15"></BasicChannelImagesCard>
                             </v-col>
                             <v-col cols="12">
-                                <BasicChannelImagesCard headText="standart" :channels="channels" searcheableText="Standard" headColor="#dc0d15"></BasicChannelImagesCard>
+                                <BasicChannelImagesCard headText="standard" :channels="channels" searcheableText="Standard" headColor="#dc0d15"></BasicChannelImagesCard>
                             </v-col>
                             <v-col cols="12">
                                 <BasicChannelImagesCard headText="komplet" :channels="channels" searcheableText="Komplet" headColor="#dc0d15"></BasicChannelImagesCard>
