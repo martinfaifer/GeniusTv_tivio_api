@@ -70,6 +70,7 @@
                             <v-container fluid class="d-flex justify-center">
                                 <v-card
                                     flat
+                                    color="transparent"
                                     class="mr-6"
                                     link
                                     href="https://apps.apple.com/cz/app/genius-mobiletv/id1565113308?l=cs"
@@ -84,6 +85,7 @@
                                 <v-card
                                     flat
                                     link
+                                    color="transparent"
                                     class="mr-6"
                                     href="https://play.google.com/store/apps/details?id=cz.geniustv.mobile&pli=1"
                                     target="_blank"
@@ -95,13 +97,29 @@
                                     </v-img>
                                 </v-card>
                                 <v-card
+                                    color="transparent"
                                     flat
                                     link
+                                    class="mr-6"
                                     href="https://play.google.com/store/apps/details?id=cz.geniustv.tv"
                                     target="_blank"
                                 >
                                     <v-img
                                         src="images/Android-TV_2.jpeg"
+                                        width="140"
+                                    >
+                                    </v-img>
+                                </v-card>
+                                <!-- src="images/logo_grape_genius_tv_300x300_px.png" -->
+                                <v-card
+                                    color="transparent"
+                                    flat
+                                    link
+                                    href="http://tv.geniustv.cz"
+                                    target="_blank"
+                                >
+                                    <v-img
+                                        src="images/genius.png"
                                         width="140"
                                     >
                                     </v-img>
