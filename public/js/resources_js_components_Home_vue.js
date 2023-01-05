@@ -737,7 +737,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BasicChannelImagesCard, {
-                        headText: "standart",
+                        headText: "standard",
                         channels: $data.channels,
                         searcheableText: "Standard",
                         headColor: "#dc0d15"

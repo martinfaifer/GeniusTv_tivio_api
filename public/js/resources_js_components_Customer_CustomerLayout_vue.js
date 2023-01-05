@@ -828,15 +828,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                       _: 2 /* DYNAMIC */
                                     }, 1024 /* DYNAMIC_SLOTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list_item_subtitle, null, {
                                       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                                        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(device.deviceName), 1 /* TEXT */)];
-                                      }),
-
-                                      _: 2 /* DYNAMIC */
-                                    }, 1024 /* DYNAMIC_SLOTS */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list_item_subtitle, {
-                                      "class": "d-flex justify-center mt-n4"
-                                    }, {
-                                      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                                        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" naposledy přihlášen " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(new Date(device.lastLoginDate).toLocaleDateString()), 1 /* TEXT */)];
+                                        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(device.deviceName) + " - naposledy přihlášen " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(new Date(device.lastLoginDate).toLocaleDateString()), 1 /* TEXT */)];
                                       }),
 
                                       _: 2 /* DYNAMIC */

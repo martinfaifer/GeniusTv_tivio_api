@@ -118,10 +118,7 @@
                                     href="http://tv.geniustv.cz"
                                     target="_blank"
                                 >
-                                    <v-img
-                                        src="images/genius.png"
-                                        width="140"
-                                    >
+                                    <v-img src="images/genius.png" width="140">
                                     </v-img>
                                 </v-card>
                             </v-container>
@@ -385,11 +382,20 @@
                                                 {{ device.deviceType }}
                                             </v-list-item-title>
                                             <v-list-item-subtitle>
-                                                {{ device.deviceName }}
+                                                {{
+                                                    device.deviceName
+                                                }}
+                                                - naposledy přihlášen
+                                                {{
+                                                    new Date(
+                                                        device.lastLoginDate
+                                                    ).toLocaleDateString()
+                                                }}
                                             </v-list-item-subtitle>
 
-                                            <v-list-item-subtitle
-                                                class="d-flex justify-center mt-n4"
+                                            <!-- <v-list-item-subtitle
+                                                color="hidden-sm-and-down"
+                                                class="d-flex justify-center mt-n4 hidden-sm-and-down"
                                             >
                                                 naposledy přihlášen
                                                 {{
@@ -397,7 +403,7 @@
                                                         device.lastLoginDate
                                                     ).toLocaleDateString()
                                                 }}
-                                            </v-list-item-subtitle>
+                                            </v-list-item-subtitle> -->
 
                                             <template v-slot:prepend>
                                                 <v-avatar
