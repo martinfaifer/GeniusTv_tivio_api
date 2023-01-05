@@ -103,6 +103,10 @@ return [
 
     'iptv_doku_api' => env('IPTV_DOKU_API', null),
 
+    'iptv_doku_username' => env('IPTV_DOKU_USERNAME', null),
+
+    'iptv_doku_password' => env('IPTV_DOKU_PASSWORD', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

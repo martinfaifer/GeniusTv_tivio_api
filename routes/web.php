@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\FindSubscriptionController;
 use App\Http\Controllers\SubscriptionDeviceController;
 use App\Actions\Nangu\GraphQL\oAuth\NanguOAuthGraphQlAction;
+use App\Http\Controllers\API\ApiIptvDokuNanguIspsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -58,6 +59,7 @@ Route::prefix('admin')->group(function () {
                 Route::get('', [AdminUserController::class, 'index'])->middleware('isAdmin');
                 Route::post('', [AdminUserController::class, 'store'])->middleware('isAdmin');
                 Route::delete('{user}', [AdminUserController::class, 'destroy'])->middleware('isAdmin');
+                Route::get('nangu/isps', ApiIptvDokuNanguIspsController::class)->middleware('isAdmin');
             });
         });
     });

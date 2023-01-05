@@ -8,14 +8,15 @@ use Illuminate\Support\Facades\Mail;
 
 class StoreUserAction
 {
-    public function execute(string $name, string $email, string $password, string|null $isAdmin = null): bool
+    public function execute(string $name, string $email, string $password, string|null $isAdmin = null, string|null $nanguIsp): bool
     {
         try {
             User::create([
                 'name' => $name,
                 'email' => $email,
                 'password' => $password,
-                'isAdmin' => is_null($isAdmin) ? false : true
+                'isAdmin' => is_null($isAdmin) ? false : true,
+                'nangu_isp' => is_null($nanguIsp) ? null : $nanguIsp
             ]);
 
             // send welcome email

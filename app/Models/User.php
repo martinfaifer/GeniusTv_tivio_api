@@ -24,7 +24,8 @@ class User extends Authenticatable
         'password',
         'identity',
         'mac',
-        'isAdmin'
+        'isAdmin',
+        'nangu_isp'
     ];
 
     /**

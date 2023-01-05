@@ -24,7 +24,8 @@ class AdminUserController extends Controller
             name: $request->name,
             email: $request->email,
             password: $request->password,
-            isAdmin: $request->isAdmin
+            isAdmin: $request->isAdmin,
+            nanguIsp: $request->nanguIsp
         ) == true
             ? $this->success_message("Uživatel vytvořen")
             : $this->error_message("Nepodařilo se vytvořit uživatele");

@@ -36,6 +36,7 @@
                                         <th class="text-left">email</th>
                                         <th class="text-left">jméno</th>
                                         <th class="text-left">admin</th>
+                                        <th class="text-left">nangu isp id</th>
                                         <th class="text-right"></th>
                                     </tr>
                                 </thead>
@@ -56,6 +57,9 @@
                                             <v-icon v-else color="red">
                                                 mdi-close
                                             </v-icon>
+                                        </td>
+                                        <td>
+                                            {{ user.nangu_isp }}
                                         </td>
                                         <td>
                                             <v-icon
@@ -112,6 +116,18 @@
                                     v-model="formData.password"
                                     :error-messages="errors.password"
                                 ></v-text-field>
+                            </v-col>
+                            <v-col cols="12" sm="12" md="12">
+                                <v-autocomplete
+                                    :items="nanguIsps"
+                                    item-title="nangu_isp"
+                                    item-value="id"
+                                    density="compact"
+                                    variant="outlined"
+                                    label="Vyberte ISP"
+                                    v-model="formData.nanguIsp"
+                                    :error-messages="errors.nanguIsp"
+                                ></v-autocomplete>
                             </v-col>
                             <v-col cols="12" sm="12" md="12" lg="12">
                                 <v-checkbox
@@ -217,6 +233,7 @@ export default {
             errors: [],
             formData: [],
             users: [],
+            nanguIsps: [],
             createUserDialog: false,
             warningDialog: false,
         };
@@ -246,6 +263,7 @@ export default {
                     email: this.formData.email,
                     password: this.formData.password,
                     isAdmin: this.formData.isAdmin,
+                    nanguIsp: this.formData.nanguIsp,
                 })
                 .then((response) => {
                     if (response.data.status == "success") {
@@ -260,12 +278,18 @@ export default {
         closeDialog() {
             this.index();
             this.formData = [];
+            this.nanguIsps = [];
             this.createUserDialog = false;
             this.warningDialog = false;
         },
 
         openCreateUserDialog() {
-            this.createUserDialog = true;
+            axios.get("admin/genius/users/nangu/isps").then((response) => {
+                if (response.data.status == "success") {
+                    this.nanguIsps = response.data.data;
+                }
+                this.createUserDialog = true;
+            });
         },
 
         openWarningDialog(userId) {

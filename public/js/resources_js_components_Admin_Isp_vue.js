@@ -347,6 +347,7 @@ __webpack_require__.r(__webpack_exports__);
       errors: [],
       formData: [],
       users: [],
+      nanguIsps: [],
       createUserDialog: false,
       warningDialog: false
     };
@@ -372,7 +373,8 @@ __webpack_require__.r(__webpack_exports__);
         name: this.formData.name,
         email: this.formData.email,
         password: this.formData.password,
-        isAdmin: this.formData.isAdmin
+        isAdmin: this.formData.isAdmin,
+        nanguIsp: this.formData.nanguIsp
       }).then(function (response) {
         if (response.data.status == "success") {
           _this2.index();
@@ -385,21 +387,28 @@ __webpack_require__.r(__webpack_exports__);
     closeDialog: function closeDialog() {
       this.index();
       this.formData = [];
+      this.nanguIsps = [];
       this.createUserDialog = false;
       this.warningDialog = false;
     },
     openCreateUserDialog: function openCreateUserDialog() {
-      this.createUserDialog = true;
+      var _this3 = this;
+      axios__WEBPACK_IMPORTED_MODULE_1__["default"].get("admin/genius/users/nangu/isps").then(function (response) {
+        if (response.data.status == "success") {
+          _this3.nanguIsps = response.data.data;
+        }
+        _this3.createUserDialog = true;
+      });
     },
     openWarningDialog: function openWarningDialog(userId) {
       this.formData.userId = userId;
       this.warningDialog = true;
     },
     deleteUser: function deleteUser() {
-      var _this3 = this;
+      var _this4 = this;
       axios__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"]("admin/genius/users/" + this.formData.userId).then(function (response) {
-        _this3.closeDialog();
-        _this3.index();
+        _this4.closeDialog();
+        _this4.index();
       });
     }
   },
@@ -1421,6 +1430,8 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, "jméno"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "text-left"
 }, "admin"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  "class": "text-left"
+}, "nangu isp id"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "text-right"
 })])], -1 /* HOISTED */);
 var _hoisted_2 = {
@@ -1436,6 +1447,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-col");
   var _component_v_row = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-row");
   var _component_v_text_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-text-field");
+  var _component_v_autocomplete = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-autocomplete");
   var _component_v_checkbox = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-checkbox");
   var _component_v_container = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-container");
   var _component_v_spacer = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-spacer");
@@ -1509,7 +1521,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                                 return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" mdi-close ")];
                               }),
                               _: 1 /* STABLE */
-                            }))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_icon, {
+                            }))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.nangu_isp), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_icon, {
                               color: "red",
                               onClick: function onClick($event) {
                                 return $options.openWarningDialog(user.id);
@@ -1546,7 +1558,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_dialog, {
             modelValue: $data.createUserDialog,
-            "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
+            "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
               return $data.createUserDialog = $event;
             }),
             persistent: "",
@@ -1625,6 +1637,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
                         cols: "12",
                         sm: "12",
+                        md: "12"
+                      }, {
+                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_autocomplete, {
+                            items: $data.nanguIsps,
+                            "item-title": "nangu_isp",
+                            "item-value": "id",
+                            density: "compact",
+                            variant: "outlined",
+                            label: "Vyberte ISP",
+                            modelValue: $data.formData.nanguIsp,
+                            "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+                              return $data.formData.nanguIsp = $event;
+                            }),
+                            "error-messages": $data.errors.nanguIsp
+                          }, null, 8 /* PROPS */, ["items", "modelValue", "error-messages"])];
+                        }),
+                        _: 1 /* STABLE */
+                      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                        cols: "12",
+                        sm: "12",
                         md: "12",
                         lg: "12"
                       }, {
@@ -1635,7 +1668,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             label: "Je admin?",
                             required: "",
                             modelValue: $data.formData.isAdmin,
-                            "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+                            "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
                               return $data.formData.isAdmin = $event;
                             }),
                             "error-messages": $data.errors.isAdmim
@@ -1658,7 +1691,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             "class": "mx-7 mb-3",
                             rounded: "lg",
                             color: "red-darken-1",
-                            onClick: _cache[5] || (_cache[5] = function ($event) {
+                            onClick: _cache[6] || (_cache[6] = function ($event) {
                               return $options.closeDialog();
                             })
                           }, {
@@ -1671,7 +1704,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             "class": "mx-7 mb-3",
                             rounded: "lg",
                             color: "green-darken-1",
-                            onClick: _cache[6] || (_cache[6] = function ($event) {
+                            onClick: _cache[7] || (_cache[7] = function ($event) {
                               return $options.createUser();
                             })
                           }, {
@@ -1697,7 +1730,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             _: 1 /* STABLE */
           }, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_dialog, {
             modelValue: $data.warningDialog,
-            "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+            "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
               return $data.warningDialog = $event;
             }),
             persistent: "",
@@ -1748,7 +1781,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             "class": "mx-7 mb-3",
                             rounded: "lg",
                             color: "red-darken-1",
-                            onClick: _cache[8] || (_cache[8] = function ($event) {
+                            onClick: _cache[9] || (_cache[9] = function ($event) {
                               return $options.closeDialog();
                             })
                           }, {
@@ -1768,7 +1801,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             "class": "mx-7 mb-3",
                             rounded: "lg",
                             color: "green-darken-1",
-                            onClick: _cache[9] || (_cache[9] = function ($event) {
+                            onClick: _cache[10] || (_cache[10] = function ($event) {
                               return $options.deleteUser();
                             })
                           }, {
