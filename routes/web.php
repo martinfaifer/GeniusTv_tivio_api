@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\FindSubscriptionController;
 use App\Http\Controllers\SubscriptionDeviceController;
 use App\Actions\Nangu\GraphQL\oAuth\NanguOAuthGraphQlAction;
+use App\Http\Controllers\API\ApiIptvDokuInvoiceController;
 use App\Http\Controllers\API\ApiIptvDokuNanguIspsController;
 
 Route::get('/', function () {
@@ -46,6 +47,11 @@ Route::prefix('admin')->group(function () {
             Route::post('', [AppController::class, 'store'])->middleware('isAdmin');
             Route::get('categories', AppCategoriesController::class);
             Route::delete('{app}', [AppController::class, 'destroy'])->middleware('isAdmin');
+        });
+
+        Route::prefix('invoice')->group(function () {
+            Route::get('{user}', [ApiIptvDokuInvoiceController::class, 'show']);
+            Route::post("", [ApiIptvDokuInvoiceController::class, 'invoice']);
         });
         Route::prefix('topics')->group(function () {
             Route::get('', [TopicController::class, 'index']);

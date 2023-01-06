@@ -50,7 +50,7 @@
                                 @click="goToApps()"
                                 style="cursor: pointer"
                             >
-                                Správa aplikací
+                                Přehled
                             </v-list-item-title>
                         </v-list-item>
 

@@ -1,9 +1,28 @@
 <template>
     <div>
         <v-container fluid>
-            <v-app-bar v-if="user.isAdmin == true" color="transparent" flat>
+            <v-app-bar color="transparent" flat>
+                <!-- <v-btn
+                    :loading="invoiceButtonLoading"
+                    v-if="user.nangu_isp != null"
+                    style="
+                        background: rgb(0, 121, 255);
+                        background: linear-gradient(
+                            188deg,
+                            rgba(0, 121, 255, 1) 0%,
+                            rgba(15, 0, 149, 1) 100%
+                        );
+                    "
+                    rounded="md"
+                    class="info-button-shadow-blur gradient-info-button text-white mx-4"
+                    @click="openInvoiceDialog()"
+                >
+                    Zobrazit vyúčtování
+                </v-btn> -->
+
                 <template v-slot:append>
                     <v-btn
+                        v-if="user.isAdmin == true"
                         style="
                             background: rgb(93, 214, 28);
                             background: linear-gradient(
@@ -140,6 +159,65 @@
                         </v-container>
                     </v-card>
                 </v-dialog>
+
+                <v-dialog v-model="invoiceDialog" persistent max-width="600px">
+                    <v-card rounded="lg">
+                        <v-container fluid>
+                            <v-col cols="12" sm="12" md="12">
+                                <v-table fixed-header height="400">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-left">Období</th>
+                                            <th class="text-right"></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr
+                                            v-for="invoice in formDatas"
+                                            :key="invoice.id"
+                                        >
+                                            <td>
+                                                {{
+                                                    showCreated(
+                                                        invoice.created_at
+                                                    )
+                                                }}
+                                            </td>
+                                            <td>
+                                                <v-icon
+                                                    color="green"
+                                                    @click="
+                                                        downloadInvoice(
+                                                            invoice.path,
+                                                            invoice.name
+                                                        )
+                                                    "
+                                                    style="cursor: pointer"
+                                                    >mdi-download</v-icon
+                                                >
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </v-table>
+                            </v-col>
+                        </v-container>
+
+                        <v-container fluid class="mt-n2">
+                            <v-row>
+                                <v-spacer></v-spacer>
+                                <v-btn
+                                    prepend-icon="mdi-close"
+                                    class="mx-7 mb-3"
+                                    rounded="lg"
+                                    color="red-darken-1"
+                                    @click="closeDialog()"
+                                >
+                                    Zavřít
+                                </v-btn>
+                            </v-row>
+                        </v-container>
+                    </v-card>
+                </v-dialog>
             </v-row>
             <SnackBar
                 :message="message"
@@ -162,12 +240,14 @@ export default {
     },
     data() {
         return {
+            invoiceButtonLoading: false,
             showSnackBar: false,
             notificationData: [],
             message: "",
             snackColor: "",
             file: [],
             fileUploadDialog: false,
+            invoiceDialog: false,
             errors: [],
             categories: [],
             formDatas: [],
@@ -234,11 +314,59 @@ export default {
             });
         },
 
+        openInvoiceDialog() {
+            this.invoiceButtonLoading = true;
+            axios.get("admin/invoice/" + this.user.id).then((response) => {
+                this.invoiceButtonLoading = false;
+                this.formDatas = response.data;
+                this.invoiceDialog = true;
+            });
+        },
+
         closeDialog() {
+            this.invoiceButtonLoading = false;
             this.index();
             this.fileUploadDialog = false;
+            this.invoiceDialog = false;
             this.formDatas = [];
             this.file = "";
+        },
+
+        showCreated(created_at) {
+            let dt = new Date(created_at);
+            let month = dt.getMonth() + 1;
+            let year = dt.getFullYear();
+
+            return month + ". " + year;
+        },
+
+        downloadInvoice(path, name) {
+            axios
+                .post("admin/invoice/", {
+                    path: path,
+                })
+                .then((response) => {
+                    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+                        // IE variant
+                        window.navigator.msSaveOrOpenBlob(
+                            new Blob([response.data], {
+                                type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                            }),
+                            mame
+                        );
+                    } else {
+                        const url = window.URL.createObjectURL(
+                            new Blob([response.data], {
+                                type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+                            })
+                        );
+                        const link = document.createElement("a");
+                        link.href = url;
+                        link.setAttribute("download", name);
+                        document.body.appendChild(link);
+                        link.click();
+                    }
+                });
         },
     },
     mounted() {

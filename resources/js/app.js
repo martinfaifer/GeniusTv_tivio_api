@@ -6,6 +6,8 @@ import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
+import moment from 'moment'
+
 import eventBus from "./event-bus";
 
 const vuetify = createVuetify({
@@ -62,7 +64,7 @@ const router = createRouter({
 
 const app = createApp(App);
 
-app.use(eventBus).use(vuetify).use(router);
+app.use(moment).use(eventBus).use(vuetify).use(router);
 
 router.isReady().then(() => {
     app.mount("#app");
