@@ -41,34 +41,34 @@ Route::prefix('admin')->group(function () {
         Route::get('logged', [AdminAuthController::class, 'logged'])->middleware('isIsp');
         Route::post('logout', [AdminAuthController::class, 'logout'])->middleware('isIsp');
     });
-    Route::middleware('isIsp')->group(function () {
-        Route::prefix('apps')->group(function () {
-            Route::get('', [AppController::class, 'index']);
-            Route::post('', [AppController::class, 'store'])->middleware('isAdmin');
-            Route::get('categories', AppCategoriesController::class);
-            Route::delete('{app}', [AppController::class, 'destroy'])->middleware('isAdmin');
-        });
+    // Route::middleware('isIsp')->group(function () {
+    Route::prefix('apps')->group(function () {
+        Route::get('', [AppController::class, 'index']);
+        Route::post('', [AppController::class, 'store'])->middleware('isAdmin');
+        Route::get('categories', AppCategoriesController::class);
+        Route::delete('{app}', [AppController::class, 'destroy'])->middleware('isAdmin');
+    });
 
-        Route::prefix('invoice')->group(function () {
-            Route::get('{user}', [ApiIptvDokuInvoiceController::class, 'show']);
-            Route::post("", [ApiIptvDokuInvoiceController::class, 'invoice']);
-        });
-        Route::prefix('topics')->group(function () {
-            Route::get('', [TopicController::class, 'index']);
-            Route::get('{topic}', [TopicController::class, 'show']);
-            Route::post('', [TopicController::class, 'store'])->middleware('isAdmin');
-            Route::patch('{topic}', [TopicController::class, 'update'])->middleware('isAdmin');
-            Route::delete('{topic}', [TopicController::class, 'destroy'])->middleware('isAdmin');
-        });
-        Route::prefix('genius')->group(function () {
-            Route::prefix('users')->group(function () {
-                Route::get('', [AdminUserController::class, 'index'])->middleware('isAdmin');
-                Route::post('', [AdminUserController::class, 'store'])->middleware('isAdmin');
-                Route::delete('{user}', [AdminUserController::class, 'destroy'])->middleware('isAdmin');
-                Route::get('nangu/isps', ApiIptvDokuNanguIspsController::class)->middleware('isAdmin');
-            });
+    Route::prefix('invoice')->group(function () {
+        Route::get('{user}', [ApiIptvDokuInvoiceController::class, 'show']);
+        Route::post("", [ApiIptvDokuInvoiceController::class, 'invoice']);
+    });
+    Route::prefix('topics')->group(function () {
+        Route::get('', [TopicController::class, 'index']);
+        Route::get('{topic}', [TopicController::class, 'show']);
+        Route::post('', [TopicController::class, 'store'])->middleware('isAdmin');
+        Route::patch('{topic}', [TopicController::class, 'update'])->middleware('isAdmin');
+        Route::delete('{topic}', [TopicController::class, 'destroy'])->middleware('isAdmin');
+    });
+    Route::prefix('genius')->group(function () {
+        Route::prefix('users')->group(function () {
+            Route::get('', [AdminUserController::class, 'index'])->middleware('isAdmin');
+            Route::post('', [AdminUserController::class, 'store'])->middleware('isAdmin');
+            Route::delete('{user}', [AdminUserController::class, 'destroy'])->middleware('isAdmin');
+            Route::get('nangu/isps', ApiIptvDokuNanguIspsController::class)->middleware('isAdmin');
         });
     });
+    // });
 });
 
 Route::get('channels', ChannelController::class);

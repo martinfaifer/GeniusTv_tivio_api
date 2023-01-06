@@ -124,22 +124,10 @@ __webpack_require__.r(__webpack_exports__);
     downloadInvoice: function downloadInvoice(path, name) {
       axios__WEBPACK_IMPORTED_MODULE_4__["default"].post("admin/invoice/", {
         path: path
+      }, {
+        responseType: "blob"
       }).then(function (response) {
-        if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-          // IE variant
-          window.navigator.msSaveOrOpenBlob(new Blob([response.data], {
-            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          }), mame);
-        } else {
-          var url = window.URL.createObjectURL(new Blob([response.data], {
-            type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
-          }));
-          var link = document.createElement("a");
-          link.href = url;
-          link.setAttribute("download", name);
-          document.body.appendChild(link);
-          link.click();
-        }
+        window.open(URL.createObjectURL(response.data));
       });
     }
   },

@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use App\Actions\Api\IptvDoku\GetInvoiceAction;
 use App\Actions\Api\IptvDoku\GetInvoicesByIpsIdAction;
+use GuzzleHttp\Client;
 
 class ApiIptvDokuInvoiceController extends Controller
 {
@@ -18,17 +19,36 @@ class ApiIptvDokuInvoiceController extends Controller
 
     public function invoice(Request $request, GetInvoiceAction $getInvoiceAction)
     {
-        // header('Content-Type: application/pdf');
-        $file = Http
-            ::withBasicAuth(config('app.iptv_doku_username'), config('app.iptv_doku_password'))
-            ->post(config('app.iptv_doku_api') . "v1/nangu/isps/report", [
+
+        $auth = base64_encode(config('app.iptv_doku_username') . ":" . config('app.iptv_doku_password'));
+        $context = stream_context_create([
+            "http" => [
+                "header" => "Authorization: Basic $auth"
+            ]
+        ]);
+
+        $postdata = http_build_query(
+            array(
                 'endpoint' => $request->path
-            ])->body();
+            )
+        );
+
+        $opts = array(
+            'http' => [
+                'method'  => 'POST',
+                'header'  => [
+                    'Content-Type: application/x-www-form-urlencoded',
+                    "Authorization: Basic $auth",
+                ],
+                'content' => $postdata
+            ]
+        );
+
+        $context  = stream_context_create($opts);
+
+        $result = file_get_contents(config('app.iptv_doku_api') . "v1/nangu/isps/report", false, $context);
 
         header('Content-Type: application/pdf');
-
-        response($file);
-        // readfile($file);
-        // return $getInvoiceAction->execute($request->path);
+        echo $result;
     }
 }

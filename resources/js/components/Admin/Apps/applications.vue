@@ -2,7 +2,7 @@
     <div>
         <v-container fluid>
             <v-app-bar color="transparent" flat>
-                <!-- <v-btn
+                <v-btn
                     :loading="invoiceButtonLoading"
                     v-if="user.nangu_isp != null"
                     style="
@@ -18,7 +18,7 @@
                     @click="openInvoiceDialog()"
                 >
                     Zobrazit vyúčtování
-                </v-btn> -->
+                </v-btn>
 
                 <template v-slot:append>
                     <v-btn
@@ -342,30 +342,15 @@ export default {
 
         downloadInvoice(path, name) {
             axios
-                .post("admin/invoice/", {
-                    path: path,
-                })
+                .post(
+                    "admin/invoice/",
+                    {
+                        path: path,
+                    },
+                    { responseType: "blob" }
+                )
                 .then((response) => {
-                    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
-                        // IE variant
-                        window.navigator.msSaveOrOpenBlob(
-                            new Blob([response.data], {
-                                type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                            }),
-                            mame
-                        );
-                    } else {
-                        const url = window.URL.createObjectURL(
-                            new Blob([response.data], {
-                                type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                            })
-                        );
-                        const link = document.createElement("a");
-                        link.href = url;
-                        link.setAttribute("download", name);
-                        document.body.appendChild(link);
-                        link.click();
-                    }
+                    window.open(URL.createObjectURL(response.data));
                 });
         },
     },
