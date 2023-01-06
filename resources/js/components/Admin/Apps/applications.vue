@@ -342,13 +342,7 @@ export default {
 
         downloadInvoice(path, name) {
             axios
-                .post(
-                    "admin/invoice/",
-                    {
-                        path: path,
-                    },
-                    { responseType: "blob" }
-                )
+                .get("admin/invoice?path=" + path, { responseType: "blob" })
                 .then((response) => {
                     window.open(URL.createObjectURL(response.data));
                 });

@@ -122,9 +122,7 @@ __webpack_require__.r(__webpack_exports__);
       return month + ". " + year;
     },
     downloadInvoice: function downloadInvoice(path, name) {
-      axios__WEBPACK_IMPORTED_MODULE_4__["default"].post("admin/invoice/", {
-        path: path
-      }, {
+      axios__WEBPACK_IMPORTED_MODULE_4__["default"].get("admin/invoice?path=" + path, {
         responseType: "blob"
       }).then(function (response) {
         window.open(URL.createObjectURL(response.data));

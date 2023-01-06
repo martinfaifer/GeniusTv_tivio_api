@@ -51,7 +51,7 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('invoice')->group(function () {
         Route::get('{user}', [ApiIptvDokuInvoiceController::class, 'show']);
-        Route::post("", [ApiIptvDokuInvoiceController::class, 'invoice']);
+        Route::get("", [ApiIptvDokuInvoiceController::class, 'invoice']);
     });
     Route::prefix('topics')->group(function () {
         Route::get('', [TopicController::class, 'index']);
