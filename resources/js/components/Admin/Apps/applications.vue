@@ -6,11 +6,11 @@
                     :loading="invoiceButtonLoading"
                     v-if="user.nangu_isp != null"
                     style="
-                        background: rgb(0, 121, 255);
+                        background: rgb(33, 150, 243);
                         background: linear-gradient(
                             188deg,
-                            rgba(0, 121, 255, 1) 0%,
-                            rgba(15, 0, 149, 1) 100%
+                            rgba(33, 150, 243, 1) 0%,
+                            rgba(33, 150, 200, 1) 100%
                         );
                     "
                     rounded="md"

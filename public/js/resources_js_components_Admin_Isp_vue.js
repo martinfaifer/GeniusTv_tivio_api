@@ -604,7 +604,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
             key: 0,
             loading: $data.invoiceButtonLoading,
             style: {
-              "background": "linear-gradient(\n                            188deg,\n                            rgba(0, 121, 255, 1) 0%,\n                            rgba(15, 0, 149, 1) 100%\n                        )"
+              "background": "linear-gradient(\n                            188deg,\n                            rgba(33, 150, 243, 1) 0%,\n                            rgba(33, 150, 200, 1) 100%\n                        )"
             },
             rounded: "md",
             "class": "info-button-shadow-blur gradient-info-button text-white mx-4",
