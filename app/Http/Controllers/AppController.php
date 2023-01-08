@@ -46,7 +46,11 @@ class AppController extends Controller
         // remove item
         Storage::delete($app->path);
         $app->delete();
-        event(new BroadcastReloadApplicationsContentEvent());
-        return $this->success_message("Odebráno");
+        try {
+            event(new BroadcastReloadApplicationsContentEvent());
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+        return $this->success_message("Odebráno, obnovte si stranku pro nové načtení");
     }
 }
