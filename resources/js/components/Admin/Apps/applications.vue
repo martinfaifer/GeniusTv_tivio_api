@@ -102,6 +102,7 @@
                                     label="Nahrajte soubor"
                                     @change="selectFile"
                                     :error-messages="errors.file"
+                                    show-size
                                 ></v-file-input>
                             </v-col>
 
@@ -144,6 +145,7 @@
                                 </v-btn>
                                 <v-spacer></v-spacer>
                                 <v-btn
+                                    :loading="fileUpload"
                                     prepend-icon="mdi-plus"
                                     class="mx-7 mb-3"
                                     rounded="lg"
@@ -240,6 +242,7 @@ export default {
     },
     data() {
         return {
+            fileUpload: false,
             invoiceButtonLoading: false,
             showSnackBar: false,
             notificationData: [],
@@ -288,6 +291,7 @@ export default {
         },
 
         UploadFile() {
+            this.fileUpload = true;
             const formData = new FormData();
             formData.append("file", this.file, this.file.name);
             formData.append("category", this.formDatas.category.id);
@@ -330,6 +334,7 @@ export default {
             this.invoiceDialog = false;
             this.formDatas = [];
             this.file = "";
+            this.fileUpload = false;
         },
 
         showCreated(created_at) {

@@ -28,6 +28,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
+      fileUpload: false,
       invoiceButtonLoading: false,
       showSnackBar: false,
       notificationData: [],
@@ -73,6 +74,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     UploadFile: function UploadFile() {
       var _this3 = this;
+      this.fileUpload = true;
       var formData = new FormData();
       formData.append("file", this.file, this.file.name);
       formData.append("category", this.formDatas.category.id);
@@ -114,6 +116,7 @@ __webpack_require__.r(__webpack_exports__);
       this.invoiceDialog = false;
       this.formDatas = [];
       this.file = "";
+      this.fileUpload = false;
     },
     showCreated: function showCreated(created_at) {
       var dt = new Date(created_at);
@@ -755,7 +758,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             variant: "outlined",
                             label: "Nahrajte soubor",
                             onChange: $options.selectFile,
-                            "error-messages": $data.errors.file
+                            "error-messages": $data.errors.file,
+                            "show-size": ""
                           }, null, 8 /* PROPS */, ["onChange", "error-messages"])];
                         }),
                         _: 1 /* STABLE */
@@ -822,6 +826,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             }),
                             _: 1 /* STABLE */
                           }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_spacer), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+                            loading: $data.fileUpload,
                             "prepend-icon": "mdi-plus",
                             "class": "mx-7 mb-3",
                             rounded: "lg",
@@ -835,7 +840,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nahrát ")];
                             }),
                             _: 1 /* STABLE */
-                          }, 8 /* PROPS */, ["disabled"])];
+                          }, 8 /* PROPS */, ["loading", "disabled"])];
                         }),
                         _: 1 /* STABLE */
                       })];
@@ -1788,7 +1793,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_autocomplete, {
                             items: $data.nanguIsps,
                             "item-title": "nangu_isp",
-                            "item-value": "id",
+                            "item-value": "nangu_isp_id",
                             density: "compact",
                             variant: "outlined",
                             label: "Vyberte ISP",

@@ -84,18 +84,21 @@
                                     >
                                         <v-row>
                                             <a
+                                                @click="scroll('plus')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
                                                 PLUS
                                             </a>
                                             <a
+                                                @click="scroll('filmbox')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
                                                 Filmbox
                                             </a>
                                             <a
+                                                @click="scroll('hbo')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
@@ -103,6 +106,7 @@
                                             </a>
 
                                             <a
+                                                @click="scroll('cinemax')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
@@ -110,6 +114,7 @@
                                             </a>
 
                                             <a
+                                                @click="scroll('hbomax')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
@@ -117,12 +122,14 @@
                                             </a>
 
                                             <a
+                                                @click="scroll('sport')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
                                                 sport
                                             </a>
                                             <a
+                                                @click="scroll('4k')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
@@ -144,6 +151,14 @@ import ChannelPackagesCard from "../Share/ChannelPackagesCard.vue";
 export default {
     components: {
         ChannelPackagesCard,
+    },
+
+    methods: {
+        scroll(id) {
+            console.log("you shall not pass !!!");
+            // let item = id;
+            // this.$refs.item.scrollIntoView();
+        },
     },
 };
 </script>

@@ -14,7 +14,7 @@
                     <v-container class="d-flex justify-center mt-12">
                         <v-row>
                             <v-col cols="12">
-                                <BasicChannelImagesCard headText="Balíček Plus" :channels="channels" searcheableText="Plus" headColor="#149FE3"></BasicChannelImagesCard>
+                                <BasicChannelImagesCard id="PLUS" headText="Balíček Plus" :channels="channels" searcheableText="Plus" headColor="#149FE3"></BasicChannelImagesCard>
                             </v-col>
                             <v-col cols="12">
                                 <BasicChannelImagesCard headText="balíček filmbox" :channels="channels" searcheableText="Filmbox" headColor="#149FE3"></BasicChannelImagesCard>

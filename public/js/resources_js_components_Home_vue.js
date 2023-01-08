@@ -219,6 +219,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
     ChannelPackagesCard: _Share_ChannelPackagesCard_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    scroll: function scroll(id) {
+      console.log("you shall not pass !!!");
+      // let item = id;
+      // this.$refs.item.scrollIntoView();
+    }
   }
 });
 
@@ -1087,55 +1094,6 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
     "padding": "10px 10px 13px"
   }
 }, " přídavné balíčky ", -1 /* HOISTED */);
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#plus",
-  "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
-  style: {
-    "color": "#283583"
-  }
-}, " PLUS ", -1 /* HOISTED */);
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#filmbox",
-  "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
-  style: {
-    "color": "#283583"
-  }
-}, " Filmbox ", -1 /* HOISTED */);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#hbo",
-  "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
-  style: {
-    "color": "#283583"
-  }
-}, " HBO ", -1 /* HOISTED */);
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#cinemax",
-  "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
-  style: {
-    "color": "#283583"
-  }
-}, " cinemax ", -1 /* HOISTED */);
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#hbo-max",
-  "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
-  style: {
-    "color": "#283583"
-  }
-}, " hbo max ", -1 /* HOISTED */);
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#sport",
-  "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
-  style: {
-    "color": "#283583"
-  }
-}, " sport ", -1 /* HOISTED */);
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "#4k",
-  "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
-  style: {
-    "color": "#283583"
-  }
-}, " 4k-uhd ", -1 /* HOISTED */);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_ChannelPackagesCard = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("ChannelPackagesCard");
@@ -1275,7 +1233,63 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                               return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, null, {
                                 "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                                  return [_hoisted_4, _hoisted_5, _hoisted_6, _hoisted_7, _hoisted_8, _hoisted_9, _hoisted_10];
+                                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                                    onClick: _cache[0] || (_cache[0] = function ($event) {
+                                      return $options.scroll('plus');
+                                    }),
+                                    "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
+                                    style: {
+                                      "color": "#283583"
+                                    }
+                                  }, " PLUS "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                                    onClick: _cache[1] || (_cache[1] = function ($event) {
+                                      return $options.scroll('filmbox');
+                                    }),
+                                    "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
+                                    style: {
+                                      "color": "#283583"
+                                    }
+                                  }, " Filmbox "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                                    onClick: _cache[2] || (_cache[2] = function ($event) {
+                                      return $options.scroll('hbo');
+                                    }),
+                                    "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
+                                    style: {
+                                      "color": "#283583"
+                                    }
+                                  }, " HBO "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                                    onClick: _cache[3] || (_cache[3] = function ($event) {
+                                      return $options.scroll('cinemax');
+                                    }),
+                                    "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
+                                    style: {
+                                      "color": "#283583"
+                                    }
+                                  }, " cinemax "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                                    onClick: _cache[4] || (_cache[4] = function ($event) {
+                                      return $options.scroll('hbomax');
+                                    }),
+                                    "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
+                                    style: {
+                                      "color": "#283583"
+                                    }
+                                  }, " hbo max "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                                    onClick: _cache[5] || (_cache[5] = function ($event) {
+                                      return $options.scroll('sport');
+                                    }),
+                                    "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
+                                    style: {
+                                      "color": "#283583"
+                                    }
+                                  }, " sport "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+                                    onClick: _cache[6] || (_cache[6] = function ($event) {
+                                      return $options.scroll('4k');
+                                    }),
+                                    "class": "text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto",
+                                    style: {
+                                      "color": "#283583"
+                                    }
+                                  }, " 4k-uhd ")];
                                 }),
                                 _: 1 /* STABLE */
                               })];
@@ -1755,6 +1769,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_BasicChannelImagesCard, {
+                        id: "PLUS",
                         headText: "Balíček Plus",
                         channels: $data.channels,
                         searcheableText: "Plus",
