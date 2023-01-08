@@ -14,7 +14,7 @@ class StoreUserAction
             User::create([
                 'name' => $name,
                 'email' => $email,
-                'password' => $password,
+                'password' => bcrypt($password),
                 'isAdmin' => is_null($isAdmin) ? false : true,
                 'nangu_isp' => is_null($nanguIsp) ? null : $nanguIsp
             ]);
