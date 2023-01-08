@@ -121,7 +121,7 @@
                                 <v-autocomplete
                                     :items="nanguIsps"
                                     item-title="nangu_isp"
-                                    item-value="id"
+                                    item-value="nangu_isp_id"
                                     density="compact"
                                     variant="outlined"
                                     label="Vyberte ISP"

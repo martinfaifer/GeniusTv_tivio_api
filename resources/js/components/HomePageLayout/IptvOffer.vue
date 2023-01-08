@@ -84,21 +84,18 @@
                                     >
                                         <v-row>
                                             <a
-                                                href="#plus"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
                                                 PLUS
                                             </a>
                                             <a
-                                                href="#filmbox"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
                                                 Filmbox
                                             </a>
                                             <a
-                                                href="#hbo"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
@@ -106,16 +103,13 @@
                                             </a>
 
                                             <a
-                                                href="#cinemax"
-                                                class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto
-                                                "
+                                                class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
                                                 cinemax
                                             </a>
 
                                             <a
-                                                href="#hbo-max"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
@@ -123,14 +117,12 @@
                                             </a>
 
                                             <a
-                                                href="#sport"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
                                                 sport
                                             </a>
                                             <a
-                                                href="#4k"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
                                                 style="color: #283583"
                                             >
