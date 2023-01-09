@@ -39,6 +39,7 @@
                                     </a>
 
                                     <v-icon
+                                        v-if="user.isAdmin == true"
                                         color="red"
                                         class="mx-auto"
                                         @click="deleteItem(app.id)"
@@ -66,6 +67,7 @@
 <script>
 export default {
     props: {
+        user: Object,
         apps: Array,
         filterString: String,
         headText: String,

@@ -52,6 +52,7 @@
                                 :apps="apps"
                                 filterString="diagnostic"
                                 headText="Diagnostické aplikace"
+                                :user="user"
                             ></IspAppCard>
                         </v-col>
 
@@ -61,6 +62,7 @@
                                 :apps="apps"
                                 filterString="TV"
                                 headText="Samsung TV aplikace"
+                                :user="user"
                             ></IspAppCard>
                         </v-col>
                         <v-col cols="12" sm="12" md="6" lg="6">
@@ -69,6 +71,7 @@
                                 :apps="apps"
                                 filterString="androidTV"
                                 headText="Android TV aplikace"
+                                :user="user"
                             ></IspAppCard>
                         </v-col>
                         <v-col cols="12" sm="12" md="6" lg="6">
@@ -77,6 +80,7 @@
                                 :apps="apps"
                                 filterString="androidMobile"
                                 headText="Android mobile aplikace"
+                                :user="user"
                             ></IspAppCard>
                         </v-col>
                         <v-col cols="12" sm="12" md="6" lg="6">
@@ -85,6 +89,7 @@
                                 :apps="apps"
                                 filterString="LGTV"
                                 headText="LG TV aplikace"
+                                :user="user"
                             ></IspAppCard>
                         </v-col>
                     </v-row>
