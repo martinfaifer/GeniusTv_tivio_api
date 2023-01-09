@@ -48,6 +48,7 @@
                         <!-- Download logclient links -->
                         <v-col cols="12" sm="12" md="6" lg="6">
                             <IspAppCard
+                                @reloadapps="reloadAllApps"
                                 :apps="apps"
                                 filterString="diagnostic"
                                 headText="Diagnostické aplikace"
@@ -56,6 +57,7 @@
 
                         <v-col cols="12" sm="12" md="6" lg="6">
                             <IspAppCard
+                                @reloadapps="reloadAllApps"
                                 :apps="apps"
                                 filterString="TV"
                                 headText="Samsung TV aplikace"
@@ -63,6 +65,7 @@
                         </v-col>
                         <v-col cols="12" sm="12" md="6" lg="6">
                             <IspAppCard
+                                @reloadapps="reloadAllApps"
                                 :apps="apps"
                                 filterString="androidTV"
                                 headText="Android TV aplikace"
@@ -70,6 +73,7 @@
                         </v-col>
                         <v-col cols="12" sm="12" md="6" lg="6">
                             <IspAppCard
+                                @reloadapps="reloadAllApps"
                                 :apps="apps"
                                 filterString="androidMobile"
                                 headText="Android mobile aplikace"
@@ -77,6 +81,7 @@
                         </v-col>
                         <v-col cols="12" sm="12" md="6" lg="6">
                             <IspAppCard
+                                @reloadapps="reloadAllApps"
                                 :apps="apps"
                                 filterString="LGTV"
                                 headText="LG TV aplikace"
@@ -221,11 +226,15 @@
                     </v-card>
                 </v-dialog>
             </v-row>
-            <SnackBar
-                :message="message"
-                :showSnackBar="showSnackBar"
-                :snackColor="snackColor"
-            ></SnackBar>
+            <div class="text-center">
+                <v-snackbar
+                    v-model="currSnackBar"
+                    :timeout="timeout"
+                    :color="snackColor"
+                >
+                    {{ serverResponse.message }}
+                </v-snackbar>
+            </div>
         </v-container>
     </div>
 </template>
@@ -244,7 +253,7 @@ export default {
         return {
             fileUpload: false,
             invoiceButtonLoading: false,
-            showSnackBar: false,
+            currSnackBar: false,
             notificationData: [],
             message: "",
             snackColor: "",
@@ -254,7 +263,7 @@ export default {
             errors: [],
             categories: [],
             formDatas: [],
-            timeout: 3000,
+            timeout: 5000,
             apps: [],
         };
     },
@@ -264,6 +273,10 @@ export default {
         this.index();
     },
     methods: {
+        reloadAllApps() {
+            this.index();
+        },
+
         index() {
             axios
                 .get("admin/apps")
@@ -278,7 +291,7 @@ export default {
         },
 
         websocketData() {
-            Echo.channel("realoadApps").listen(
+            Echo.channel("realoadApps_" + this.user.id).listen(
                 "BroadcastReloadApplicationsContentEvent",
                 (e) => {
                     this.index();

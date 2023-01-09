@@ -46,11 +46,11 @@ class AppController extends Controller
         // remove item
         Storage::delete($app->path);
         $app->delete();
-        try {
-            event(new BroadcastReloadApplicationsContentEvent());
-        } catch (\Throwable $th) {
-            //throw $th;
-        }
+        // try {
+        // event(new BroadcastReloadApplicationsContentEvent(Auth::user()));
+        // } catch (\Throwable $th) {
+        //     //throw $th;
+        // }
         return $this->success_message("Odebráno, obnovte si stranku pro nové načtení");
     }
 }

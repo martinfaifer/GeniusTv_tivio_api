@@ -71,6 +71,15 @@
                     </v-form>
                 </v-col>
             </v-row>
+            <div class="text-center">
+                <v-snackbar
+                    v-model="currSnackBar"
+                    :timeout="timeout"
+                    color="red"
+                >
+                    {{ serverResponse.message }}
+                </v-snackbar>
+            </div>
         </v-container>
     </v-main>
 </template>
@@ -80,6 +89,9 @@ import axios from "axios";
 export default {
     data() {
         return {
+            currSnackBar: false,
+            serverResponse: [],
+            timeout: 5000,
             errors: [],
             formInputData: [],
             alert: false,
@@ -98,16 +110,26 @@ export default {
                     identity_password: this.formInputData.identity_password,
                 })
                 .then((response) => {
+                    this.serverResponse = response.data;
                     if (response.data.status == "error") {
-                        this.systemResponse = response.data;
+                        this.currSnackBar = true;
+                        this.serverResponse = response.data;
+                        setTimeout(() => {
+                            this.resetVars();
+                        }, 6000);
                     } else {
-                        this.systemResponse = response.data;
+                        this.serverResponse = response.data;
                         this.$router.push(response.data.payload);
                     }
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;
                 });
+        },
+
+        resetVars() {
+            this.serverResponse = [];
+            this.currSnackBar = false;
         },
     },
     watch: {},

@@ -78,7 +78,9 @@ export default {
     methods: {
         deleteItem(itemId) {
             axios.delete("admin/apps/" + itemId).then((response) => {
-                this.$emit("showNotification", "test", "color", "true");
+                // if (response.data == "success") {
+                this.$emit("reloadapps", true);
+                // }
             });
         },
     },

@@ -28,7 +28,7 @@ class AdminLoginAction
 
         return [
             'status' => "error",
-            'message' => "Neplatné přiglašovací údaje"
+            'message' => "Neplatné přihlašovací údaje"
         ];
     }
 }

@@ -30,7 +30,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       fileUpload: false,
       invoiceButtonLoading: false,
-      showSnackBar: false,
+      currSnackBar: false,
       notificationData: [],
       message: "",
       snackColor: "",
@@ -40,7 +40,7 @@ __webpack_require__.r(__webpack_exports__);
       errors: [],
       categories: [],
       formDatas: [],
-      timeout: 3000,
+      timeout: 5000,
       apps: []
     };
   },
@@ -53,6 +53,9 @@ __webpack_require__.r(__webpack_exports__);
     this.index();
   },
   methods: {
+    reloadAllApps: function reloadAllApps() {
+      this.index();
+    },
     index: function index() {
       var _this = this;
       axios__WEBPACK_IMPORTED_MODULE_4__["default"].get("admin/apps").then(function (response) {
@@ -65,7 +68,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     websocketData: function websocketData() {
       var _this2 = this;
-      Echo.channel("realoadApps").listen("BroadcastReloadApplicationsContentEvent", function (e) {
+      Echo.channel("realoadApps_" + this.user.id).listen("BroadcastReloadApplicationsContentEvent", function (e) {
         _this2.index();
       });
     },
@@ -204,6 +207,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               _context.next = 2;
               return axios__WEBPACK_IMPORTED_MODULE_4__["default"].get("admin/auth/logged").then(function (response) {
                 _this.user = response.data;
+              })["catch"](function (error) {
+                if (error.response.status == 403) {
+                  _this.$router.push("/admin/login");
+                }
               });
             case 2:
             case "end":
@@ -473,7 +480,9 @@ __webpack_require__.r(__webpack_exports__);
     deleteItem: function deleteItem(itemId) {
       var _this = this;
       axios["delete"]("admin/apps/" + itemId).then(function (response) {
-        _this.$emit("showNotification", "test", "color", "true");
+        // if (response.data == "success") {
+        _this.$emit("reloadapps", true);
+        // }
       });
     }
   }
@@ -556,7 +565,9 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 }, "Období"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   "class": "text-right"
 })])], -1 /* HOISTED */);
-
+var _hoisted_2 = {
+  "class": "text-center"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_btn = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-btn");
   var _component_v_app_bar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-app-bar");
@@ -573,7 +584,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_dialog = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-dialog");
   var _component_v_icon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-icon");
   var _component_v_table = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-table");
-  var _component_SnackBar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("SnackBar");
+  var _component_v_snackbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-snackbar");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_container, {
     fluid: ""
   }, {
@@ -651,10 +662,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_IspAppCard, {
+                        onReloadapps: $options.reloadAllApps,
                         apps: $data.apps,
                         filterString: "diagnostic",
                         headText: "Diagnostické aplikace"
-                      }, null, 8 /* PROPS */, ["apps"])];
+                      }, null, 8 /* PROPS */, ["onReloadapps", "apps"])];
                     }),
                     _: 1 /* STABLE */
                   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
@@ -665,10 +677,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_IspAppCard, {
+                        onReloadapps: $options.reloadAllApps,
                         apps: $data.apps,
                         filterString: "TV",
                         headText: "Samsung TV aplikace"
-                      }, null, 8 /* PROPS */, ["apps"])];
+                      }, null, 8 /* PROPS */, ["onReloadapps", "apps"])];
                     }),
                     _: 1 /* STABLE */
                   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
@@ -679,10 +692,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_IspAppCard, {
+                        onReloadapps: $options.reloadAllApps,
                         apps: $data.apps,
                         filterString: "androidTV",
                         headText: "Android TV aplikace"
-                      }, null, 8 /* PROPS */, ["apps"])];
+                      }, null, 8 /* PROPS */, ["onReloadapps", "apps"])];
                     }),
                     _: 1 /* STABLE */
                   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
@@ -693,10 +707,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_IspAppCard, {
+                        onReloadapps: $options.reloadAllApps,
                         apps: $data.apps,
                         filterString: "androidMobile",
                         headText: "Android mobile aplikace"
-                      }, null, 8 /* PROPS */, ["apps"])];
+                      }, null, 8 /* PROPS */, ["onReloadapps", "apps"])];
                     }),
                     _: 1 /* STABLE */
                   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
@@ -707,10 +722,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_IspAppCard, {
+                        onReloadapps: $options.reloadAllApps,
                         apps: $data.apps,
                         filterString: "LGTV",
                         headText: "LG TV aplikace"
-                      }, null, 8 /* PROPS */, ["apps"])];
+                      }, null, 8 /* PROPS */, ["onReloadapps", "apps"])];
                     }),
                     _: 1 /* STABLE */
                   })];
@@ -951,11 +967,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           }, 8 /* PROPS */, ["modelValue"])];
         }),
         _: 1 /* STABLE */
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_SnackBar, {
-        message: $data.message,
-        showSnackBar: $data.showSnackBar,
-        snackColor: $data.snackColor
-      }, null, 8 /* PROPS */, ["message", "showSnackBar", "snackColor"])];
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_snackbar, {
+        modelValue: $data.currSnackBar,
+        "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+          return $data.currSnackBar = $event;
+        }),
+        timeout: $data.timeout,
+        color: $data.snackColor
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.serverResponse.message), 1 /* TEXT */)];
+        }),
+
+        _: 1 /* STABLE */
+      }, 8 /* PROPS */, ["modelValue", "timeout", "color"])])];
     }),
     _: 1 /* STABLE */
   })]);

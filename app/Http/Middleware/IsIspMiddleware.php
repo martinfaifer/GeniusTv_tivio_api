@@ -18,6 +18,10 @@ class IsIspMiddleware
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::user();
+        if (is_null($user)) {
+            return abort(403);
+        }
+
         if (is_null($user->mac) && is_null($user->identity)) {
             return $next($request);
         }

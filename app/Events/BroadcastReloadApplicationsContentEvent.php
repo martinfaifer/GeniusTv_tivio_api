@@ -19,7 +19,7 @@ class BroadcastReloadApplicationsContentEvent implements ShouldBroadcastNow
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(public object $user)
     {
         //
     }
@@ -31,6 +31,11 @@ class BroadcastReloadApplicationsContentEvent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('realoadApps');
+        return new Channel('realoadApps_'. $this->user->id);
+    }
+
+    public function broadcastWith()
+    {
+        return [];
     }
 }

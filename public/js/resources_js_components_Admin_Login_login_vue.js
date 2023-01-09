@@ -16,10 +16,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
+      currSnackBar: false,
+      timeout: 5000,
       errors: [],
       email: null,
       password: null,
-      alert: false
+      alert: false,
+      serverResponse: []
     };
   },
   components: {},
@@ -44,12 +47,18 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         password: this.password
       }).then(function (response) {
+        _this2.serverResponse = response.data;
         if (response.data.status == "success") {
           _this2.$router.push("/admin/isp/applications");
         } else {
+          _this2.currSnackBar = true;
           _this2.alert = true;
           _this2.email = null;
           _this2.password = null;
+          setTimeout(function () {
+            _this2.currSnackBar = false;
+            _this2.serverResponse = [];
+          }, 6000);
         }
       })["catch"](function (error) {
         _this2.errors = error.response.data.errors;
@@ -77,7 +86,9 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "my-4 text-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, "ISP zóna")], -1 /* HOISTED */);
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, " Přihlášení", -1 /* HOISTED */);
-
+var _hoisted_3 = {
+  "class": "text-center"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_text_field = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-text-field");
   var _component_v_btn = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-btn");
@@ -86,6 +97,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_form = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-form");
   var _component_v_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-col");
   var _component_v_row = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-row");
+  var _component_v_snackbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-snackbar");
   var _component_v_container = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-container");
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_container, {
     fluid: "",
@@ -174,9 +186,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         }),
 
         _: 1 /* STABLE */
-      })];
-    }),
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_snackbar, {
+        modelValue: $data.currSnackBar,
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+          return $data.currSnackBar = $event;
+        }),
+        timeout: $data.timeout,
+        color: "red"
+      }, {
+        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.serverResponse.message), 1 /* TEXT */)];
+        }),
 
+        _: 1 /* STABLE */
+      }, 8 /* PROPS */, ["modelValue", "timeout"])])];
+    }),
     _: 1 /* STABLE */
   })]);
 }

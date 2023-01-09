@@ -115,9 +115,16 @@ export default {
     },
     methods: {
         async getUser() {
-            await axios.get("admin/auth/logged").then((response) => {
-                this.user = response.data;
-            });
+            await axios
+                .get("admin/auth/logged")
+                .then((response) => {
+                    this.user = response.data;
+                })
+                .catch((error) => {
+                    if (error.response.status == 403) {
+                        this.$router.push("/admin/login");
+                    }
+                });
         },
 
         redirectToHome() {

@@ -48,6 +48,16 @@
                     </v-form>
                 </v-col>
             </v-row>
+
+            <div class="text-center">
+                <v-snackbar
+                    v-model="currSnackBar"
+                    :timeout="timeout"
+                    color="red"
+                >
+                    {{ serverResponse.message }}
+                </v-snackbar>
+            </div>
         </v-container>
     </div>
 </template>
@@ -57,10 +67,13 @@ import axios from "axios";
 export default {
     data() {
         return {
+            currSnackBar: false,
+            timeout: 5000,
             errors: [],
             email: null,
             password: null,
             alert: false,
+            serverResponse: [],
         };
     },
 
@@ -90,12 +103,19 @@ export default {
                     password: this.password,
                 })
                 .then((response) => {
+                    this.serverResponse = response.data;
                     if (response.data.status == "success") {
                         this.$router.push("/admin/isp/applications");
                     } else {
+                        this.currSnackBar = true;
                         this.alert = true;
                         this.email = null;
                         this.password = null;
+
+                        setTimeout(() => {
+                            this.currSnackBar = false;
+                            this.serverResponse = [];
+                        }, 6000);
                     }
                 })
                 .catch((error) => {
