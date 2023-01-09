@@ -26,6 +26,7 @@
                                         :class="{ 'on-hover': isHovering }"
                                         v-bind="props"
                                         headText="Základ"
+                                        oldName="MINI"
                                         :numberOfChannels="80"
                                     ></ChannelPackagesCard>
                                 </v-col>
@@ -37,6 +38,7 @@
                                         :class="{ 'on-hover': isHovering }"
                                         v-bind="props"
                                         headText="Standard"
+                                        oldName="BASIC"
                                         :numberOfChannels="120"
                                     ></ChannelPackagesCard>
                                 </v-col>
@@ -48,6 +50,7 @@
                                         :class="{ 'on-hover': isHovering }"
                                         v-bind="props"
                                         headText="Komplet"
+                                        oldName="MAX"
                                         :numberOfChannels="150"
                                     ></ChannelPackagesCard>
                                 </v-col>

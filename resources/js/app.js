@@ -6,7 +6,7 @@ import { createVuetify } from "vuetify";
 import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 
-import moment from 'moment'
+import moment from "moment";
 
 import eventBus from "./event-bus";
 
@@ -29,6 +29,9 @@ const CustomerLayout = () => import("./components/Customer/CustomerLayout.vue");
 const Isp = () => import("./components/Admin/Isp.vue");
 
 const AdminLogin = () => import("./components/Admin/Login/login.vue");
+
+const IspCustomerLogin = () =>
+    import("./components/Isp/Customer_login/login.vue");
 
 const Page404 = () => import("./components/404/404.vue");
 
@@ -54,6 +57,11 @@ const router = createRouter({
             path: "/admin/isp/:component",
             name: "ISP",
             component: Isp,
+        },
+        {
+            path: "/login",
+            name: "CustomerLogin",
+            component: IspCustomerLogin,
         },
         {
             path: "/:pathMatch(.*)*",

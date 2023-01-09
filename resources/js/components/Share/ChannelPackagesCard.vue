@@ -8,7 +8,7 @@
                 padding: 10px 10px 13px;
             "
         >
-            {{ headText }}
+            {{ headText }} <small>( {{ oldName }} )</small>
         </p>
         <v-card class="rounded-lg mt-n2" height="100%">
             <div class="div-block-4">
@@ -49,6 +49,7 @@ export default {
     props: {
         headText: String,
         numberOfChannels: Number,
+        oldName: String,
     },
 };
 </script>

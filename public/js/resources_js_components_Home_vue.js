@@ -371,7 +371,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     headText: String,
-    numberOfChannels: Number
+    numberOfChannels: Number,
+    oldName: String
   }
 });
 
@@ -1139,6 +1140,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             }
                           }, props, {
                             headText: "Základ",
+                            oldName: "MINI",
                             numberOfChannels: 80
                           }), null, 16 /* FULL_PROPS */, ["elevation", "class"])];
                         }),
@@ -1165,6 +1167,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             }
                           }, props, {
                             headText: "Standard",
+                            oldName: "BASIC",
                             numberOfChannels: 120
                           }), null, 16 /* FULL_PROPS */, ["elevation", "class"])];
                         }),
@@ -1191,6 +1194,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             }
                           }, props, {
                             headText: "Komplet",
+                            oldName: "MAX",
                             numberOfChannels: 150
                           }), null, 16 /* FULL_PROPS */, ["elevation", "class"])];
                         }),
@@ -2005,7 +2009,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "rounded-lg"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.headText), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.headText) + " ", 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("small", null, "( " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.oldName) + " )", 1 /* TEXT */)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
         "class": "rounded-lg mt-n2",
         height: "100%"
       }, {
