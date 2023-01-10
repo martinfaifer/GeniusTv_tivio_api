@@ -23,13 +23,17 @@ class CustomerAuthController extends Controller
             return null;
         }
 
-        return $user;
+        return [
+            'id' => $user->id,
+            'identity' => $user->identity,
+            'nangu_isp' => $user->nangu_isp
+        ];
     }
 
     public function login(CustomerLoginRequest $request, SubscriptionLoginAction $subscriptionLoginAction, NanguOAuthGraphQlAction $nanguOAuthGraphQlAction)
     {
         $oauthResponse = $nanguOAuthGraphQlAction->execute($request->identity_username, $request->identity_password);
-        if (! array_key_exists('login', $oauthResponse)) {
+        if (!array_key_exists('login', $oauthResponse)) {
             return $this->error_message('Nepodařilo se najít uživatele');
         }
         $responseAction = $subscriptionLoginAction->execute($request->identity_username, $request->ispCode);
