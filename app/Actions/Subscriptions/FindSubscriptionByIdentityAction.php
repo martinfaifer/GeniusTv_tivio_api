@@ -12,6 +12,6 @@ class FindSubscriptionByIdentityAction
         $identity = SubscriptionIdentity::find($identityId);
         $subscriber = Subscriber::find($identity->subscription->subscriberId);
 
-        return $subscriber->ispId . "~~" . $identity->subscription->subscriptionCode;
+        return $subscriber->ispId.'~~'.$identity->subscription->subscriptionCode;
     }
 }

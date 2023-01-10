@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class SubscriptionAccount extends Model
 {
     protected $fillable = [
-        'subscriptionStbAccountCode', 'subscriptionId'
+        'subscriptionStbAccountCode', 'subscriptionId',
     ];
 
     public function subscription(): BelongsTo

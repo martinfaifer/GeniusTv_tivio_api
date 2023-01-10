@@ -2,19 +2,17 @@
 
 namespace App\Services\NanguWsdl;
 
-use SoapClient;
-
 use Exception;
+use SoapClient;
 
 class NanguWsdlService
 {
-
     public array $wsdlEndPoints = [
         'billing' => 'billing/BillingEndpoint?wsdl',
         'subscription' => 'provisioning/SubscriptionEndpoint?wsdl',
         'subscriber' => 'provisioning/SubscriberEndpoint?wsdl',
         'iptv' => 'iptv/IptvEndpoint?wsdl',
-        'identity' => 'provisioning/IdentityEndpoint?wsdl'
+        'identity' => 'provisioning/IdentityEndpoint?wsdl',
     ];
 
     public $soap;
@@ -22,11 +20,11 @@ class NanguWsdlService
     public function __construct(public string $endPoint)
     {
         if (is_null(config('app.nangu_wsdl_url'))) {
-            throw new Exception("Dont exist nangu url");
+            throw new Exception('Dont exist nangu url');
         }
 
-        $this->soap = (!is_null(config('app.nangu_wsdl_url')))
-            ? new SoapClient(config('app.nangu_wsdl_url') . $this->available_endpoints())
+        $this->soap = (! is_null(config('app.nangu_wsdl_url')))
+            ? new SoapClient(config('app.nangu_wsdl_url').$this->available_endpoints())
             : [];
     }
 

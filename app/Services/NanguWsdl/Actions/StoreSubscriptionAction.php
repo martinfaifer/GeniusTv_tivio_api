@@ -16,7 +16,7 @@ class StoreSubscriptionAction
         try {
             Subscription::create([
                 'subscriptionCode' => $this->subscriptionCode,
-                'subscriberId' => $this->subscriberId
+                'subscriberId' => $this->subscriberId,
             ]);
         } catch (\Throwable $th) {
         }

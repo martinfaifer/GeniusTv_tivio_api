@@ -28,7 +28,7 @@ class CustomerLoginRequest extends FormRequest
             // 'identity' => ['required', 'string', 'max:255']
             'identity_username' => ['required', 'string', 'max:255'],
             'identity_password' => ['required', 'string', 'max:255'],
-            'ispCode' => ['nullable', 'max:255']
+            'ispCode' => ['nullable', 'max:255'],
         ];
     }
 
@@ -43,13 +43,13 @@ class CustomerLoginRequest extends FormRequest
             // 'identity.string' => "Neplatný formát",
             // 'identity.max' => "Překročen maximální počet znaků",
             // 'identity.exists' => "Nenalezena identita"
-            'identity_username.required' => "Vyplňte uživatelské jméno",
-            'identity_username.string' => "Neplatný formát",
-            'identity_username.max' => "Maximální počet znaků je 255",
+            'identity_username.required' => 'Vyplňte uživatelské jméno',
+            'identity_username.string' => 'Neplatný formát',
+            'identity_username.max' => 'Maximální počet znaků je 255',
             // 'identity_username.exists' => "Neexistuje uživatel",
-            'identity_password.required' => "Vyplňte heslo",
-            'identity_password.string' => "Neplatný formát",
-            'identity_password.max' => "Maximální počet znaků je 255"
+            'identity_password.required' => 'Vyplňte heslo',
+            'identity_password.string' => 'Neplatný formát',
+            'identity_password.max' => 'Maximální počet znaků je 255',
         ];
     }
 }

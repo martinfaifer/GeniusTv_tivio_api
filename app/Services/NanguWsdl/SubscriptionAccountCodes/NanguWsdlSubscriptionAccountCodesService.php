@@ -3,9 +3,8 @@
 namespace App\Services\NanguWsdl\SubscriptionAccountCodes;
 
 use App\Models\Subscription;
-use App\Services\NanguWsdl\Actions\StoreSubscriptionIdentityAction;
-use App\Services\NanguWsdl\NanguWsdlService;
 use App\Services\NanguWsdl\Actions\StoreSubsciptionAccountCodeAction;
+use App\Services\NanguWsdl\NanguWsdlService;
 
 class NanguWsdlSubscriptionAccountCodesService extends NanguWsdlService
 {
@@ -15,13 +14,12 @@ class NanguWsdlSubscriptionAccountCodesService extends NanguWsdlService
 
         foreach ($subscriptions as $subscription) {
             try {
-
-                $params = array('subscriptionCode' => array('subscriptionCode' => $subscription->subscriptionCode, 'ispCode' => $subscription->subscriber->ispId));
+                $params = ['subscriptionCode' => ['subscriptionCode' => $subscription->subscriptionCode, 'ispCode' => $subscription->subscriber->ispId]];
                 $data = $this->soap->__soapCall('getSubscriptionStbAccounts', $params);
                 $wsdlResult = json_decode(json_encode($data), true);
 
                 if (array_key_exists('subscriptionStbAccounts', $wsdlResult)) {
-                    if (!array_key_exists('subscriptionStbAccountCode', $wsdlResult['subscriptionStbAccounts'])) {
+                    if (! array_key_exists('subscriptionStbAccountCode', $wsdlResult['subscriptionStbAccounts'])) {
                         foreach ($wsdlResult['subscriptionStbAccounts'] as $subscriptionAccount) {
                             try {
                                 new StoreSubsciptionAccountCodeAction($subscriptionAccount['subscriptionStbAccountCode'], $subscription->id);
@@ -36,7 +34,7 @@ class NanguWsdlSubscriptionAccountCodesService extends NanguWsdlService
                     }
                 }
             } catch (\Throwable $th) {
-                echo $subscription->subscriptionCode . PHP_EOL;
+                echo $subscription->subscriptionCode.PHP_EOL;
             }
         }
     }

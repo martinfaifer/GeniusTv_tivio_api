@@ -17,8 +17,7 @@ class GetInvoicesByIpsIdAction
             return [];
         }
 
-        return Http
-            ::withBasicAuth(config('app.iptv_doku_username'), config('app.iptv_doku_password'))
-            ->get(config('app.iptv_doku_api') . "v1/nangu/isps/reports/" . $user->nangu_isp)->json();
+        return Http::withBasicAuth(config('app.iptv_doku_username'), config('app.iptv_doku_password'))
+            ->get(config('app.iptv_doku_api').'v1/nangu/isps/reports/'.$user->nangu_isp)->json();
     }
 }

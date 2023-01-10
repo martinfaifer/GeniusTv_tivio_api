@@ -24,15 +24,15 @@ class TivioByMacRequest extends FormRequest
     public function rules()
     {
         return [
-            'mac' => ['required', 'exists:stbs,mac']
+            'mac' => ['required', 'exists:stbs,mac'],
         ];
     }
 
     public function messages()
     {
         return [
-            'mac.required' => "Vyplňte pole.",
-            'mac.exists' => "Nenalezen STB."
+            'mac.required' => 'Vyplňte pole.',
+            'mac.exists' => 'Nenalezen STB.',
         ];
     }
 }

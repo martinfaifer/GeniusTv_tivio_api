@@ -12,13 +12,14 @@ class NanguWsdlSubscriptionGetStbAccountInfoService extends NanguWsdlService
             'subscriptionStbAccountCode' => $subscriptionStbAccountCode,
         ];
 
-        if (!is_null($requestArray)) {
+        if (! is_null($requestArray)) {
             $requestArray['ispCode'] = $ispCode;
         }
 
-        $params = array('getStbAccountInfo' => $requestArray);
+        $params = ['getStbAccountInfo' => $requestArray];
         $data = $this->soap->__soapCall('getStbAccountInfo', $params);
         $wsdlResult = json_decode(json_encode($data), true);
-        return $wsdlResult["subscriptionCode"];
+
+        return $wsdlResult['subscriptionCode'];
     }
 }

@@ -3,32 +3,29 @@
 namespace App\Actions\Subscriptions;
 
 use App\Models\Stb;
-use App\Actions\Action;
-use PhpParser\ErrorHandler\Collecting;
-use App\Services\TivioSdk\GetQrService;
 
 class FindSubscriptionByStbMacAction
 {
-
     public function __construct(public string $mac)
     {
         //
     }
 
-    public function handle(): bool|array| string
+    public function handle(): bool|array|string
     {
         $stb = Stb::where('mac', strtolower($this->mac))->first();
-        if (!$stb) {
+        if (! $stb) {
             return false;
         }
 
         if ($stb->stb_type == 'KREA-1003') {
             return [
-                'status' => "error",
-                'msg' => "Tento typ set top boxu nepodporuje přeskakování reklam."
+                'status' => 'error',
+                'msg' => 'Tento typ set top boxu nepodporuje přeskakování reklam.',
             ];
         }
         $ispId = $stb->subscription->subscriber->ispId;
-        return $ispId . "~~" . $stb->subscription->subscriptionCode;
+
+        return $ispId.'~~'.$stb->subscription->subscriptionCode;
     }
 }

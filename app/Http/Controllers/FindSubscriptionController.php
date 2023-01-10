@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Illuminate\Support\Facades\Http;
 use App\Actions\Subscriptions\FindSubscriptionByStbMacAction;
 
 class FindSubscriptionController extends Controller
@@ -16,11 +13,11 @@ class FindSubscriptionController extends Controller
             return false;
         }
 
-        if(is_array($subscription)) {
+        if (is_array($subscription)) {
             return $subscription;
         }
 
-        return (config('app.tivio_api') . $subscription);
+        return config('app.tivio_api').$subscription;
     }
 
     public function by_subscription(string $subscription): array

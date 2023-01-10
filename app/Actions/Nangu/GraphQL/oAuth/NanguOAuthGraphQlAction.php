@@ -21,10 +21,10 @@ class NanguOAuthGraphQlAction
           }
         MUTATION;
         $variables = [
-            "clientId" => "grapesc-new-webportal",
-            "clientSecret" => "fie4ulai5aimoh9aikeiFahthee9Ai",
-            "password" => $password,
-            "username" => $username
+            'clientId' => 'grapesc-new-webportal',
+            'clientSecret' => 'fie4ulai5aimoh9aikeiFahthee9Ai',
+            'password' => $password,
+            'username' => $username,
         ];
 
         /** @var \Softonic\GraphQL\Client $client */

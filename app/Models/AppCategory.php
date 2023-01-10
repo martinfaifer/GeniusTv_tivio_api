@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-use App\Models\App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class AppCategory extends Model
 {
     protected $fillable = [
-        'category'
+        'category',
     ];
 
     public function apps(): HasMany

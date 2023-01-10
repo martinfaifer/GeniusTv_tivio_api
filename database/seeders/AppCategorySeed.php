@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\AppCategory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class AppCategorySeed extends Seeder
@@ -15,33 +14,33 @@ class AppCategorySeed extends Seeder
      */
     public function run()
     {
-        if (!AppCategory::where('category', 'diagnostic')->first()) {
+        if (! AppCategory::where('category', 'diagnostic')->first()) {
             AppCategory::create([
-                'category' => "diagnostic"
+                'category' => 'diagnostic',
             ]);
         }
 
-        if (!AppCategory::where('category', 'TV')->first()) {
+        if (! AppCategory::where('category', 'TV')->first()) {
             AppCategory::create([
-                'category' => "TV"
-            ]);
-        };
-
-        if (!AppCategory::where('category', 'androidTV')->first()) {
-            AppCategory::create([
-                'category' => "androidTV"
+                'category' => 'TV',
             ]);
         }
 
-        if (!AppCategory::where('category', 'androidMobile')->first()) {
+        if (! AppCategory::where('category', 'androidTV')->first()) {
             AppCategory::create([
-                'category' => "androidMobile"
+                'category' => 'androidTV',
             ]);
         }
 
-        if (!AppCategory::where('category', 'LGTV')->first()) {
+        if (! AppCategory::where('category', 'androidMobile')->first()) {
             AppCategory::create([
-                'category' => "LGTV"
+                'category' => 'androidMobile',
+            ]);
+        }
+
+        if (! AppCategory::where('category', 'LGTV')->first()) {
+            AppCategory::create([
+                'category' => 'LGTV',
             ]);
         }
     }

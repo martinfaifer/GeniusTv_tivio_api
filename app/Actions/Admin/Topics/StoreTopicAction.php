@@ -13,8 +13,9 @@ class StoreTopicAction
             Topic::create([
                 'title' => $title,
                 'text' => $text,
-                'user_id' => Auth::user()->id
+                'user_id' => Auth::user()->id,
             ]);
+
             return true;
         } catch (\Throwable $th) {
             return false;

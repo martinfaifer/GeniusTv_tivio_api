@@ -2,8 +2,8 @@
 
 namespace App\Actions\Admin\Users;
 
-use App\Models\User;
 use App\Mail\SendWelcomeMail;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 class StoreUserAction
@@ -16,7 +16,7 @@ class StoreUserAction
                 'email' => $email,
                 'password' => bcrypt($password),
                 'isAdmin' => is_null($isAdmin) ? false : true,
-                'nangu_isp' => is_null($nanguIsp) ? null : $nanguIsp
+                'nangu_isp' => is_null($nanguIsp) ? null : $nanguIsp,
             ]);
 
             // send welcome email
@@ -24,9 +24,10 @@ class StoreUserAction
                 new SendWelcomeMail(
                     username: $email,
                     password: $password,
-                    link: config('app.url') . "/#/admin/login"
+                    link: config('app.url').'/#/admin/login'
                 )
             );
+
             return true;
         } catch (\Throwable $th) {
             return false;

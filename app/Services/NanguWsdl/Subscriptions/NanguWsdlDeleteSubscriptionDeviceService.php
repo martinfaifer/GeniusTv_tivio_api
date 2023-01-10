@@ -9,8 +9,9 @@ class NanguWsdlDeleteSubscriptionDeviceService extends NanguWsdlService
     public function delete(string $ubscriptionCode, string $deviceId): bool
     {
         try {
-            $params = array('subscriptionCode' => array('subscriptionCode' => $ubscriptionCode, 'deviceId' => $deviceId));
+            $params = ['subscriptionCode' => ['subscriptionCode' => $ubscriptionCode, 'deviceId' => $deviceId]];
             $this->soap->__soapCall('removeDevice', $params);
+
             return true;
         } catch (\Throwable $th) {
             return false;

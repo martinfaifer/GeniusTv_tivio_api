@@ -4,8 +4,8 @@ namespace App\Services\NanguWsdl\Identities;
 
 use App\Models\Subscriber;
 use App\Models\SubscriptionAccount;
-use App\Services\NanguWsdl\NanguWsdlService;
 use App\Services\NanguWsdl\Actions\StoreSubscriptionIdentityAction;
+use App\Services\NanguWsdl\NanguWsdlService;
 
 class NanguWsdlIdentityService extends NanguWsdlService
 {
@@ -13,9 +13,8 @@ class NanguWsdlIdentityService extends NanguWsdlService
     {
         $subscriptionsAccounts = SubscriptionAccount::get();
         foreach ($subscriptionsAccounts as $subscriptionAccount) {
-
             try {
-                $params = array('subscriptionStbAccountCode' => array('subscriptionStbAccountCode' =>  $subscriptionAccount->subscriptionStbAccountCode, 'ispCode' => Subscriber::find($subscriptionAccount->subscription->subscriberId)->ispId));
+                $params = ['subscriptionStbAccountCode' => ['subscriptionStbAccountCode' => $subscriptionAccount->subscriptionStbAccountCode, 'ispCode' => Subscriber::find($subscriptionAccount->subscription->subscriberId)->ispId]];
                 $data = $this->soap->__soapCall('getStbAccountInfo', $params);
                 $wsdlResult = json_decode(json_encode($data), true);
                 if (array_key_exists('identities', $wsdlResult)) {

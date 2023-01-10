@@ -17,13 +17,13 @@ class IndexAppsResource extends JsonResource
     {
         $output = [];
         $apps = App::get();
-        foreach($apps as $app) {
+        foreach ($apps as $app) {
             $output[] = [
                 'id' => $app->id,
                 'name' => $app->name,
                 'description' => $app->description,
                 'path' => $app->path,
-                'category' => $app->category->category
+                'category' => $app->category->category,
             ];
         }
 

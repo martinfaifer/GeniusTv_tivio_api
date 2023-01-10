@@ -26,21 +26,21 @@ class UpdateUserRequest extends FormRequest
         return [
             'password' => ['nullable', 'string', 'max:16', 'min:8'],
             'check_password' => ['nullable', 'string', 'max:16', 'min:8', 'same:password'],
-            'isAdmin' => ['required', 'boolean']
+            'isAdmin' => ['required', 'boolean'],
         ];
     }
 
     public function messages()
     {
         return [
-            'password.string' => "Naplatný formát",
-            'password.min' => "Minimální počet znaků je 8",
-            'password.max' => "Maximální počet znaků je 16",
-            'check_password.string' => "Naplatný formát",
-            'check_password.min' => "Minimální počet znaků je 8",
-            'check_password.max' => "Maximální počet znaků je 16",
-            'check_password.same' => "Hesla se neshodují",
-            'isAdmin.boolean' => "Neplatný formát"
+            'password.string' => 'Naplatný formát',
+            'password.min' => 'Minimální počet znaků je 8',
+            'password.max' => 'Maximální počet znaků je 16',
+            'check_password.string' => 'Naplatný formát',
+            'check_password.min' => 'Minimální počet znaků je 8',
+            'check_password.max' => 'Maximální počet znaků je 16',
+            'check_password.same' => 'Hesla se neshodují',
+            'isAdmin.boolean' => 'Neplatný formát',
         ];
     }
 }

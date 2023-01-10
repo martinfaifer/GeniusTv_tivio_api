@@ -14,13 +14,14 @@ class NanguWsdlShowSubscriptionInfoService extends NanguWsdlService
             'subscriptionCode' => $subscriptionCode,
         ];
 
-        if (!is_null($requestArray)) {
+        if (! is_null($requestArray)) {
             $requestArray['ispCode'] = $ispCode;
         }
 
-        $params = array('subscriptionCode' => $requestArray);
+        $params = ['subscriptionCode' => $requestArray];
         $data = $this->soap->__soapCall('getInfo', $params);
         $wsdlResult = json_decode(json_encode($data), true);
+
         return $wsdlResult;
     }
 }

@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Actions\Admin\Users\DeleteUserAction;
+use App\Actions\Admin\Users\StoreUserAction;
+use App\Actions\Admin\Users\UpdateUserAction;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
-use App\Actions\Admin\Users\StoreUserAction;
-use App\Actions\Admin\Users\DeleteUserAction;
-use App\Actions\Admin\Users\UpdateUserAction;
 use App\Http\Resources\AdminShowUsersRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class AdminUserController extends Controller
 {
@@ -29,24 +28,25 @@ class AdminUserController extends Controller
             isAdmin: $request->isAdmin,
             nanguIsp: $request->nanguIsp
         ) == true
-            ? $this->success_message("Uživatel vytvořen")
-            : $this->error_message("Nepodařilo se vytvořit uživatele");
+            ? $this->success_message('Uživatel vytvořen')
+            : $this->error_message('Nepodařilo se vytvořit uživatele');
     }
 
     public function update(UpdateUserRequest $request, User $user, UpdateUserAction $updateUserAction)
     {
         try {
             $updateUserAction->execute($user, $request);
-            return $this->success_message("Upraveno");
+
+            return $this->success_message('Upraveno');
         } catch (\Throwable $th) {
-            return $this->error_message("Nepodařilo se upravit");
+            return $this->error_message('Nepodařilo se upravit');
         }
     }
 
     public function destroy(User $user, DeleteUserAction $deleteUserAction)
     {
         return $deleteUserAction->execute($user) == true
-            ? $this->success_message("Odebráno")
-            : $this->error_message("Nemůžete mazat sami sebe!");
+            ? $this->success_message('Odebráno')
+            : $this->error_message('Nemůžete mazat sami sebe!');
     }
 }

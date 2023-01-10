@@ -4,7 +4,6 @@ namespace App\Services\NanguWsdl\Isps;
 
 class IspGeneratorService
 {
-
     public $idList = [];
 
     public function generate_isp_id()

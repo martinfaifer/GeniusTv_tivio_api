@@ -7,10 +7,10 @@ class UpdateUserAction
     public function execute(object $user, object $formData)
     {
         $updateData = [
-            'isAdmin' => $formData->isAdmin
+            'isAdmin' => $formData->isAdmin,
         ];
 
-        if (!is_null($formData->password)) {
+        if (! is_null($formData->password)) {
             $updateData['password'] = bcrypt($formData->password);
         }
 

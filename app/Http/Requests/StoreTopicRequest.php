@@ -32,12 +32,12 @@ class StoreTopicRequest extends FormRequest
     public function messages()
     {
         return [
-            'title.required' => "Vyplňte titulek",
-            'title.string' => "Neplatný formát",
-            'title.max' => "Maximální počet znaků je 255",
-            'title.unique' => "Článek s tímto titulkem již existuje",
-            'text.required' => "Nesmí být prázdné",
-            'text.string' => "Neplatný formát"
+            'title.required' => 'Vyplňte titulek',
+            'title.string' => 'Neplatný formát',
+            'title.max' => 'Maximální počet znaků je 255',
+            'title.unique' => 'Článek s tímto titulkem již existuje',
+            'text.required' => 'Nesmí být prázdné',
+            'text.string' => 'Neplatný formát',
         ];
     }
 }

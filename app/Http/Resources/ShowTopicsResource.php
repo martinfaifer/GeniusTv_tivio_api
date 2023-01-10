@@ -7,7 +7,6 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ShowTopicsResource extends JsonResource
 {
-
     public $result = [];
 
     /**
@@ -23,8 +22,8 @@ class ShowTopicsResource extends JsonResource
             $this->result[] = [
                 'id' => $topic->id,
                 'title' => $topic->title,
-                'text' => substr($topic->text, 0, 100). " ...",
-                'author' => $topic->author->name
+                'text' => substr($topic->text, 0, 100).' ...',
+                'author' => $topic->author->name,
             ];
         }
 

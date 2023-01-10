@@ -25,17 +25,17 @@ class AdminLoginRequest extends FormRequest
     {
         return [
             'email' => ['required', 'exists:users,email', 'email'],
-            'password' => ['required']
+            'password' => ['required'],
         ];
     }
 
     public function messages()
     {
         return [
-            'email.required' => "Vyplňte email",
-            'email.exists' => "Neplatný email",
-            'email.email' => "Neplatný formát",
-            'password.required' => "Vyplňte heslo"
+            'email.required' => 'Vyplňte email',
+            'email.exists' => 'Neplatný email',
+            'email.email' => 'Neplatný formát',
+            'password.required' => 'Vyplňte heslo',
         ];
     }
 }

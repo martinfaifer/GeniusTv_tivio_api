@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             AppCategorySeed::class,
-            UserSeed::class
+            UserSeed::class,
         ]);
     }
 }

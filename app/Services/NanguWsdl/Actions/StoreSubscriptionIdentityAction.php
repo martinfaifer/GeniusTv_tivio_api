@@ -15,7 +15,7 @@ class StoreSubscriptionIdentityAction
         SubscriptionIdentity::create([
             'identityId' => $this->identityId,
             'username' => $this->username,
-            'subscriptionId' => $this->subscriptionId
+            'subscriptionId' => $this->subscriptionId,
         ]);
     }
 }

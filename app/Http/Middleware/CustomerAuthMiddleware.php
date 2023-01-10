@@ -17,7 +17,7 @@ class CustomerAuthMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!Sessions::where('payload', 'like', "%" . $request->mac . "," . $request->identity)->first()) {
+        if (! Sessions::where('payload', 'like', '%'.$request->mac.','.$request->identity)->first()) {
             return abort(401);
         }
 

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Bus\DispatchesJobs;
 use App\Events\BroadcastFrontEndNotificationEvent;
-use Illuminate\Routing\Controller as BaseController;
-use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 
 class Controller extends BaseController
@@ -15,28 +15,30 @@ class Controller extends BaseController
 
     public function success_message(string $message, null|string $payload = null): array
     {
-        $this->send_broadcast_notification("success", $message);
+        $this->send_broadcast_notification('success', $message);
+
         return [
-            'status' => "success",
+            'status' => 'success',
             'message' => $message,
-            'payload' => $payload
+            'payload' => $payload,
         ];
     }
 
     public function error_message(string $message): array
     {
-        $this->send_broadcast_notification("error", $message);
+        $this->send_broadcast_notification('error', $message);
+
         return [
-            'status' => "error",
-            'message' => $message
+            'status' => 'error',
+            'message' => $message,
         ];
     }
 
     public function warning(string $message)
     {
         return [
-            'status' => "warning",
-            'message' => $message
+            'status' => 'warning',
+            'message' => $message,
         ];
     }
 

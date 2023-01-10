@@ -4,8 +4,6 @@ namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
@@ -31,7 +29,7 @@ class BroadcastReloadApplicationsContentEvent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('realoadApps_'. $this->user->id);
+        return new Channel('realoadApps_'.$this->user->id);
     }
 
     public function broadcastWith()

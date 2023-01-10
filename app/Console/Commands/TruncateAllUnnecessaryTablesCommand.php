@@ -5,9 +5,9 @@ namespace App\Console\Commands;
 use App\Models\Stb;
 use App\Models\Subscriber;
 use App\Models\Subscription;
-use Illuminate\Console\Command;
 use App\Models\SubscriptionAccount;
 use App\Models\SubscriptionIdentity;
+use Illuminate\Console\Command;
 
 class TruncateAllUnnecessaryTablesCommand extends Command
 {

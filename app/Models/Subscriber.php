@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Subscriber extends Model
 {
     protected $fillable = [
-        'subscriberCode', 'ispId'
+        'subscriberCode', 'ispId',
     ];
 
     public function subscriptions(): HasMany

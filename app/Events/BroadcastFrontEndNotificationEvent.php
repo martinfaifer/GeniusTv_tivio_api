@@ -3,13 +3,10 @@
 namespace App\Events;
 
 use Illuminate\Broadcasting\Channel;
-use Illuminate\Queue\SerializesModels;
-use Illuminate\Broadcasting\PrivateChannel;
-use Illuminate\Broadcasting\PresenceChannel;
-use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
+use Illuminate\Foundation\Events\Dispatchable;
+use Illuminate\Queue\SerializesModels;
 
 class BroadcastFrontEndNotificationEvent implements ShouldBroadcastNow
 {
@@ -32,14 +29,14 @@ class BroadcastFrontEndNotificationEvent implements ShouldBroadcastNow
      */
     public function broadcastOn()
     {
-        return new Channel('UserNotification_' . $this->userId);
+        return new Channel('UserNotification_'.$this->userId);
     }
 
     public function broadcastWith()
     {
         return [
             'status' => $this->status,
-            'message' => $this->message
+            'message' => $this->message,
         ];
     }
 }

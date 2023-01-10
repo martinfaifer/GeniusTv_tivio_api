@@ -25,7 +25,7 @@ class User extends Authenticatable
         'identity',
         'mac',
         'isAdmin',
-        'nangu_isp'
+        'nangu_isp',
     ];
 
     /**
@@ -45,7 +45,7 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'isAdmin' => 'boolean'
+        'isAdmin' => 'boolean',
     ];
 
     public function topics(): HasMany

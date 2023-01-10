@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\NanguWsdl\Subscriptions\NanguWsdlDeleteSubscriptionDeviceService;
-use Illuminate\Http\Request;
 use App\Actions\Subscriptions\FindSubscriptionByStbMacAction;
+use App\Services\NanguWsdl\Subscriptions\NanguWsdlDeleteSubscriptionDeviceService;
 use App\Services\NanguWsdl\Subscriptions\NanguWsdlShowSubscriptionInfoService;
 
 class SubscriptionDeviceController extends Controller
@@ -27,12 +26,12 @@ class SubscriptionDeviceController extends Controller
     {
         return (new NanguWsdlDeleteSubscriptionDeviceService('subscription'))->delete($subscriptionCode, $deviceId) == true
             ? [
-                'status' => "success",
-                'message' => "Zařízení odebráno"
+                'status' => 'success',
+                'message' => 'Zařízení odebráno',
             ]
             : [
-                'status' => "error",
-                'message' => "Zařízení se nepodařilo odebrat nebo neexistuje"
+                'status' => 'error',
+                'message' => 'Zařízení se nepodařilo odebrat nebo neexistuje',
             ];
     }
 }

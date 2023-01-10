@@ -2,15 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Topic;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Actions\Admin\Topics\StoreTopicAction;
+use App\Actions\Admin\Topics\UpdateTopicAction;
 use App\Http\Requests\StoreTopicRequest;
 use App\Http\Requests\UpdateTopicRequest;
 use App\Http\Resources\ShowTopicResource;
 use App\Http\Resources\ShowTopicsResource;
-use App\Actions\Admin\Topics\StoreTopicAction;
-use App\Actions\Admin\Topics\UpdateTopicAction;
+use App\Models\Topic;
+use Illuminate\Support\Facades\Auth;
 
 class TopicController extends Controller
 {
@@ -32,20 +31,21 @@ class TopicController extends Controller
     public function store(StoreTopicRequest $request, StoreTopicAction $storeTopicAction)
     {
         return $storeTopicAction->execute($request->title, $request->text) == true
-            ? $this->success_message("Článek vytvořen")
-            : $this->error_message("Nepodařilo se vytvořit článek");
+            ? $this->success_message('Článek vytvořen')
+            : $this->error_message('Nepodařilo se vytvořit článek');
     }
 
     public function update(UpdateTopicRequest $request, Topic $topic, UpdateTopicAction $updateTopicAction)
     {
         return $updateTopicAction->execute($topic, $request->title, $request->text) == true
-            ? $this->success_message("Upraveno")
+            ? $this->success_message('Upraveno')
             : $this->error_message('Nepodařilo se upravit');
     }
 
     public function destroy(Topic $topic)
     {
         $topic->delete();
-        return $this->success_message("Odebráno");
+
+        return $this->success_message('Odebráno');
     }
 }

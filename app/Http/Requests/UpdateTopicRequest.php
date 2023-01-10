@@ -24,20 +24,20 @@ class UpdateTopicRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => ['required', 'string', 'max:255', 'unique:topics,title,' . $this->topic->id],
-            'text' => ['required', 'string']
+            'title' => ['required', 'string', 'max:255', 'unique:topics,title,'.$this->topic->id],
+            'text' => ['required', 'string'],
         ];
     }
 
     public function messages()
     {
         return [
-            'title.required' => "Vyplňte titulek",
-            'title.string' => "Neplatný formát",
-            'title.max' => "Maximální počet znaků je 255",
-            'title.unique' => "Článek s tímto titulkem již existuje",
-            'text.required' => "Nesmí být prázdné",
-            'text.string' => "Neplatný formát"
+            'title.required' => 'Vyplňte titulek',
+            'title.string' => 'Neplatný formát',
+            'title.max' => 'Maximální počet znaků je 255',
+            'title.unique' => 'Článek s tímto titulkem již existuje',
+            'text.required' => 'Nesmí být prázdné',
+            'text.string' => 'Neplatný formát',
         ];
     }
 }

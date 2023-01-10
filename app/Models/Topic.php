@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Topic extends Model
 {
     protected $fillable = [
-        'title', 'text', 'user_id'
+        'title', 'text', 'user_id',
     ];
 
     public function author(): BelongsTo

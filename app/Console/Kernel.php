@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('tables:truncate')->daily();
-        $schedule->command('nangu:get_all_customers_data')->runInBackground()->daily("04:30");
+        $schedule->command('nangu:get_all_customers_data')->runInBackground()->daily('04:30');
     }
 
     /**

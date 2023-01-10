@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Stb extends Model
 {
     protected $fillable = [
-        'mac', 'subscriptionId', 'stb_type'
+        'mac', 'subscriptionId', 'stb_type',
     ];
 
     public function subscription(): BelongsTo

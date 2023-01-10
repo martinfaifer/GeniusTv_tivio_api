@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Services\NanguWsdl\Actions;
 
 use App\Models\Stb;
@@ -15,7 +16,7 @@ class StoreStbAction
         Stb::create([
             'mac' => $this->mac,
             'stb_type' => $this->stbType,
-            'subscriptionId' => $this->subscriptionId
+            'subscriptionId' => $this->subscriptionId,
         ]);
     }
 }

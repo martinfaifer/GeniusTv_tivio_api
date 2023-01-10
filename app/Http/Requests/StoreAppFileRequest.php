@@ -24,20 +24,20 @@ class StoreAppFileRequest extends FormRequest
     public function rules()
     {
         return [
-            'file' => ["required"],
+            'file' => ['required'],
             'description' => ['nullable', 'string', 'max:255'],
-            'app_category_id' => ['required', 'exists:app_categories,id']
+            'app_category_id' => ['required', 'exists:app_categories,id'],
         ];
     }
 
     public function messages()
     {
         return [
-            'file.required' => "Nahrajte soubor",
-            'description.string' => "Neplatný formát",
-            'description.max' => "Maximální počet znaků je 255",
-            'app_category_id.required' => "Vyberte kategorii",
-            'app_category_id.exists' => "Nexxistující kategorie"
+            'file.required' => 'Nahrajte soubor',
+            'description.string' => 'Neplatný formát',
+            'description.max' => 'Maximální počet znaků je 255',
+            'app_category_id.required' => 'Vyberte kategorii',
+            'app_category_id.exists' => 'Nexxistující kategorie',
         ];
     }
 }

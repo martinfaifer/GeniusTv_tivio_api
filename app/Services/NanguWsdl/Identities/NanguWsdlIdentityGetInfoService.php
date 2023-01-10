@@ -12,19 +12,19 @@ class NanguWsdlIdentityGetInfoService extends NanguWsdlService
             'identityId' => $identityId,
         ];
 
-        if(!is_null($ispCode)) {
+        if (! is_null($ispCode)) {
             $requestArray['ispCode'] = $ispCode;
         }
 
-        $params = array('getInfo' => $requestArray);
+        $params = ['getInfo' => $requestArray];
         $data = $this->soap->__soapCall('getInfo', $params);
         $wsdlResult = json_decode(json_encode($data), true);
 
-        if (!array_key_exists("subscriptionStbAccounts", $wsdlResult)) {
+        if (! array_key_exists('subscriptionStbAccounts', $wsdlResult)) {
             return false;
         }
 
-        if (array_key_exists("subscriptionStbAccountCode", $wsdlResult['subscriptionStbAccounts'])) {
+        if (array_key_exists('subscriptionStbAccountCode', $wsdlResult['subscriptionStbAccounts'])) {
             return $wsdlResult['subscriptionStbAccounts']['subscriptionStbAccountCode'];
         }
 

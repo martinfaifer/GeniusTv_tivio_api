@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeed extends Seeder
 {
@@ -17,10 +16,10 @@ class UserSeed extends Seeder
     {
         try {
             User::create([
-                'name' => "Martin",
-                'email' => "faifer@grapesc.cz",
+                'name' => 'Martin',
+                'email' => 'faifer@grapesc.cz',
                 'password' => bcrypt('1122334455'),
-                'isAdmin' => true
+                'isAdmin' => true,
             ]);
         } catch (\Throwable $th) {
             //throw $th;

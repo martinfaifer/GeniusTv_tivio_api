@@ -15,7 +15,7 @@ class StoreSubsciptionAccountCodeAction
     {
         SubscriptionAccount::create([
             'subscriptionStbAccountCode' => $this->subscriptionStbAccountCode,
-            'subscriptionId' => $this->subscriptionId
+            'subscriptionId' => $this->subscriptionId,
         ]);
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Services\NanguWsdl\Stbs;
 
 use App\Models\Subscription;
-use App\Services\NanguWsdl\NanguWsdlService;
 use App\Services\NanguWsdl\Actions\StoreStbAction;
+use App\Services\NanguWsdl\NanguWsdlService;
 
 class NanguWsdlStbService extends NanguWsdlService
 {
@@ -14,12 +14,11 @@ class NanguWsdlStbService extends NanguWsdlService
 
         foreach ($subscriptions as $subscription) {
             // try {
-            echo $subscription->id . PHP_EOL;
+            echo $subscription->id.PHP_EOL;
             foreach ($subscription->subscriptionAccounts as $subscriptionAccount) {
-
-                echo $subscription->subscriptionCode . PHP_EOL;
+                echo $subscription->subscriptionCode.PHP_EOL;
                 // dd($subscriptionAccount->subscriptionStbAccountCode);
-                $params = array('subscriptionCode' => array('subscriptionCode' => $subscription->subscriptionCode, 'subscriptionStbAccountCode' =>  $subscriptionAccount->subscriptionStbAccountCode, 'ispCode' => $subscription->subscriber->ispId));
+                $params = ['subscriptionCode' => ['subscriptionCode' => $subscription->subscriptionCode, 'subscriptionStbAccountCode' => $subscriptionAccount->subscriptionStbAccountCode, 'ispCode' => $subscription->subscriber->ispId]];
                 $data = $this->soap->__soapCall('getStbInfo', $params);
                 $wsdlResult = json_decode(json_encode($data), true);
                 if (array_key_exists('stb', $wsdlResult)) {

@@ -9,8 +9,9 @@ class UpdateTopicAction
         try {
             $topic->update([
                 'title' => $title,
-                'text' => $text
+                'text' => $text,
             ]);
+
             return true;
         } catch (\Throwable $th) {
             return false;

@@ -10,6 +10,7 @@ class DeleteUserAction
     {
         if (Auth::user()->id != $user->id) {
             $user->delete();
+
             return true;
         }
 

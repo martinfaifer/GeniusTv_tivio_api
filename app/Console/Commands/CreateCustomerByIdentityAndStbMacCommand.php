@@ -3,9 +3,9 @@
 namespace App\Console\Commands;
 
 use App\Models\Stb;
+use App\Models\SubscriptionIdentity;
 use App\Models\User;
 use Illuminate\Console\Command;
-use App\Models\SubscriptionIdentity;
 
 class CreateCustomerByIdentityAndStbMacCommand extends Command
 {
@@ -30,7 +30,7 @@ class CreateCustomerByIdentityAndStbMacCommand extends Command
      */
     public function handle()
     {
-        User::where('mac', "!=", null)->delete();
+        User::where('mac', '!=', null)->delete();
 
         $identities = SubscriptionIdentity::get();
         foreach ($identities as $identity) {
@@ -40,9 +40,9 @@ class CreateCustomerByIdentityAndStbMacCommand extends Command
                     User::create([
                         'name' => $stb->mac,
                         'mac' => $stb->mac,
-                        'email' => $stb->mac . "@geniustv.cz",
+                        'email' => $stb->mac.'@geniustv.cz',
                         'password' => bcrypt($identity->username),
-                        'identity' => $identity->id
+                        'identity' => $identity->id,
                     ]);
                 } catch (\Throwable $th) {
                     //throw $th;

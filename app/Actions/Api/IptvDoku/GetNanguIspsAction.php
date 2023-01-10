@@ -8,8 +8,7 @@ class GetNanguIspsAction
 {
     public function execute()
     {
-        return Http
-            ::withBasicAuth(config('app.iptv_doku_username'), config('app.iptv_doku_password'))
-            ->get(config('app.iptv_doku_api') . "v1/nangu/isps")->json();
+        return Http::withBasicAuth(config('app.iptv_doku_username'), config('app.iptv_doku_password'))
+            ->get(config('app.iptv_doku_api').'v1/nangu/isps')->json();
     }
 }

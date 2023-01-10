@@ -24,7 +24,7 @@ class TivioBySubscriptionCodeRequest extends FormRequest
     public function rules()
     {
         return [
-            'subscriptionCode' => ['required', 'string', 'max:255', 'exists:subscriptions,subscriptionCode']
+            'subscriptionCode' => ['required', 'string', 'max:255', 'exists:subscriptions,subscriptionCode'],
         ];
     }
 }
