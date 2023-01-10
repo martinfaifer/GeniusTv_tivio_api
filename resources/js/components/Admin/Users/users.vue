@@ -63,6 +63,13 @@
                                         </td>
                                         <td>
                                             <v-icon
+                                                color="green"
+                                                class="mx-auto"
+                                                @click="openEditDialog(user)"
+                                                >mdi-pencil</v-icon
+                                            >
+
+                                            <v-icon
                                                 color="red"
                                                 @click="
                                                     openWarningDialog(user.id)
@@ -167,6 +174,96 @@
                     </v-card>
                 </v-dialog>
 
+                <v-dialog v-model="editDialog" persistent max-width="600px">
+                    <v-card rounded="lg">
+                        <v-container fluid class="mt-3">
+                            <v-row>
+                                <v-col cols="12" sm="12" md="12" lg="12">
+                                    <v-text-field
+                                        autofocus
+                                        density="compact"
+                                        variant="outlined"
+                                        label="Jméno uživatele"
+                                        readonly
+                                        disabled
+                                        required
+                                        v-model="formData.name"
+                                        :error-messages="errors.name"
+                                    ></v-text-field>
+                                </v-col>
+                                <v-col cols="12" sm="12" md="12" lg="12">
+                                    <v-text-field
+                                        density="compact"
+                                        variant="outlined"
+                                        label="Email uživatele"
+                                        readonly
+                                        disabled
+                                        required
+                                        v-model="formData.email"
+                                        :error-messages="errors.email"
+                                    ></v-text-field>
+                                </v-col>
+                                <v-col cols="12" sm="12" md="6" lg="6">
+                                    <v-text-field
+                                        type="password"
+                                        density="compact"
+                                        variant="outlined"
+                                        label="Nové heslo"
+                                        required
+                                        v-model="formData.password"
+                                        :error-messages="errors.password"
+                                    ></v-text-field>
+                                </v-col>
+                                <v-col cols="12" sm="12" md="6" lg="6">
+                                    <v-text-field
+                                        type="password"
+                                        density="compact"
+                                        variant="outlined"
+                                        label="Nové heslo pro ověření"
+                                        required
+                                        v-model="formData.check_password"
+                                        :error-messages="errors.check_password"
+                                    ></v-text-field>
+                                </v-col>
+                                <v-col cols="12" sm="12" md="12" lg="12">
+                                    <v-checkbox
+                                        density="compact"
+                                        variant="outlined"
+                                        label="Je admin?"
+                                        required
+                                        v-model="formData.isAdmin"
+                                        :error-messages="errors.isAdmim"
+                                    ></v-checkbox>
+                                </v-col>
+                            </v-row>
+                        </v-container>
+
+                        <v-container fluid class="mt-n6">
+                            <v-row>
+                                <v-btn
+                                    prepend-icon="mdi-close"
+                                    class="mx-7 mb-3"
+                                    rounded="lg"
+                                    color="red-darken-1"
+                                    @click="closeDialog()"
+                                >
+                                    Zavřít
+                                </v-btn>
+                                <v-spacer></v-spacer>
+                                <v-btn
+                                    prepend-icon="mdi-pencil"
+                                    class="mx-7 mb-3"
+                                    rounded="lg"
+                                    color="green-darken-1"
+                                    @click="updateUser()"
+                                >
+                                    Uložit
+                                </v-btn>
+                            </v-row>
+                        </v-container>
+                    </v-card>
+                </v-dialog>
+
                 <v-dialog v-model="warningDialog" persistent max-width="600px">
                     <v-card rounded="lg">
                         <v-container fluid>
@@ -236,6 +333,7 @@ export default {
             nanguIsps: [],
             createUserDialog: false,
             warningDialog: false,
+            editDialog: false,
         };
     },
     components: {},
@@ -281,6 +379,7 @@ export default {
             this.nanguIsps = [];
             this.createUserDialog = false;
             this.warningDialog = false;
+            this.editDialog = false;
         },
 
         openCreateUserDialog() {
@@ -290,6 +389,29 @@ export default {
                 }
                 this.createUserDialog = true;
             });
+        },
+
+        openEditDialog(user) {
+            this.editDialog = true;
+            this.formData = user;
+        },
+
+        updateUser() {
+            axios
+                .patch("admin/genius/users/" + this.formData.id, {
+                    password: this.formData.password,
+                    check_password: this.formData.check_password,
+                    isAdmin: this.formData.isAdmin,
+                })
+                .then((response) => {
+                    if (response.data.status == "success") {
+                        this.index();
+                        this.closeDialog();
+                    }
+                })
+                .catch((error) => {
+                    this.errors = error.response.data.errors;
+                });
         },
 
         openWarningDialog(userId) {

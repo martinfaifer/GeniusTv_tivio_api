@@ -19,7 +19,7 @@
                                     <img
                                         src="images/logo_grape_genius_tv_300x300_px.png"
                                         loading="lazy"
-                                        width="48"
+                                        width="100"
                                         alt=""
                                         class=""
                                     />
@@ -56,8 +56,41 @@
                                         "
                                     ></v-text-field>
                                 </v-col>
+                                <v-col
+                                    v-if="nanguIsps.length != 0"
+                                    cols="12"
+                                    sm="12"
+                                    md="12"
+                                >
+                                    <v-alert
+                                        type="warning"
+                                        title="Nepodařilo se přihlásit"
+                                        text="Prosím vyberte svého poskytovatele IPTV."
+                                        rounded="md"
+                                        class="overflow-hidden warning-shadow-blur"
+                                    >
+                                    </v-alert>
+                                </v-col>
+                                <v-col
+                                    v-if="nanguIsps.length != 0"
+                                    cols="12"
+                                    sm="12"
+                                    md="12"
+                                >
+                                    <v-autocomplete
+                                        :items="nanguIsps"
+                                        item-title="nangu_isp"
+                                        item-value="nangu_isp_id"
+                                        density="compact"
+                                        variant="outlined"
+                                        label="Vyberte poskytovatele služby"
+                                        v-model="formInputData.nanguIsp"
+                                        :error-messages="errors.nanguIsp"
+                                    ></v-autocomplete>
+                                </v-col>
                                 <v-col cols="12" sm="12" md="12">
                                     <v-btn
+                                        :loading="loading"
                                         variant="flat"
                                         color="#AB1A19"
                                         block
@@ -89,27 +122,45 @@ import axios from "axios";
 export default {
     data() {
         return {
+            loading: false,
             currSnackBar: false,
             serverResponse: [],
             timeout: 5000,
             errors: [],
             formInputData: [],
             alert: false,
+            nanguIsps: [],
+            customerData: [],
         };
     },
 
     components: {},
     created() {
-        // this.index();
+        this.index();
     },
     methods: {
+        async index() {
+            await axios.get("customer").then((response) => {
+                this.customerData = response.data;
+
+                if (this.customerData != "") {
+                    this.$router.push({ name: "Customer" });
+                }
+            });
+        },
         LoginCustomer() {
+            this.loading = true;
             axios
                 .post("login", {
                     identity_username: this.formInputData.identity_username,
                     identity_password: this.formInputData.identity_password,
+                    ispCode:
+                        this.formInputData.nanguIsp == undefined
+                            ? null
+                            : this.formInputData.nanguIsp,
                 })
                 .then((response) => {
+                    this.loading = false;
                     this.serverResponse = response.data;
                     if (response.data.status == "error") {
                         this.currSnackBar = true;
@@ -117,6 +168,8 @@ export default {
                         setTimeout(() => {
                             this.resetVars();
                         }, 6000);
+                    } else if (response.data.status == "warning") {
+                        this.getIsps();
                     } else {
                         this.serverResponse = response.data;
                         this.$router.push(response.data.payload);
@@ -127,8 +180,15 @@ export default {
                 });
         },
 
+        getIsps() {
+            axios.get("iptv/isps").then((response) => {
+                this.nanguIsps = response.data.data;
+            });
+        },
+
         resetVars() {
             this.serverResponse = [];
+            this.nanguIsps = [];
             this.currSnackBar = false;
         },
     },

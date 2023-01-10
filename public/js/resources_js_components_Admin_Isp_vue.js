@@ -385,7 +385,8 @@ __webpack_require__.r(__webpack_exports__);
       users: [],
       nanguIsps: [],
       createUserDialog: false,
-      warningDialog: false
+      warningDialog: false,
+      editDialog: false
     };
   },
   components: {},
@@ -426,6 +427,7 @@ __webpack_require__.r(__webpack_exports__);
       this.nanguIsps = [];
       this.createUserDialog = false;
       this.warningDialog = false;
+      this.editDialog = false;
     },
     openCreateUserDialog: function openCreateUserDialog() {
       var _this3 = this;
@@ -436,15 +438,34 @@ __webpack_require__.r(__webpack_exports__);
         _this3.createUserDialog = true;
       });
     },
+    openEditDialog: function openEditDialog(user) {
+      this.editDialog = true;
+      this.formData = user;
+    },
+    updateUser: function updateUser() {
+      var _this4 = this;
+      axios__WEBPACK_IMPORTED_MODULE_1__["default"].patch("admin/genius/users/" + this.formData.id, {
+        password: this.formData.password,
+        check_password: this.formData.check_password,
+        isAdmin: this.formData.isAdmin
+      }).then(function (response) {
+        if (response.data.status == "success") {
+          _this4.index();
+          _this4.closeDialog();
+        }
+      })["catch"](function (error) {
+        _this4.errors = error.response.data.errors;
+      });
+    },
     openWarningDialog: function openWarningDialog(userId) {
       this.formData.userId = userId;
       this.warningDialog = true;
     },
     deleteUser: function deleteUser() {
-      var _this4 = this;
+      var _this5 = this;
       axios__WEBPACK_IMPORTED_MODULE_1__["default"]["delete"]("admin/genius/users/" + this.formData.userId).then(function (response) {
-        _this4.closeDialog();
-        _this4.index();
+        _this5.closeDialog();
+        _this5.index();
       });
     }
   },
@@ -469,6 +490,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
+    user: Object,
     apps: Array,
     filterString: String,
     headText: String
@@ -665,8 +687,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         onReloadapps: $options.reloadAllApps,
                         apps: $data.apps,
                         filterString: "diagnostic",
-                        headText: "Diagnostické aplikace"
-                      }, null, 8 /* PROPS */, ["onReloadapps", "apps"])];
+                        headText: "Diagnostické aplikace",
+                        user: $props.user
+                      }, null, 8 /* PROPS */, ["onReloadapps", "apps", "user"])];
                     }),
                     _: 1 /* STABLE */
                   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
@@ -680,8 +703,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         onReloadapps: $options.reloadAllApps,
                         apps: $data.apps,
                         filterString: "TV",
-                        headText: "Samsung TV aplikace"
-                      }, null, 8 /* PROPS */, ["onReloadapps", "apps"])];
+                        headText: "Samsung TV aplikace",
+                        user: $props.user
+                      }, null, 8 /* PROPS */, ["onReloadapps", "apps", "user"])];
                     }),
                     _: 1 /* STABLE */
                   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
@@ -695,8 +719,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         onReloadapps: $options.reloadAllApps,
                         apps: $data.apps,
                         filterString: "androidTV",
-                        headText: "Android TV aplikace"
-                      }, null, 8 /* PROPS */, ["onReloadapps", "apps"])];
+                        headText: "Android TV aplikace",
+                        user: $props.user
+                      }, null, 8 /* PROPS */, ["onReloadapps", "apps", "user"])];
                     }),
                     _: 1 /* STABLE */
                   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
@@ -710,8 +735,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         onReloadapps: $options.reloadAllApps,
                         apps: $data.apps,
                         filterString: "androidMobile",
-                        headText: "Android mobile aplikace"
-                      }, null, 8 /* PROPS */, ["onReloadapps", "apps"])];
+                        headText: "Android mobile aplikace",
+                        user: $props.user
+                      }, null, 8 /* PROPS */, ["onReloadapps", "apps", "user"])];
                     }),
                     _: 1 /* STABLE */
                   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
@@ -725,8 +751,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         onReloadapps: $options.reloadAllApps,
                         apps: $data.apps,
                         filterString: "LGTV",
-                        headText: "LG TV aplikace"
-                      }, null, 8 /* PROPS */, ["onReloadapps", "apps"])];
+                        headText: "LG TV aplikace",
+                        user: $props.user
+                      }, null, 8 /* PROPS */, ["onReloadapps", "apps", "user"])];
                     }),
                     _: 1 /* STABLE */
                   })];
@@ -1697,6 +1724,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                               }),
                               _: 1 /* STABLE */
                             }))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(user.nangu_isp), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_icon, {
+                              color: "green",
+                              "class": "mx-auto",
+                              onClick: function onClick($event) {
+                                return $options.openEditDialog(user);
+                              }
+                            }, {
+                              "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("mdi-pencil")];
+                              }),
+                              _: 2 /* DYNAMIC */
+                            }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["onClick"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_icon, {
                               color: "red",
                               onClick: function onClick($event) {
                                 return $options.openWarningDialog(user.id);
@@ -1904,8 +1942,192 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
             _: 1 /* STABLE */
           }, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_dialog, {
+            modelValue: $data.editDialog,
+            "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
+              return $data.editDialog = $event;
+            }),
+            persistent: "",
+            "max-width": "600px"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
+                rounded: "lg"
+              }, {
+                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_container, {
+                    fluid: "",
+                    "class": "mt-3"
+                  }, {
+                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, null, {
+                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                            cols: "12",
+                            sm: "12",
+                            md: "12",
+                            lg: "12"
+                          }, {
+                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+                                autofocus: "",
+                                density: "compact",
+                                variant: "outlined",
+                                label: "Jméno uživatele",
+                                readonly: "",
+                                disabled: "",
+                                required: "",
+                                modelValue: $data.formData.name,
+                                "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
+                                  return $data.formData.name = $event;
+                                }),
+                                "error-messages": $data.errors.name
+                              }, null, 8 /* PROPS */, ["modelValue", "error-messages"])];
+                            }),
+                            _: 1 /* STABLE */
+                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                            cols: "12",
+                            sm: "12",
+                            md: "12",
+                            lg: "12"
+                          }, {
+                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+                                density: "compact",
+                                variant: "outlined",
+                                label: "Email uživatele",
+                                readonly: "",
+                                disabled: "",
+                                required: "",
+                                modelValue: $data.formData.email,
+                                "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
+                                  return $data.formData.email = $event;
+                                }),
+                                "error-messages": $data.errors.email
+                              }, null, 8 /* PROPS */, ["modelValue", "error-messages"])];
+                            }),
+                            _: 1 /* STABLE */
+                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                            cols: "12",
+                            sm: "12",
+                            md: "6",
+                            lg: "6"
+                          }, {
+                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+                                type: "password",
+                                density: "compact",
+                                variant: "outlined",
+                                label: "Nové heslo",
+                                required: "",
+                                modelValue: $data.formData.password,
+                                "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+                                  return $data.formData.password = $event;
+                                }),
+                                "error-messages": $data.errors.password
+                              }, null, 8 /* PROPS */, ["modelValue", "error-messages"])];
+                            }),
+                            _: 1 /* STABLE */
+                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                            cols: "12",
+                            sm: "12",
+                            md: "6",
+                            lg: "6"
+                          }, {
+                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_text_field, {
+                                type: "password",
+                                density: "compact",
+                                variant: "outlined",
+                                label: "Nové heslo pro ověření",
+                                required: "",
+                                modelValue: $data.formData.check_password,
+                                "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
+                                  return $data.formData.check_password = $event;
+                                }),
+                                "error-messages": $data.errors.check_password
+                              }, null, 8 /* PROPS */, ["modelValue", "error-messages"])];
+                            }),
+                            _: 1 /* STABLE */
+                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+                            cols: "12",
+                            sm: "12",
+                            md: "12",
+                            lg: "12"
+                          }, {
+                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_checkbox, {
+                                density: "compact",
+                                variant: "outlined",
+                                label: "Je admin?",
+                                required: "",
+                                modelValue: $data.formData.isAdmin,
+                                "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+                                  return $data.formData.isAdmin = $event;
+                                }),
+                                "error-messages": $data.errors.isAdmim
+                              }, null, 8 /* PROPS */, ["modelValue", "error-messages"])];
+                            }),
+                            _: 1 /* STABLE */
+                          })];
+                        }),
+
+                        _: 1 /* STABLE */
+                      })];
+                    }),
+
+                    _: 1 /* STABLE */
+                  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_container, {
+                    fluid: "",
+                    "class": "mt-n6"
+                  }, {
+                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, null, {
+                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+                            "prepend-icon": "mdi-close",
+                            "class": "mx-7 mb-3",
+                            rounded: "lg",
+                            color: "red-darken-1",
+                            onClick: _cache[14] || (_cache[14] = function ($event) {
+                              return $options.closeDialog();
+                            })
+                          }, {
+                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Zavřít ")];
+                            }),
+                            _: 1 /* STABLE */
+                          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_spacer), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+                            "prepend-icon": "mdi-pencil",
+                            "class": "mx-7 mb-3",
+                            rounded: "lg",
+                            color: "green-darken-1",
+                            onClick: _cache[15] || (_cache[15] = function ($event) {
+                              return $options.updateUser();
+                            })
+                          }, {
+                            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Uložit ")];
+                            }),
+                            _: 1 /* STABLE */
+                          })];
+                        }),
+
+                        _: 1 /* STABLE */
+                      })];
+                    }),
+
+                    _: 1 /* STABLE */
+                  })];
+                }),
+
+                _: 1 /* STABLE */
+              })];
+            }),
+
+            _: 1 /* STABLE */
+          }, 8 /* PROPS */, ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_dialog, {
             modelValue: $data.warningDialog,
-            "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
+            "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
               return $data.warningDialog = $event;
             }),
             persistent: "",
@@ -1956,7 +2178,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             "class": "mx-7 mb-3",
                             rounded: "lg",
                             color: "red-darken-1",
-                            onClick: _cache[9] || (_cache[9] = function ($event) {
+                            onClick: _cache[17] || (_cache[17] = function ($event) {
                               return $options.closeDialog();
                             })
                           }, {
@@ -1976,7 +2198,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                             "class": "mx-7 mb-3",
                             rounded: "lg",
                             color: "green-darken-1",
-                            onClick: _cache[10] || (_cache[10] = function ($event) {
+                            onClick: _cache[18] || (_cache[18] = function ($event) {
                               return $options.deleteUser();
                             })
                           }, {
@@ -2089,7 +2311,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("mdi-download")];
                   }),
                   _: 1 /* STABLE */
-                })], 8 /* PROPS */, _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_icon, {
+                })], 8 /* PROPS */, _hoisted_3), $props.user.isAdmin == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_icon, {
+                  key: 0,
                   color: "red",
                   "class": "mx-auto",
                   onClick: function onClick($event) {
@@ -2100,7 +2323,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                     return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("mdi-delete")];
                   }),
                   _: 2 /* DYNAMIC */
-                }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["onClick"])])])), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, app.category == $props.filterString]]);
+                }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["onClick"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, app.category == $props.filterString]]);
               }), 128 /* KEYED_FRAGMENT */))])];
             }),
 

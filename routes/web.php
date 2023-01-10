@@ -14,15 +14,18 @@ use App\Http\Controllers\Admin\AdminAuthController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\FindSubscriptionController;
 use App\Http\Controllers\SubscriptionDeviceController;
-use App\Actions\Nangu\GraphQL\oAuth\NanguOAuthGraphQlAction;
 use App\Http\Controllers\API\ApiIptvDokuInvoiceController;
+use App\Actions\Nangu\GraphQL\oAuth\NanguOAuthGraphQlAction;
 use App\Http\Controllers\API\ApiIptvDokuNanguIspsController;
+use App\Services\NanguWsdl\Identities\NanguWsdlIdentitySearchService;
 
 Route::get('/', function () {
     return view('welcome');
 });
 Route::post('login', [CustomerAuthController::class, 'login']);
 Route::post('logout', [CustomerAuthController::class, 'logout']);
+Route::get('iptv/isps', ApiIptvDokuNanguIspsController::class);
+
 Route::get('user', ShowUserController::class);
 Route::prefix('customer')->group(function () {
     Route::get('', [CustomerAuthController::class, 'show']);
@@ -64,6 +67,7 @@ Route::prefix('admin')->group(function () {
         Route::prefix('users')->group(function () {
             Route::get('', [AdminUserController::class, 'index'])->middleware('isAdmin');
             Route::post('', [AdminUserController::class, 'store'])->middleware('isAdmin');
+            Route::patch('{user}', [AdminUserController::class, 'update'])->middleware('isAdmin');
             Route::delete('{user}', [AdminUserController::class, 'destroy'])->middleware('isAdmin');
             Route::get('nangu/isps', ApiIptvDokuNanguIspsController::class)->middleware('isAdmin');
         });
@@ -82,7 +86,8 @@ Route::get(
 
 
 
-
-Route::get('test', function () {
-    return (new NanguOAuthGraphQlAction())->execute();
-});
+// Route::get('test', function () {
+//     // 3483 for testing kabel1
+//     // 7205483030
+//     return (new NanguWsdlIdentitySearchService('identity'))->search('7205483030');
+// });

@@ -33,9 +33,9 @@ class CustomerAuthController extends Controller
         if (!array_key_exists('login', $oauthResponse)) {
             return $this->error_message("Nepodařilo se najít uživatele");
         }
-        $responseAction = $subscriptionLoginAction->execute($request->identity_username);
+        $responseAction = $subscriptionLoginAction->execute($request->identity_username, $request->ispCode);
         return $responseAction  == false
-            ? $this->error_message("Nepodařilo se najít uživatele")
+            ? $this->warning("Nepodařilo se najít uživatele, prosím specifikujte svého poskytovatele IPTV")
             : $this->success_message('Úspěšně přihlášeno', "/customer");
     }
 

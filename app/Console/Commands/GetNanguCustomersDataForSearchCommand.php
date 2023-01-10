@@ -50,6 +50,6 @@ class GetNanguCustomersDataForSearchCommand extends Command
         (new NanguWsdlIdentityService('subscription'))->get_and_store();
 
         // create users into this system
-        Artisan::call('geniusTv:createUser');
+        // Artisan::call('geniusTv:createUser');
     }
 }

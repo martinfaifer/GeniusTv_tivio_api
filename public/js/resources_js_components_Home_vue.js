@@ -112,14 +112,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // open login customer Dialog
     openLoginCustomerDialog: function openLoginCustomerDialog() {
-      if (this.customerData == "") {
-        this.customerLoginDialog = true;
-      } else {
-        this.userButtonLoading = true;
-        this.$router.push({
-          name: "Customer"
-        });
-      }
+      this.$router.push({
+        name: "CustomerLogin"
+      });
+      // if (this.customerData == "") {
+      //     this.customerLoginDialog = true;
+      // } else {
+      //     this.userButtonLoading = true;
+      //     this.$router.push({ name: "CustomerLogin" });
+      // }
     },
     goToTivio: function goToTivio() {
       var _this2 = this;

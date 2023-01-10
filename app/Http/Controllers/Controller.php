@@ -32,6 +32,14 @@ class Controller extends BaseController
         ];
     }
 
+    public function warning(string $message)
+    {
+        return [
+            'status' => "warning",
+            'message' => $message
+        ];
+    }
+
     private function send_broadcast_notification(string $status, string $message)
     {
         try {

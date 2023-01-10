@@ -13,7 +13,8 @@ class NanguWsdlService
         'billing' => 'billing/BillingEndpoint?wsdl',
         'subscription' => 'provisioning/SubscriptionEndpoint?wsdl',
         'subscriber' => 'provisioning/SubscriberEndpoint?wsdl',
-        'iptv' => 'iptv/IptvEndpoint?wsdl'
+        'iptv' => 'iptv/IptvEndpoint?wsdl',
+        'identity' => 'provisioning/IdentityEndpoint?wsdl'
     ];
 
     public $soap;
