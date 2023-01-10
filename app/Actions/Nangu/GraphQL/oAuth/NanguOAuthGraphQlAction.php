@@ -2,7 +2,9 @@
 
 namespace App\Actions\Nangu\GraphQL\oAuth;
 
+use App\Models\User;
 use Softonic\GraphQL\ClientBuilder;
+use App\Actions\Subscriptions\Auth\User\DeleteCustomerUserAction;
 
 class NanguOAuthGraphQlAction
 {
@@ -31,6 +33,7 @@ class NanguOAuthGraphQlAction
         $response = $client->query($mutation, $variables);
 
         if ($response->hasErrors()) {
+            (new DeleteCustomerUserAction())->execute($username);
             return $response->getErrors();
         } else {
             return $response->getData();
