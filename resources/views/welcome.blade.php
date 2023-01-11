@@ -3,6 +3,7 @@
 
 <head>
     <title>Genius TV</title>
+    <meta name="author" content="Martin Faifer">
     <meta content="Chytrá televize od Grape." name="description">
     <meta content="Genius TV" property="og:title">
     <meta content="Chytrá televize od Grape." property="og:description">
