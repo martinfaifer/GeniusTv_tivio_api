@@ -81,6 +81,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           _this2.$router.push(response.data.payload);
         }
       })["catch"](function (error) {
+        _this2.loading = false;
         _this2.errors = error.response.data.errors;
       });
     },
@@ -168,7 +169,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                   }, {
                     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                       return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card, {
-                        "class": "overflow-hidden rounded-lg blur shadow-blur-basic-card"
+                        style: {
+                          "background": "rgba(255, 255, 255, 0.75)",
+                          "box-shadow": "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+                          "backdrop-filter": "blur(4.5px)",
+                          "-webkit-backdrop-filter": "blur(4.5px)",
+                          "border-radius": "10px",
+                          "border": "1px solid rgba(255, 255, 255, 0.18)"
+                        }
                       }, {
                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_text, null, {

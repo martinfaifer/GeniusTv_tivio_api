@@ -12,7 +12,14 @@
                 <v-col cols="12" sm="12" md="6" lg="7">
                     <v-form @submit.prevent="LoginCustomer()">
                         <v-card
-                            class="overflow-hidden rounded-lg blur shadow-blur-basic-card"
+                            style="
+                                background: rgba(255, 255, 255, 0.75);
+                                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+                                backdrop-filter: blur(4.5px);
+                                -webkit-backdrop-filter: blur(4.5px);
+                                border-radius: 10px;
+                                border: 1px solid rgba(255, 255, 255, 0.18);
+                            "
                         >
                             <v-card-text>
                                 <v-col cols="12" class="d-flex justify-center">
