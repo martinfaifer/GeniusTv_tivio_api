@@ -17,22 +17,22 @@
                                 <BasicChannelImagesCard id="PLUS" headText="Balíček Plus" :channels="channels" searcheableText="Plus" headColor="#149FE3"></BasicChannelImagesCard>
                             </v-col>
                             <v-col cols="12">
-                                <BasicChannelImagesCard headText="balíček filmbox" :channels="channels" searcheableText="Filmbox" headColor="#149FE3"></BasicChannelImagesCard>
+                                <BasicChannelImagesCard id="filmbox" headText="balíček filmbox" :channels="channels" searcheableText="Filmbox" headColor="#149FE3"></BasicChannelImagesCard>
                             </v-col>
                             <v-col cols="12">
-                                <BasicChannelImagesCard headText="balíček hbo max" :channels="channels" searcheableText="MAX" headColor="#149FE3"></BasicChannelImagesCard>
+                                <BasicChannelImagesCard id="hbomax" headText="balíček hbo max" :channels="channels" searcheableText="MAX" headColor="#149FE3"></BasicChannelImagesCard>
                             </v-col>
                             <v-col cols="12">
-                                <BasicChannelImagesCard headText="balíček hbo" :channels="channels" searcheableText="HBO" exeptionText="Cinemax" headColor="#149FE3"></BasicChannelImagesCard>
+                                <BasicChannelImagesCard id="hbo" headText="balíček hbo" :channels="channels" searcheableText="HBO" exeptionText="Cinemax" headColor="#149FE3"></BasicChannelImagesCard>
                             </v-col>
                             <v-col cols="12">
-                                <BasicChannelImagesCard headText="balíček cinemax" :channels="channels" searcheableText="Cinemax" headColor="#149FE3"></BasicChannelImagesCard>
+                                <BasicChannelImagesCard id="cinemax" headText="balíček cinemax" :channels="channels" searcheableText="Cinemax" headColor="#149FE3"></BasicChannelImagesCard>
                             </v-col>
                             <v-col cols="12">
-                                <BasicChannelImagesCard headText="balíček sport" :channels="channels" searcheableText="Sport" headColor="#149FE3"></BasicChannelImagesCard>
+                                <BasicChannelImagesCard id="sport" headText="balíček sport" :channels="channels" searcheableText="Sport" headColor="#149FE3"></BasicChannelImagesCard>
                             </v-col>
                             <v-col cols="12">
-                                <BasicChannelImagesCard headText="balíček 4k UHD" :channels="channels" searcheableText="4K" headColor="#149FE3"></BasicChannelImagesCard>
+                                <BasicChannelImagesCard id="4k" headText="balíček 4k UHD" :channels="channels" searcheableText="4K" headColor="#149FE3"></BasicChannelImagesCard>
                             </v-col>
                         </v-row>
                     </v-container>

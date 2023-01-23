@@ -1,45 +1,47 @@
 <template>
     <div>
         <v-container fluid>
-            <v-app-bar color="transparent" flat>
-                <v-btn
-                    :loading="invoiceButtonLoading"
-                    v-if="user.nangu_isp != null"
-                    style="
-                        background: rgb(33, 150, 243);
-                        background: linear-gradient(
-                            188deg,
-                            rgba(33, 150, 243, 1) 0%,
-                            rgba(33, 150, 200, 1) 100%
-                        );
-                    "
-                    rounded="md"
-                    class="info-button-shadow-blur gradient-info-button text-white mx-4"
-                    @click="openInvoiceDialog()"
-                >
-                    Zobrazit vyúčtování
-                </v-btn>
-
-                <template v-slot:append>
-                    <v-btn
-                        v-if="user.isAdmin == true"
-                        style="
-                            background: rgb(93, 214, 28);
-                            background: linear-gradient(
-                                183deg,
-                                rgba(93, 214, 28, 1) 0%,
-                                rgba(14, 172, 175, 1) 100%
-                            );
-                        "
-                        rounded="md"
-                        class="success-shadow-blur gradient-green-button text-white"
-                        @click="openUploadDialog()"
-                    >
-                        Nahrát nový soubor
-                    </v-btn>
-                </template>
-            </v-app-bar>
             <v-row>
+                <v-col cols="12" sm="12" md="12" lg="12">
+                    <v-toolbar color="transparent" flat fixed>
+                        <v-btn
+                            :loading="invoiceButtonLoading"
+                            v-if="user.nangu_isp != null"
+                            style="
+                                background: rgb(33, 150, 243);
+                                background: linear-gradient(
+                                    188deg,
+                                    rgba(33, 150, 243, 1) 0%,
+                                    rgba(33, 150, 200, 1) 100%
+                                );
+                            "
+                            rounded="md"
+                            class="info-button-shadow-blur gradient-info-button text-white mx-4"
+                            @click="openInvoiceDialog()"
+                        >
+                            Zobrazit vyúčtování
+                        </v-btn>
+
+                        <template v-slot:append>
+                            <v-btn
+                                v-if="user.isAdmin == true"
+                                style="
+                                    background: rgb(93, 214, 28);
+                                    background: linear-gradient(
+                                        183deg,
+                                        rgba(93, 214, 28, 1) 0%,
+                                        rgba(14, 172, 175, 1) 100%
+                                    );
+                                "
+                                rounded="md"
+                                class="success-shadow-blur gradient-green-button text-white"
+                                @click="openUploadDialog()"
+                            >
+                                Nahrát nový soubor
+                            </v-btn>
+                        </template>
+                    </v-toolbar>
+                </v-col>
                 <v-col cols="12" sm="12" md="3" lg="3">
                     <News :user="user"></News>
                 </v-col>

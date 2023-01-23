@@ -502,9 +502,7 @@ __webpack_require__.r(__webpack_exports__);
     deleteItem: function deleteItem(itemId) {
       var _this = this;
       axios["delete"]("admin/apps/" + itemId).then(function (response) {
-        // if (response.data == "success") {
         _this.$emit("reloadapps", true);
-        // }
       });
     }
   }
@@ -592,9 +590,9 @@ var _hoisted_2 = {
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_v_btn = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-btn");
-  var _component_v_app_bar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-app-bar");
-  var _component_News = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("News");
+  var _component_v_toolbar = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-toolbar");
   var _component_v_col = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-col");
+  var _component_News = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("News");
   var _component_IspAppCard = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("IspAppCard");
   var _component_v_row = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-row");
   var _component_v_file_input = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("v-file-input");
@@ -611,51 +609,63 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     fluid: ""
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_app_bar, {
-        color: "transparent",
-        flat: ""
-      }, {
-        append: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [$props.user.isAdmin == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_btn, {
-            key: 0,
-            style: {
-              "background": "linear-gradient(\n                                183deg,\n                                rgba(93, 214, 28, 1) 0%,\n                                rgba(14, 172, 175, 1) 100%\n                            )"
-            },
-            rounded: "md",
-            "class": "success-shadow-blur gradient-green-button text-white",
-            onClick: _cache[1] || (_cache[1] = function ($event) {
-              return $options.openUploadDialog();
-            })
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nahrát nový soubor ")];
-            }),
-            _: 1 /* STABLE */
-          })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
-        }),
-        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [$props.user.nangu_isp != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_btn, {
-            key: 0,
-            loading: $data.invoiceButtonLoading,
-            style: {
-              "background": "linear-gradient(\n                            188deg,\n                            rgba(33, 150, 243, 1) 0%,\n                            rgba(33, 150, 200, 1) 100%\n                        )"
-            },
-            rounded: "md",
-            "class": "info-button-shadow-blur gradient-info-button text-white mx-4",
-            onClick: _cache[0] || (_cache[0] = function ($event) {
-              return $options.openInvoiceDialog();
-            })
-          }, {
-            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Zobrazit vyúčtování ")];
-            }),
-            _: 1 /* STABLE */
-          }, 8 /* PROPS */, ["loading"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
-        }),
-        _: 1 /* STABLE */
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, null, {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_row, null, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
+            cols: "12",
+            sm: "12",
+            md: "12",
+            lg: "12"
+          }, {
+            "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+              return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_toolbar, {
+                color: "transparent",
+                flat: "",
+                fixed: ""
+              }, {
+                append: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                  return [$props.user.isAdmin == true ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_btn, {
+                    key: 0,
+                    style: {
+                      "background": "linear-gradient(\n                                        183deg,\n                                        rgba(93, 214, 28, 1) 0%,\n                                        rgba(14, 172, 175, 1) 100%\n                                    )"
+                    },
+                    rounded: "md",
+                    "class": "success-shadow-blur gradient-green-button text-white",
+                    onClick: _cache[1] || (_cache[1] = function ($event) {
+                      return $options.openUploadDialog();
+                    })
+                  }, {
+                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Nahrát nový soubor ")];
+                    }),
+                    _: 1 /* STABLE */
+                  })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+                }),
+                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                  return [$props.user.nangu_isp != null ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_btn, {
+                    key: 0,
+                    loading: $data.invoiceButtonLoading,
+                    style: {
+                      "background": "linear-gradient(\n                                    188deg,\n                                    rgba(33, 150, 243, 1) 0%,\n                                    rgba(33, 150, 200, 1) 100%\n                                )"
+                    },
+                    rounded: "md",
+                    "class": "info-button-shadow-blur gradient-info-button text-white mx-4",
+                    onClick: _cache[0] || (_cache[0] = function ($event) {
+                      return $options.openInvoiceDialog();
+                    })
+                  }, {
+                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Zobrazit vyúčtování ")];
+                    }),
+                    _: 1 /* STABLE */
+                  }, 8 /* PROPS */, ["loading"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+                }),
+                _: 1 /* STABLE */
+              })];
+            }),
+
+            _: 1 /* STABLE */
+          }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_col, {
             cols: "12",
             sm: "12",
             md: "3",
@@ -2292,7 +2302,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_card_text, null, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
           return [$props.apps.length != 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_table, {
-            "fixed-header": ""
+            "fixed-header": "",
+            hover: "",
+            density: "comfortable"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
               return [_hoisted_2, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.apps, function (app) {

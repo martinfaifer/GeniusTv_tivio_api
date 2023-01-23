@@ -11,7 +11,7 @@
             </v-card-title>
             <v-card-text>
                 <div v-if="apps.length != 0">
-                    <v-table fixed-header>
+                    <v-table fixed-header hover density="comfortable">
                         <thead>
                             <tr>
                                 <th class="text-left">Název</th>
@@ -80,9 +80,7 @@ export default {
     methods: {
         deleteItem(itemId) {
             axios.delete("admin/apps/" + itemId).then((response) => {
-                // if (response.data == "success") {
                 this.$emit("reloadapps", true);
-                // }
             });
         },
     },

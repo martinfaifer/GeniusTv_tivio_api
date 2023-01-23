@@ -87,54 +87,75 @@
                                     >
                                         <v-row>
                                             <a
-                                                @click="scroll('plus')"
+                                                @click="scrollTo('PLUS')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
-                                                style="color: #283583"
+                                                style="
+                                                    color: #283583;
+                                                    cursor: pointer;
+                                                "
                                             >
                                                 PLUS
                                             </a>
                                             <a
-                                                @click="scroll('filmbox')"
+                                                @click="scrollTo('filmbox')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
-                                                style="color: #283583"
+                                                style="
+                                                    color: #283583;
+                                                    cursor: pointer;
+                                                "
                                             >
                                                 Filmbox
                                             </a>
                                             <a
-                                                @click="scroll('hbo')"
+                                                @click="scrollTo('hbo')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
-                                                style="color: #283583"
+                                                style="
+                                                    color: #283583;
+                                                    cursor: pointer;
+                                                "
                                             >
                                                 HBO
                                             </a>
 
                                             <a
-                                                @click="scroll('cinemax')"
+                                                @click="scrollTo('cinemax')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
-                                                style="color: #283583"
+                                                style="
+                                                    color: #283583;
+                                                    cursor: pointer;
+                                                "
                                             >
                                                 cinemax
                                             </a>
 
                                             <a
-                                                @click="scroll('hbomax')"
+                                                @click="scrollTo('hbomax')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
-                                                style="color: #283583"
+                                                style="
+                                                    color: #283583;
+                                                    cursor: pointer;
+                                                "
                                             >
                                                 hbo max
                                             </a>
 
                                             <a
-                                                @click="scroll('sport')"
+                                                @click="scrollTo('sport')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
-                                                style="color: #283583"
+                                                style="
+                                                    color: #283583;
+                                                    cursor: pointer;
+                                                "
                                             >
                                                 sport
                                             </a>
                                             <a
-                                                @click="scroll('4k')"
+                                                @click="scrollTo('4k')"
                                                 class="text-h5 font-weight-bold text-decoration-none text-uppercase mx-auto"
-                                                style="color: #283583"
+                                                style="
+                                                    color: #283583;
+                                                    cursor: pointer;
+                                                "
                                             >
                                                 4k-uhd
                                             </a>
@@ -157,10 +178,10 @@ export default {
     },
 
     methods: {
-        scroll(id) {
-            console.log("you shall not pass !!!");
-            // let item = id;
-            // this.$refs.item.scrollIntoView();
+        scrollTo(id) {
+            document.getElementById(id).scrollIntoView({
+                behavior: "smooth",
+            });
         },
     },
 };
