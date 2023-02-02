@@ -382,9 +382,7 @@
                                                 {{ device.deviceType }}
                                             </v-list-item-title>
                                             <v-list-item-subtitle>
-                                                {{
-                                                    device.deviceName
-                                                }}
+                                                {{ device.deviceName }}
                                                 - naposledy přihlášen
                                                 {{
                                                     new Date(
@@ -511,28 +509,55 @@ export default {
         },
 
         deleteDevice(deviceId) {
-            axios
-                .delete(
-                    "customer/nangu/device/" +
-                        this.customerNanguDetail.subscriptionCode +
-                        "/" +
-                        deviceId
-                )
-                .then((response) => {
-                    this.notificationData = response.data;
+            if (this.customerData.nangu_isp != null) {
+                axios
+                    .delete(
+                        "customer/nangu/device/" +
+                            this.customerNanguDetail.subscriptionCode +
+                            "/" +
+                            deviceId +
+                            "/" +
+                            this.customerData.nangu_isp
+                    )
+                    .then((response) => {
+                        this.notificationData = response.data;
 
-                    if (this.notificationData.status == "success") {
-                        this.loadDetailsFromNangu();
-                        this.snackColor = "green";
-                    } else {
-                        this.snackColor = "error";
-                    }
-                    this.showSnackBar = true;
-                    setTimeout(function () {
-                        this.notificationData = [];
-                        this.showSnackBar = false;
-                    }, 3000);
-                });
+                        if (this.notificationData.status == "success") {
+                            this.loadDetailsFromNangu();
+                            this.snackColor = "green";
+                        } else {
+                            this.snackColor = "error";
+                        }
+                        this.showSnackBar = true;
+                        setTimeout(function () {
+                            this.notificationData = [];
+                            this.showSnackBar = false;
+                        }, 3000);
+                    });
+            } else {
+                axios
+                    .delete(
+                        "customer/nangu/device/" +
+                            this.customerNanguDetail.subscriptionCode +
+                            "/" +
+                            deviceId
+                    )
+                    .then((response) => {
+                        this.notificationData = response.data;
+
+                        if (this.notificationData.status == "success") {
+                            this.loadDetailsFromNangu();
+                            this.snackColor = "green";
+                        } else {
+                            this.snackColor = "error";
+                        }
+                        this.showSnackBar = true;
+                        setTimeout(function () {
+                            this.notificationData = [];
+                            this.showSnackBar = false;
+                        }, 3000);
+                    });
+            }
         },
 
         redirectToHome() {

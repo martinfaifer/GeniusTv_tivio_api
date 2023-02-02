@@ -1,19 +1,22 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminAuthController;
-use App\Http\Controllers\Admin\AdminUserController;
-use App\Http\Controllers\API\ApiIptvDokuInvoiceController;
-use App\Http\Controllers\API\ApiIptvDokuNanguIspsController;
-use App\Http\Controllers\AppCategoriesController;
+use App\Models\Stb;
+use App\Models\Subscriber;
+use App\Models\Subscription;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AppController;
-use App\Http\Controllers\ChannelController;
-use App\Http\Controllers\CustomerAuthController;
-use App\Http\Controllers\NanguCustomerController;
-use App\Http\Controllers\ShowUserController;
-use App\Http\Controllers\SubscriptionDeviceController;
 use App\Http\Controllers\TivioController;
 use App\Http\Controllers\TopicController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ChannelController;
+use App\Http\Controllers\ShowUserController;
+use App\Http\Controllers\CustomerAuthController;
+use App\Http\Controllers\AppCategoriesController;
+use App\Http\Controllers\NanguCustomerController;
+use App\Http\Controllers\Admin\AdminAuthController;
+use App\Http\Controllers\Admin\AdminUserController;
+use App\Http\Controllers\SubscriptionDeviceController;
+use App\Http\Controllers\API\ApiIptvDokuInvoiceController;
+use App\Http\Controllers\API\ApiIptvDokuNanguIspsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -35,7 +38,7 @@ Route::prefix('customer')->group(function () {
     Route::get('', [CustomerAuthController::class, 'show']);
     Route::prefix('nangu')->group(function () {
         Route::get('details', [NanguCustomerController::class, 'show']);
-        Route::delete('device/{subscriptionCode}/{deviceId}', [SubscriptionDeviceController::class, 'destroy']);
+        Route::delete('device/{subscriptionCode}/{deviceId}/{ispId?}', [SubscriptionDeviceController::class, 'destroy']);
     });
     Route::prefix('tivio')->group(function () {
         Route::post('stb_mac', [TivioController::class, 'by_mac']);
@@ -78,3 +81,57 @@ Route::prefix('admin')->group(function () {
         });
     });
 });
+
+
+
+
+// // FOR TESTING
+// Route::get('testing', function () {
+
+//     $subscribers = [];
+//     $output = [];
+
+//     $vip1003s = Stb::where('stb_type', "KREA-1003")->with('subscription')->get();
+//     foreach ($vip1003s as $vip1003) {
+//         $subscriber = Subscriber::find($vip1003->subscription->subscriberId);
+//         if ($subscriber->ispId == 1) {
+//             array_push($subscribers, $subscriber);
+//         }
+//     }
+
+//     foreach ($subscribers as $account) {
+//         foreach ($account->subscriptions as $subscription) {
+//             $subscriptionStbs = Stb::where('subscriptionId', $subscription->id)->get();
+//             if (count($subscriptionStbs) == 1) {
+//                 array_push($output, Subscription::find($subscriptionStbs[0]->subscriptionId));
+//             }
+//         }
+//     }
+
+//     // return $output;
+
+//     $headers = array(
+//         "Content-type"        => "text/csv",
+//         "Content-Disposition" => "attachment; filename=users.csv",
+//         "Pragma"              => "no-cache",
+//         "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
+//         "Expires"             => "0"
+//     );
+
+//     $columns = array('subscriptionCode');
+
+//     $callback = function() use($output, $columns) {
+//         $file = fopen('php://output', 'w');
+//         fputcsv($file, $columns);
+
+//         foreach ($output as $task) {
+//             $row['subscriptionCode']  = $task->subscriptionCode;
+
+//             fputcsv($file, array($row['subscriptionCode']));
+//         }
+
+//         fclose($file);
+//     };
+
+//     return response()->stream($callback, 200, $headers);
+// });

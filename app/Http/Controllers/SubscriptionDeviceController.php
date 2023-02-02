@@ -22,9 +22,9 @@ class SubscriptionDeviceController extends Controller
         return (new NanguWsdlShowSubscriptionInfoService('subscription'))->show($subscription);
     }
 
-    public function destroy(string $subscriptionCode, string $deviceId): array
+    public function destroy(string $subscriptionCode, string $deviceId, $ispId = null): array
     {
-        return (new NanguWsdlDeleteSubscriptionDeviceService('subscription'))->delete($subscriptionCode, $deviceId) == true
+        return (new NanguWsdlDeleteSubscriptionDeviceService('subscription'))->delete($subscriptionCode, $deviceId, $ispId) == true
             ? [
                 'status' => 'success',
                 'message' => 'Zařízení odebráno',

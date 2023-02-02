@@ -76,20 +76,37 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     deleteDevice: function deleteDevice(deviceId) {
       var _this3 = this;
-      axios__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"]("customer/nangu/device/" + this.customerNanguDetail.subscriptionCode + "/" + deviceId).then(function (response) {
-        _this3.notificationData = response.data;
-        if (_this3.notificationData.status == "success") {
-          _this3.loadDetailsFromNangu();
-          _this3.snackColor = "green";
-        } else {
-          _this3.snackColor = "error";
-        }
-        _this3.showSnackBar = true;
-        setTimeout(function () {
-          this.notificationData = [];
-          this.showSnackBar = false;
-        }, 3000);
-      });
+      if (this.customerData.nangu_isp != null) {
+        axios__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"]("customer/nangu/device/" + this.customerNanguDetail.subscriptionCode + "/" + deviceId + "/" + this.customerData.nangu_isp).then(function (response) {
+          _this3.notificationData = response.data;
+          if (_this3.notificationData.status == "success") {
+            _this3.loadDetailsFromNangu();
+            _this3.snackColor = "green";
+          } else {
+            _this3.snackColor = "error";
+          }
+          _this3.showSnackBar = true;
+          setTimeout(function () {
+            this.notificationData = [];
+            this.showSnackBar = false;
+          }, 3000);
+        });
+      } else {
+        axios__WEBPACK_IMPORTED_MODULE_2__["default"]["delete"]("customer/nangu/device/" + this.customerNanguDetail.subscriptionCode + "/" + deviceId).then(function (response) {
+          _this3.notificationData = response.data;
+          if (_this3.notificationData.status == "success") {
+            _this3.loadDetailsFromNangu();
+            _this3.snackColor = "green";
+          } else {
+            _this3.snackColor = "error";
+          }
+          _this3.showSnackBar = true;
+          setTimeout(function () {
+            this.notificationData = [];
+            this.showSnackBar = false;
+          }, 3000);
+        });
+      }
     },
     redirectToHome: function redirectToHome() {
       this.$router.push("/");
