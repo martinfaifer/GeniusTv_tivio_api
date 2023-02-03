@@ -25,7 +25,7 @@
                     class="text-center mt-6"
                     style="color: #283583; font-size: 18px"
                 >
-                    (více než 65 v HD kvalitě)
+                    (více než 87 v HD kvalitě)
                 </p>
                 <p
                     class="text-center mb-3"
