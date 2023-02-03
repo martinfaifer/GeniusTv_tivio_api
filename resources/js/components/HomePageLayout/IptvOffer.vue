@@ -27,7 +27,7 @@
                                         v-bind="props"
                                         headText="Základ"
                                         oldName="MINI"
-                                        :numberOfChannels="80"
+                                        :numberOfChannels="87"
                                     ></ChannelPackagesCard>
                                 </v-col>
                             </v-hover>
@@ -39,7 +39,7 @@
                                         v-bind="props"
                                         headText="Standard"
                                         oldName="BASIC"
-                                        :numberOfChannels="120"
+                                        :numberOfChannels="126"
                                     ></ChannelPackagesCard>
                                 </v-col>
                             </v-hover>
@@ -51,7 +51,7 @@
                                         v-bind="props"
                                         headText="Komplet"
                                         oldName="MAX"
-                                        :numberOfChannels="150"
+                                        :numberOfChannels="154"
                                     ></ChannelPackagesCard>
                                 </v-col>
                             </v-hover>
