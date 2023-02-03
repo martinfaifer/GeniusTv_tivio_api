@@ -17,7 +17,7 @@
                     style="color: #283583; margin-top: 40px"
                 >
                     <span class="text-span text-h1 font-weight-medium">
-                        {{ numberOfChannels }}
+                        {{ packageInfo.all }}
                     </span>
                     <br />kanálů
                 </p>
@@ -25,7 +25,7 @@
                     class="text-center mt-6"
                     style="color: #283583; font-size: 18px"
                 >
-                    (více než 87 v HD kvalitě)
+                    (více než {{ packageInfo.hd }} v HD kvalitě)
                 </p>
                 <p
                     class="text-center mb-3"
@@ -50,6 +50,23 @@ export default {
         headText: String,
         numberOfChannels: Number,
         oldName: String,
+        packageName: String,
+    },
+
+    data() {
+        return {
+            packageInfo: []
+        }
+    },
+    created() {
+        this.index();
+    },
+    methods: {
+        index() {
+            axios.get("package/" + this.packageName).then((response) => {
+                this.packageInfo = response.data;
+            });
+        },
     },
 };
 </script>

@@ -373,7 +373,24 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     headText: String,
     numberOfChannels: Number,
-    oldName: String
+    oldName: String,
+    packageName: String
+  },
+  data: function data() {
+    return {
+      packageInfo: []
+    };
+  },
+  created: function created() {
+    this.index();
+  },
+  methods: {
+    index: function index() {
+      var _this = this;
+      axios.get("package/" + this.packageName).then(function (response) {
+        _this.packageInfo = response.data;
+      });
+    }
   }
 });
 
@@ -1142,7 +1159,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                           }, props, {
                             headText: "Základ",
                             oldName: "MINI",
-                            numberOfChannels: 80
+                            numberOfChannels: 87,
+                            packageName: "G.TV Základ"
                           }), null, 16 /* FULL_PROPS */, ["elevation", "class"])];
                         }),
                         _: 2 /* DYNAMIC */
@@ -1169,7 +1187,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                           }, props, {
                             headText: "Standard",
                             oldName: "BASIC",
-                            numberOfChannels: 120
+                            numberOfChannels: 126,
+                            packageName: "G.TV Standard"
                           }), null, 16 /* FULL_PROPS */, ["elevation", "class"])];
                         }),
                         _: 2 /* DYNAMIC */
@@ -1196,7 +1215,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                           }, props, {
                             headText: "Komplet",
                             oldName: "MAX",
-                            numberOfChannels: 150
+                            numberOfChannels: 154,
+                            packageName: "G.TV Komplet"
                           }), null, 16 /* FULL_PROPS */, ["elevation", "class"])];
                         }),
                         _: 2 /* DYNAMIC */
@@ -1996,13 +2016,13 @@ var _hoisted_4 = {
   "class": "text-span text-h1 font-weight-medium"
 };
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("br", null, null, -1 /* HOISTED */);
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
+var _hoisted_6 = {
   "class": "text-center mt-6",
   style: {
     "color": "#283583",
     "font-size": "18px"
   }
-}, " (více než 65 v HD kvalitě) ", -1 /* HOISTED */);
+};
 var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", {
   "class": "text-center mb-3",
   style: {
@@ -2028,7 +2048,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         height: "100%"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.numberOfChannels), 1 /* TEXT */), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("kanálů ")]), _hoisted_6, _hoisted_7])];
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.packageInfo.all), 1 /* TEXT */), _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("kanálů ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_6, " (více než " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.packageInfo.hd) + " v HD kvalitě) ", 1 /* TEXT */), _hoisted_7])];
         }),
         _: 1 /* STABLE */
       })];

@@ -28,6 +28,7 @@
                                         headText="Základ"
                                         oldName="MINI"
                                         :numberOfChannels="87"
+                                        packageName="G.TV Základ"
                                     ></ChannelPackagesCard>
                                 </v-col>
                             </v-hover>
@@ -40,6 +41,7 @@
                                         headText="Standard"
                                         oldName="BASIC"
                                         :numberOfChannels="126"
+                                        packageName="G.TV Standard"
                                     ></ChannelPackagesCard>
                                 </v-col>
                             </v-hover>
@@ -52,6 +54,7 @@
                                         headText="Komplet"
                                         oldName="MAX"
                                         :numberOfChannels="154"
+                                        packageName="G.TV Komplet"
                                     ></ChannelPackagesCard>
                                 </v-col>
                             </v-hover>

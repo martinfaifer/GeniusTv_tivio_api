@@ -17,6 +17,7 @@ use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\SubscriptionDeviceController;
 use App\Http\Controllers\API\ApiIptvDokuInvoiceController;
 use App\Http\Controllers\API\ApiIptvDokuNanguIspsController;
+use App\Http\Controllers\ChannelPackageCountController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,6 +26,7 @@ Route::post('login', [CustomerAuthController::class, 'login']);
 Route::post('logout', [CustomerAuthController::class, 'logout']);
 Route::get('iptv/isps', ApiIptvDokuNanguIspsController::class);
 Route::get('channels', ChannelController::class);
+Route::get('package/{package}', [ChannelPackageCountController::class, 'show']);
 
 Route::get(
     'login',
@@ -81,57 +83,3 @@ Route::prefix('admin')->group(function () {
         });
     });
 });
-
-
-
-
-// // FOR TESTING
-// Route::get('testing', function () {
-
-//     $subscribers = [];
-//     $output = [];
-
-//     $vip1003s = Stb::where('stb_type', "KREA-1003")->with('subscription')->get();
-//     foreach ($vip1003s as $vip1003) {
-//         $subscriber = Subscriber::find($vip1003->subscription->subscriberId);
-//         if ($subscriber->ispId == 1) {
-//             array_push($subscribers, $subscriber);
-//         }
-//     }
-
-//     foreach ($subscribers as $account) {
-//         foreach ($account->subscriptions as $subscription) {
-//             $subscriptionStbs = Stb::where('subscriptionId', $subscription->id)->get();
-//             if (count($subscriptionStbs) == 1) {
-//                 array_push($output, Subscription::find($subscriptionStbs[0]->subscriptionId));
-//             }
-//         }
-//     }
-
-//     // return $output;
-
-//     $headers = array(
-//         "Content-type"        => "text/csv",
-//         "Content-Disposition" => "attachment; filename=users.csv",
-//         "Pragma"              => "no-cache",
-//         "Cache-Control"       => "must-revalidate, post-check=0, pre-check=0",
-//         "Expires"             => "0"
-//     );
-
-//     $columns = array('subscriptionCode');
-
-//     $callback = function() use($output, $columns) {
-//         $file = fopen('php://output', 'w');
-//         fputcsv($file, $columns);
-
-//         foreach ($output as $task) {
-//             $row['subscriptionCode']  = $task->subscriptionCode;
-
-//             fputcsv($file, array($row['subscriptionCode']));
-//         }
-
-//         fclose($file);
-//     };
-
-//     return response()->stream($callback, 200, $headers);
-// });
