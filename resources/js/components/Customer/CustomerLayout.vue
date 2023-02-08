@@ -372,82 +372,163 @@
                                     "
                                 >
                                     <v-list>
-                                        <v-list-item
-                                            v-for="device in customerNanguDetail.pairedDevices"
-                                            :key="device.deviceId"
-                                            lines="two"
-                                            v-show="device.deviceType != 'STB'"
+                                        <div
+                                            v-if="
+                                                customerNanguDetail
+                                                    .pairedDevices.deviceId
+                                            "
                                         >
-                                            <v-list-item-title>
-                                                {{ device.deviceType }}
-                                            </v-list-item-title>
-                                            <v-list-item-subtitle>
-                                                {{ device.deviceName }}
-                                                - naposledy přihlášen
-                                                {{
-                                                    new Date(
-                                                        device.lastLoginDate
-                                                    ).toLocaleDateString()
-                                                }}
-                                            </v-list-item-subtitle>
-
-                                            <!-- <v-list-item-subtitle
-                                                color="hidden-sm-and-down"
-                                                class="d-flex justify-center mt-n4 hidden-sm-and-down"
+                                            <v-list-item
+                                                lines="two"
+                                                v-show="
+                                                    customerNanguDetail
+                                                        .pairedDevices
+                                                        .deviceType != 'STB'
+                                                "
                                             >
-                                                naposledy přihlášen
-                                                {{
-                                                    new Date(
-                                                        device.lastLoginDate
-                                                    ).toLocaleDateString()
-                                                }}
-                                            </v-list-item-subtitle> -->
+                                                <v-list-item-title>
+                                                    {{
+                                                        customerNanguDetail
+                                                            .pairedDevices
+                                                            .deviceType
+                                                    }}
+                                                </v-list-item-title>
+                                                <v-list-item-subtitle>
+                                                    {{
+                                                        customerNanguDetail
+                                                            .pairedDevices
+                                                            .deviceName
+                                                    }}
+                                                    - naposledy přihlášen
+                                                    {{
+                                                        new Date(
+                                                            customerNanguDetail.pairedDevices.lastLoginDate
+                                                        ).toLocaleDateString()
+                                                    }}
+                                                </v-list-item-subtitle>
 
-                                            <template v-slot:prepend>
-                                                <v-avatar
-                                                    color="grey-lighten-1"
-                                                >
-                                                    <v-icon
-                                                        color="white"
-                                                        v-if="
-                                                            device.deviceType ==
-                                                            'MOBILE'
-                                                        "
-                                                        >mdi-cellphone</v-icon
+                                                <template v-slot:prepend>
+                                                    <v-avatar
+                                                        color="grey-lighten-1"
                                                     >
+                                                        <v-icon
+                                                            color="white"
+                                                            v-if="
+                                                                customerNanguDetail
+                                                                    .pairedDevices
+                                                                    .deviceType ==
+                                                                'MOBILE'
+                                                            "
+                                                            >mdi-cellphone</v-icon
+                                                        >
 
-                                                    <v-icon
-                                                        color="white"
-                                                        v-if="
-                                                            device.deviceType ==
-                                                            'PC'
-                                                        "
-                                                        >mdi-laptop</v-icon
-                                                    >
+                                                        <v-icon
+                                                            color="white"
+                                                            v-if="
+                                                                customerNanguDetail
+                                                                    .pairedDevices
+                                                                    .deviceType ==
+                                                                'PC'
+                                                            "
+                                                            >mdi-laptop</v-icon
+                                                        >
 
-                                                    <v-icon
-                                                        color="white"
-                                                        v-else-if="
-                                                            device.deviceType ==
-                                                            'SAMSUNG_TV'
+                                                        <v-icon
+                                                            color="white"
+                                                            v-else-if="
+                                                                customerNanguDetail
+                                                                    .pairedDevices
+                                                                    .deviceType ==
+                                                                'SAMSUNG_TV'
+                                                            "
+                                                            >mdi-television</v-icon
+                                                        >
+                                                    </v-avatar>
+                                                </template>
+                                                <template v-slot:append>
+                                                    <v-btn
+                                                        color="red-lighten-1"
+                                                        icon="mdi-delete"
+                                                        variant="text"
+                                                        @click="
+                                                            deleteDevice(
+                                                                customerNanguDetail
+                                                                    .pairedDevices
+                                                                    .deviceId
+                                                            )
                                                         "
-                                                        >mdi-television</v-icon
+                                                    ></v-btn>
+                                                </template>
+                                            </v-list-item>
+                                        </div>
+                                        <div v-else>
+                                            <v-list-item
+                                                v-for="device in customerNanguDetail.pairedDevices"
+                                                :key="device.deviceId"
+                                                lines="two"
+                                                v-show="
+                                                    device.deviceType != 'STB'
+                                                "
+                                            >
+                                                <v-list-item-title>
+                                                    {{ device.deviceType }}
+                                                </v-list-item-title>
+                                                <v-list-item-subtitle>
+                                                    {{ device.deviceName }}
+                                                    - naposledy přihlášen
+                                                    {{
+                                                        new Date(
+                                                            device.lastLoginDate
+                                                        ).toLocaleDateString()
+                                                    }}
+                                                </v-list-item-subtitle>
+
+                                                <template v-slot:prepend>
+                                                    <v-avatar
+                                                        color="grey-lighten-1"
                                                     >
-                                                </v-avatar>
-                                            </template>
-                                            <template v-slot:append>
-                                                <v-btn
-                                                    color="red-lighten-1"
-                                                    icon="mdi-delete"
-                                                    variant="text"
-                                                    @click="
-                                                        deleteDevice(
-                                                            device.deviceId
-                                                        )
-                                                    "
-                                                ></v-btn>
-                                            </template>
-                                        </v-list-item>
+                                                        <v-icon
+                                                            color="white"
+                                                            v-if="
+                                                                device.deviceType ==
+                                                                'MOBILE'
+                                                            "
+                                                            >mdi-cellphone</v-icon
+                                                        >
+
+                                                        <v-icon
+                                                            color="white"
+                                                            v-if="
+                                                                device.deviceType ==
+                                                                'PC'
+                                                            "
+                                                            >mdi-laptop</v-icon
+                                                        >
+
+                                                        <v-icon
+                                                            color="white"
+                                                            v-else-if="
+                                                                device.deviceType ==
+                                                                'SAMSUNG_TV'
+                                                            "
+                                                            >mdi-television</v-icon
+                                                        >
+                                                    </v-avatar>
+                                                </template>
+                                                <template v-slot:append>
+                                                    <v-btn
+                                                        color="red-lighten-1"
+                                                        icon="mdi-delete"
+                                                        variant="text"
+                                                        @click="
+                                                            deleteDevice(
+                                                                device.deviceId
+                                                            )
+                                                        "
+                                                    ></v-btn>
+                                                </template>
+                                            </v-list-item>
+                                        </div>
                                     </v-list>
                                 </div>
                                 <div v-else>

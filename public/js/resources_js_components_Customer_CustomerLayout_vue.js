@@ -236,6 +236,12 @@ var _hoisted_4 = {
   key: 0
 };
 var _hoisted_5 = {
+  key: 0
+};
+var _hoisted_6 = {
+  key: 1
+};
+var _hoisted_7 = {
   key: 1
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -786,7 +792,72 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
                           return [$data.customerNanguDetail.pairedDevices != undefined ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list, null, {
                             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                              return [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.customerNanguDetail.pairedDevices, function (device) {
+                              return [$data.customerNanguDetail.pairedDevices.deviceId ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list_item, {
+                                lines: "two"
+                              }, {
+                                prepend: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_avatar, {
+                                    color: "grey-lighten-1"
+                                  }, {
+                                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                      return [$data.customerNanguDetail.pairedDevices.deviceType == 'MOBILE' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_icon, {
+                                        key: 0,
+                                        color: "white"
+                                      }, {
+                                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("mdi-cellphone")];
+                                        }),
+                                        _: 1 /* STABLE */
+                                      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.customerNanguDetail.pairedDevices.deviceType == 'PC' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_icon, {
+                                        key: 1,
+                                        color: "white"
+                                      }, {
+                                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("mdi-laptop")];
+                                        }),
+                                        _: 1 /* STABLE */
+                                      })) : $data.customerNanguDetail.pairedDevices.deviceType == 'SAMSUNG_TV' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_icon, {
+                                        key: 2,
+                                        color: "white"
+                                      }, {
+                                        "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("mdi-television")];
+                                        }),
+                                        _: 1 /* STABLE */
+                                      })) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)];
+                                    }),
+                                    _: 1 /* STABLE */
+                                  })];
+                                }),
+
+                                append: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+                                    color: "red-lighten-1",
+                                    icon: "mdi-delete",
+                                    variant: "text",
+                                    onClick: _cache[3] || (_cache[3] = function ($event) {
+                                      return $options.deleteDevice($data.customerNanguDetail.pairedDevices.deviceId);
+                                    })
+                                  })];
+                                }),
+                                "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                  return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list_item_title, null, {
+                                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.customerNanguDetail.pairedDevices.deviceType), 1 /* TEXT */)];
+                                    }),
+
+                                    _: 1 /* STABLE */
+                                  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_list_item_subtitle, null, {
+                                    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.customerNanguDetail.pairedDevices.deviceName) + " - naposledy přihlášen " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(new Date($data.customerNanguDetail.pairedDevices.lastLoginDate).toLocaleDateString()), 1 /* TEXT */)];
+                                    }),
+
+                                    _: 1 /* STABLE */
+                                  })];
+                                }),
+
+                                _: 1 /* STABLE */
+                              }, 512 /* NEED_PATCH */), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, $data.customerNanguDetail.pairedDevices.deviceType != 'STB']])])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.customerNanguDetail.pairedDevices, function (device) {
                                 return (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)(((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_v_list_item, {
                                   key: device.deviceId,
                                   lines: "two"
@@ -854,11 +925,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
                                   _: 2 /* DYNAMIC */
                                 }, 1024 /* DYNAMIC_SLOTS */)), [[vue__WEBPACK_IMPORTED_MODULE_0__.vShow, device.deviceType != 'STB']]);
-                              }), 128 /* KEYED_FRAGMENT */))];
+                              }), 128 /* KEYED_FRAGMENT */))]))];
                             }),
 
                             _: 1 /* STABLE */
-                          })])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_alert, {
+                          })])) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_alert, {
                             type: "info",
                             rounded: "lg",
                             title: "Nenalezeno žádné zařízení",

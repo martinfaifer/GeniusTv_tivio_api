@@ -37,14 +37,16 @@
                                             >mdi-download</v-icon
                                         >
                                     </a>
-
-                                    <v-icon
+                                    <v-btn
                                         v-if="user.isAdmin == true"
-                                        color="red"
                                         class="mx-auto"
+                                        icon
+                                        flat
+                                        color="transparent"
                                         @click="deleteItem(app.id)"
-                                        >mdi-delete</v-icon
                                     >
+                                        <v-icon color="red">mdi-delete</v-icon>
+                                    </v-btn>
                                 </td>
                             </tr>
                         </tbody>
