@@ -198,17 +198,21 @@
                                                 }}
                                             </td>
                                             <td>
-                                                <v-icon
-                                                    color="green"
+                                                <v-btn
+                                                    icon
+                                                    color="transaprent"
+                                                    flat
                                                     @click="
                                                         downloadInvoice(
                                                             invoice.path,
                                                             invoice.name
                                                         )
                                                     "
-                                                    style="cursor: pointer"
-                                                    >mdi-download</v-icon
                                                 >
+                                                    <v-icon color="green"
+                                                        >mdi-download</v-icon
+                                                    >
+                                                </v-btn>
                                             </td>
                                         </tr>
                                     </tbody>

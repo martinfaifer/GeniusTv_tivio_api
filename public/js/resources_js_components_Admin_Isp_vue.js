@@ -939,18 +939,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                               return [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.formDatas, function (invoice) {
                                 return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
                                   key: invoice.id
-                                }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.showCreated(invoice.created_at)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_icon, {
-                                  color: "green",
+                                }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.showCreated(invoice.created_at)), 1 /* TEXT */), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_btn, {
+                                  icon: "",
+                                  color: "transaprent",
+                                  flat: "",
                                   onClick: function onClick($event) {
                                     return $options.downloadInvoice(invoice.path, invoice.name);
-                                  },
-                                  style: {
-                                    "cursor": "pointer"
                                   }
                                 }, {
                                   "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                                    return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("mdi-download")];
+                                    return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_v_icon, {
+                                      color: "green"
+                                    }, {
+                                      "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+                                        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("mdi-download")];
+                                      }),
+                                      _: 1 /* STABLE */
+                                    })];
                                   }),
+
                                   _: 2 /* DYNAMIC */
                                 }, 1032 /* PROPS, DYNAMIC_SLOTS */, ["onClick"])])]);
                               }), 128 /* KEYED_FRAGMENT */))])];
