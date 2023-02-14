@@ -8,7 +8,7 @@
                     src="images/logo_grape_genius_tv_300x300_px.png"
                     loading="lazy"
                     width="200"
-                    alt=""
+                    alt="GeniusTV"
                     class="mb-8"
                     elevation-24
                 />
